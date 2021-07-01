@@ -5,22 +5,30 @@
 <head>
 <meta charset="utf-8">
 <title>PORTAL NEWS</title>
+  <style type="text/css">
+   H1 { 
+    font-size: 120%; /* Размер шрифта */
+    font-family: Verdana, Arial, Helvetica, sans-serif; /* Семейство шрифта */
+    color: #336; /* Цвет текста */
+   }
+  </style>
 </head>
 <body>
 <h1>PORTAL NEWS</h1>
 
+	<hr/>
 	<br/>
 
-	<form action="Registration" method="get">
-		<input type="hidden" name="command" value="autho" /> 
+	<form action="Controller" method="post">
+		<input type="hidden" name="command" value="authorization" /> 
 		
 		<input type="submit" value="Authorization" /><br />
 	</form>
 		
 	<br/>
 
-	<form action="Registration" method="post">		
-		<input type="hidden" name="command" value="reg" />
+	<form action="Controller" method="post">		
+		<input type="hidden" name="command" value="registration" />
 		<input type="submit" value="Registration" /><br />
 	</form>
 	

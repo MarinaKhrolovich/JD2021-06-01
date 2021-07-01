@@ -7,13 +7,19 @@
 <title>AUTHORIZATION</title>
 </head>
 <body>
-<h1>AUTHORIZATION</h1>
-	<form action="Registration" method="get">
-		<input type="hidden" name="command" value="didautho" /> 
+
+	<form action="Controller" method="get">
+		<input type="hidden" name="command" value="authorization_user" /> 
+		<fieldset>
+		<legend>AUTHORIZATION</legend>
 		Enter login:<br />
 		<input type="text" name="login" value="" /><br /> 
+		
+		<br /> 
 		Enter password:<br />
 		<input type="password" name="password" value="" /><br /> 
+		
+		</fieldset>
 		<br />
 		<input type="submit" value="Enter" /><br />
 	</form>
