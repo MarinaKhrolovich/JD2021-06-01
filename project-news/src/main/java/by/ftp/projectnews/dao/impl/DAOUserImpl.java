@@ -1,6 +1,5 @@
 package by.ftp.projectnews.dao.impl;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import by.ftp.projectnews.bean.User;
@@ -15,7 +14,14 @@ public class DAOUserImpl implements DAOUser{
 	
 	@Override
 	public void registrationSQL(User user) throws DAOException {
-		ListOfUsers.put(user.getLogin(),user);
+		
+		
+		if (ListOfUsers.get(user.getLogin())==null) {
+			  ListOfUsers.put(user.getLogin(),user);
+		 }
+		else throw new DAOException();//stub
+			
+
 	}
 
 	@Override
@@ -25,7 +31,9 @@ public class DAOUserImpl implements DAOUser{
 		if (user.getPassword() == password) {
 			return user;
 		}
-		return null;
+		else { 
+			throw new DAOException();//stub
+		}
 	}
 	
 }

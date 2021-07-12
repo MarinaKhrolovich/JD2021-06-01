@@ -12,7 +12,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class RegistrationNewUser implements Command {
 
-	private ArrayList<User> ListOfUsers = new ArrayList<>();
+	
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,7 +38,7 @@ public class RegistrationNewUser implements Command {
 			user.setSex(sex);
 		}
 		request.setAttribute("user", user);
-		ListOfUsers.add(user);
+
 		out.println("Registration completed successfully!");
 		out.println("<br />Your login: " + login);
 		out.println("<br />Your password: " + password);
