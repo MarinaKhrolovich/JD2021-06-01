@@ -5,25 +5,41 @@ import java.io.PrintWriter;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
+import by.ftp.projectnews.service.ServiceException;
+import by.ftp.projectnews.service.ServiceProvider;
+import by.ftp.projectnews.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class AuthorizationUser implements Command {
 
+	private static final ServiceProvider provider = ServiceProvider.getInstance();
+	private static final UserService userService = provider.getUserService();
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter out = response.getWriter();
-		String login = request.getParameter("login");
-		String password = request.getParameter("password");
 
-		
-		//найти в списке пользователей
-		//1. Если не найден, то перевести на страницу регистрации с сообщением
-		//2. Если найден, то сообщить, что пользователь успешно авторизовался
-		
-		
-		out.println("Autorization completed successfully!");
-
+		try {
+			PrintWriter out = response.getWriter();
+			String login = request.getParameter("login");
+			String password = request.getParameter("password");
+			
+			User user = userService.authorization(login, password);
+			
+			HttpSession session = request.getSession(true);
+			session.setAttribute("user", user);
+			
+			
+			//request.setAttribute("message", "fgfgfgfg");
+			
+			response.sendRedirect("Controller?command=go_to_auth_user_page");
+			out.println("Autorization completed successfully!");
+			
+		} catch (ServiceException e) {
+			// log
+			// path = "error.jsp";
+		}
 	}
 }

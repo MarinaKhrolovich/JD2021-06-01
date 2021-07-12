@@ -8,13 +8,13 @@ public class DAOException extends Exception {
 
 
 	public DAOException(String message) {
-		super("Invalid password! Try again:"+message);
+		super("ERROR: "+message);
 
 	}
 
 
 	public DAOException(String message, Throwable cause) {
-		super("Invalid password! Try again:"+message, cause);
+		super("ERROR: "+message, cause);
 	}
 
 

@@ -8,6 +8,15 @@
 </head>
 <body>
 
+	<font color="red" size="18">
+	<%
+	   String mes = (String)request.getParameter("message");
+	 if(mes != null){
+		 out.print(mes);
+	 }
+	
+	%>
+	</font>
 	<form action="Controller" method="get">
 		<input type="hidden" name="command" value="authorization_user" /> 
 		<fieldset>

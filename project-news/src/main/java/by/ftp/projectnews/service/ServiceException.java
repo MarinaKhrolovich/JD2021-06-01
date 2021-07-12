@@ -9,7 +9,7 @@ public class ServiceException extends Exception {
 	}
 
 	public ServiceException(String message) {
-		super(message);
+		super("ERROR: "+message);
 	}
 
 	public ServiceException(Exception e) {
@@ -17,7 +17,7 @@ public class ServiceException extends Exception {
 	}
 
 	public ServiceException(String message, Exception e) {
-		super(message, e);
+		super("ERROR: "+message, e);
 	}
 	
 	

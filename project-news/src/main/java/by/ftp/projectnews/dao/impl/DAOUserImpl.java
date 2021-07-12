@@ -19,7 +19,7 @@ public class DAOUserImpl implements DAOUser{
 		if (ListOfUsers.get(user.getLogin())==null) {
 			  ListOfUsers.put(user.getLogin(),user);
 		 }
-		else throw new DAOException();//stub
+		else throw new DAOException("User is not found!");//stub
 			
 
 	}
@@ -32,7 +32,7 @@ public class DAOUserImpl implements DAOUser{
 			return user;
 		}
 		else { 
-			throw new DAOException();//stub
+			throw new DAOException("Invalid password! Try again");
 		}
 	}
 	
