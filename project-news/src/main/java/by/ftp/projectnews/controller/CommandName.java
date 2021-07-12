@@ -1,0 +1,5 @@
+package by.ftp.projectnews.controller;
+
+public enum CommandName {
+	REGISTRATION, AUTHORIZATION, REGISTRATION_NEW_USER, AUTHORIZATION_USER, GO_TO_MAIN_PAGE,UNKNOWN_COMMAND
+}
