@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
-import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
