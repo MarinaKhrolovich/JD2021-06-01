@@ -19,7 +19,7 @@ public class DAOUserImpl implements DAOUser{
 		if (ListOfUsers.get(user.getLogin())==null) {
 			  ListOfUsers.put(user.getLogin(),user);
 		 }
-		else throw new DAOException("User is not found!");//stub
+		else throw new DAOException("User has already exists");//stub
 			
 
 	}
@@ -28,6 +28,10 @@ public class DAOUserImpl implements DAOUser{
 	public User authorizationSQL(String login, String password) throws DAOException {
 
 		User user = ListOfUsers.get(login);
+		if (user==null) {
+			throw new DAOException("User is not found!");
+			
+		}
 		if (user.getPassword() == password) {
 			return user;
 		}

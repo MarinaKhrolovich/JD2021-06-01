@@ -19,8 +19,9 @@
 	</form>
 	
 	<%
-	
+	//newses = request.getAttribute("newses");
 	
 	%>
+	
 </body>
 </html>

@@ -18,6 +18,9 @@ public class AddNews implements Command{
 		
 		if(session == null) {
 			// redirect gotoauthorizationpage
+			
+			response.sendRedirect("Controller?command=AUTHORIZATION&message='You session is lost.You must sign in to the system!'");
+			
 			return;
 		}
 		
@@ -25,6 +28,9 @@ public class AddNews implements Command{
 		
 		if(user == null) {
 			// redirect gotoauthorizationpage
+			
+			response.sendRedirect("Controller?command=AUTHORIZATION&message='You must sign in to the system!'");
+			
 			return;
 		}
 		
@@ -32,6 +38,8 @@ public class AddNews implements Command{
 			session.removeAttribute("user");
 			//log
 			// redirect gotoauthorizationpage
+			response.sendRedirect("Controller?command=AUTHORIZATION&message='You must sign as an administrator!'");
+			
 			return;
 		}
 		

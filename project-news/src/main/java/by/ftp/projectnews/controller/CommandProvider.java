@@ -7,6 +7,7 @@ import by.ftp.projectnews.controller.impl.AuthorizationUser;
 import by.ftp.projectnews.controller.impl.GoToAuthorizationPage;
 import by.ftp.projectnews.controller.impl.GoToMainPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
+import by.ftp.projectnews.controller.impl.GoToUserPage;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
 
@@ -20,6 +21,7 @@ public class CommandProvider {
 		commands.put(CommandName.REGISTRATION_NEW_USER, new RegistrationNewUser());
 		commands.put(CommandName.AUTHORIZATION_USER, new AuthorizationUser());
 		commands.put(CommandName.GO_TO_MAIN_PAGE, new GoToMainPage());
+		commands.put(CommandName.GO_TO_USER_PAGE, new GoToUserPage());
 		commands.put(CommandName.UNKNOWN_COMMAND, new UnknownCommand());
 	}
 	

@@ -9,6 +9,7 @@ import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ public class RegistrationNewUser implements Command {
 
 	private static final ServiceProvider provider = ServiceProvider.getInstance();
 	private static final UserService userService = provider.getUserService();
+	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -49,7 +51,7 @@ public class RegistrationNewUser implements Command {
 			
 			userService.registration(user);
 			
-			//request.setAttribute("message", "fgfgfgfg");
+			//request.setAttribute("message", "hello");
 			//out.println("Registration completed successfully!");
 			//out.println("<br />Your login: " + login);
 			//out.println("<br />Your password: " + password);
@@ -60,6 +62,9 @@ public class RegistrationNewUser implements Command {
 		} catch (ServiceException e) {
 			// log
 			// path = "error.jsp";
+			String path = ERROR_JSP;
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+			requestDispatcher.forward(request, response);
 		}
 		
 

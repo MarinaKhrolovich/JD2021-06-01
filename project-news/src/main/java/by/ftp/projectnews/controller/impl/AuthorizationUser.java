@@ -5,9 +5,11 @@ import java.io.PrintWriter;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
+import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +20,8 @@ public class AuthorizationUser implements Command {
 	private static final ServiceProvider provider = ServiceProvider.getInstance();
 	private static final UserService userService = provider.getUserService();
 
+	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,20 +30,26 @@ public class AuthorizationUser implements Command {
 			String login = request.getParameter("login");
 			String password = request.getParameter("password");
 			
+		
 			User user = userService.authorization(login, password);
-			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
 			
 			
 			//request.setAttribute("message", "fgfgfgfg");
 			
-			response.sendRedirect("Controller?command=go_to_auth_user_page");
+			response.sendRedirect("Controller?command=go_to_user_page");
 			out.println("Autorization completed successfully!");
+
+			
 			
 		} catch (ServiceException e) {
 			// log
-			// path = "error.jsp";
+			String path = ERROR_JSP;
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+			requestDispatcher.forward(request, response);
+			
+			
 		}
 	}
 }
