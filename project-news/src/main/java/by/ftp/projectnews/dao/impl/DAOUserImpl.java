@@ -32,7 +32,7 @@ public class DAOUserImpl implements DAOUser{
 			throw new DAOException("User is not found!");
 			
 		}
-		if (user.getPassword() == password) {
+		if (user.getPassword().equals(password)) {
 			return user;
 		}
 		else { 

@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService  {
 		try {
 			DAOUser.registrationSQL(user);
 		} catch (DAOException e) {
-			e.printStackTrace();
+			throw new ServiceException();
 		}
 	}
 	
@@ -28,8 +28,7 @@ public class UserServiceImpl implements UserService  {
 		try {
 			return DAOUser.authorizationSQL(login, password);
 		} catch (DAOException e) {
-			e.printStackTrace();
+			throw new ServiceException();
 		}
-		return null;
 	}
 }
