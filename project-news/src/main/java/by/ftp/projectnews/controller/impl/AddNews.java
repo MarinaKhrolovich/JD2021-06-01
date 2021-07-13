@@ -14,6 +14,7 @@ public class AddNews implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//может использоваться эта команда, только если сессия создана
 		HttpSession session = request.getSession(false);
 		
 		if(session == null) {

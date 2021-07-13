@@ -19,6 +19,13 @@ public class RegistrationNewUser implements Command {
 	private static final ServiceProvider provider = ServiceProvider.getInstance();
 	private static final UserService userService = provider.getUserService();
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
+	private static final String LOGIN = "login";
+	private static final String PASSWORD = "password";
+	private static final String NAME = "name";
+	private static final String SURNAME = "surname";
+	private static final String YEAR_BIRTHDAY = "yearBirthday";
+	private static final String SEX = "sex";
+	
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,12 +34,12 @@ public class RegistrationNewUser implements Command {
 		try {
 			
 			PrintWriter out  = response.getWriter();
-			String login 	 = request.getParameter("login");
-			String password  = request.getParameter("password");
-			String name 	 = request.getParameter("name");
-			String surname   = request.getParameter("surname");
-			String yearBirthday = request.getParameter("yearBirthday");
-			String sex 			= request.getParameter("sex");
+			String login 	 = request.getParameter(LOGIN);
+			String password  = request.getParameter(PASSWORD);
+			String name 	 = request.getParameter(NAME);
+			String surname   = request.getParameter(SURNAME);
+			String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
+			String sex 			= request.getParameter(SEX);
 			
 			User user = new User();
 			user.setLogin(login);
@@ -40,7 +47,7 @@ public class RegistrationNewUser implements Command {
 			user.setName(name);
 			user.setSurName(surname);
 
-
+			//todo сформировать список ошибок. И если ошибки, то перенаправить на error.jsp
 			if (yearBirthday!="") {  
 				user.setYearBirthday(Integer.parseInt(yearBirthday));
 			}

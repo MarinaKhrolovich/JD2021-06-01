@@ -1,8 +1,7 @@
 package by.ftp.projectnews.bean;
 
-public class RegistrationInfo {
+public class RegistrationInfo extends User {
 
-    private User user;
 	private String name;
 	private String surName;
 	private int yearBirthday;
