@@ -20,22 +20,24 @@
 <h1>${title}</h1>
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="registration"/>
+		<input type="hidden" name="local" value="en"/>
 		<input type="submit" value="${reg_button}" />
 	</form>
 	<br />
 	<form action="Controller" method="post">
 	    <input type="hidden" name="command" value="authorization"/>
+	    <input type="hidden" name="local" value="ru"/>
 		<input type="submit" value="${auth_button}" />
 	</form>
 	
 	<br /> 
+		
 
+		
 	<form action="Controller" method="post">
-		<input type="hidden" name="command" value="change_local"> 
-		<input id="ru" type="radio" name="local" value="ru">
-		<label for= "ru">RU</label>
-		<input id="en" type= "radio" name="local" value= "en">
-		<label for= "en">ENG</label>
+		<input type="hidden" name="command" value="change_local">
+		<input type="hidden" name="local" value="ru">
+		<input type="submit" value="Change locale" />
 	</form>
 		
 	<br /> 

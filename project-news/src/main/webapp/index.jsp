@@ -7,7 +7,8 @@
 <head>
 <meta charset="utf-8">
 <title>PORTAL NEWS</title>
-
+	<fmt:setLocale value="${sessionScope.local}" />
+	<fmt:setBundle basename="localization.local" var="loc" />
 
   <style type="text/css">
    H1 { 
@@ -18,6 +19,7 @@
   </style>
 </head>
 <body>
+
 	<%
 		response.sendRedirect("Controller?command=go_to_main_page");
 	%>

@@ -3,6 +3,7 @@ package by.ftp.projectnews.controller.impl;
 import java.io.IOException;
 
 import by.ftp.projectnews.controller.Command;
+import by.ftp.projectnews.controller.CommandName;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ public class GoToRegistrationPage implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String path = REGISTRATION_JSP;
-		request.getSession(true).setAttribute("url", path);
+		request.getSession(true).setAttribute("url", CommandName.REGISTRATION.name());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		
 		requestDispatcher.forward(request, response);

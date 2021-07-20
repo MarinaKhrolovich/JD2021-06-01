@@ -6,6 +6,7 @@ import java.util.List;
 
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.controller.Command;
+import by.ftp.projectnews.controller.CommandName;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -33,7 +34,7 @@ public class GoToMainPage implements Command {
 		request.setAttribute("newses", newses);
 		
 		String path = MAIN_JSP;
-		request.getSession(true).setAttribute("url", path);
+		request.getSession(true).setAttribute("url", CommandName.GO_TO_MAIN_PAGE.name());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

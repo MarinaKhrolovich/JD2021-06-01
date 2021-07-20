@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>AUTHORIZATION</title>
+<fmt:setLocale value="${sessionScope.local}" />
+<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
 </head>
 <body>
 
@@ -20,7 +27,7 @@
 	<form action="Controller" method="get">
 		<input type="hidden" name="command" value="authorization_user" /> 
 		<fieldset>
-		<legend>AUTHORIZATION</legend>
+		<legend>${auth_button}</legend>
 		Enter login:<br />
 		<input type="text" name="login" value="" /><br /> 
 		

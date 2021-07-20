@@ -30,7 +30,13 @@ public class Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-		request.getSession(true).setAttribute("local", request.getParameter("local"));
+		String local = request.getParameter("local");
+		if (local == null)
+		{
+			local = "en";
+			request.getSession(true).setAttribute("local", local);
+		}
+		
 		String commandName = request.getParameter(COMMAND_REQUEST_PARAM);
 		Command command = provider.findCommand(commandName);
 		command.execute(request, response);
