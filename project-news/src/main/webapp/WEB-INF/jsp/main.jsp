@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>News Portal</title>
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
@@ -43,8 +43,6 @@
 		<input type="submit" value="${change_lang}" />
 	</form>	
 	
-	
-		
 	<br /> 
 		
 	<%
