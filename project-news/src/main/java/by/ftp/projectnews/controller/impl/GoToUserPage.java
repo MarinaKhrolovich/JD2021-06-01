@@ -17,6 +17,7 @@ public class GoToUserPage implements Command {
 		
 		
 		String path = USERPROFILE_JSP;
+		request.getSession(true).setAttribute("url", path);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

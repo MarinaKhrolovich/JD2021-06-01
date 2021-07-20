@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import by.ftp.projectnews.controller.impl.AuthorizationUser;
+import by.ftp.projectnews.controller.impl.ChangeLocal;
 import by.ftp.projectnews.controller.impl.GoToAuthorizationPage;
 import by.ftp.projectnews.controller.impl.GoToMainPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
@@ -23,6 +24,7 @@ public class CommandProvider {
 		commands.put(CommandName.GO_TO_MAIN_PAGE, new GoToMainPage());
 		commands.put(CommandName.GO_TO_USER_PAGE, new GoToUserPage());
 		commands.put(CommandName.UNKNOWN_COMMAND, new UnknownCommand());
+		commands.put(CommandName.CHANGE_LOCAL, new ChangeLocal());
 	}
 	
 	public Command findCommand(String name) {

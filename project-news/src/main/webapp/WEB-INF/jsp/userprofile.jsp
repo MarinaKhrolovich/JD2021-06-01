@@ -12,7 +12,17 @@
 	<br />
 	<a>Your photo could be here</a>
 	
+		<br /> 
 
+	<form action="Controller" method="post">
+		<input type="hidden" name="command" value="change_local"> 
+		<input id="ru" type="radio" name="local" value="ru">
+		<label for= "ru">RU</label>
+		<input id="en" type= "radio" name="local" value= "en">
+		<label for= "en">ENG</label>
+	</form>
+		
+	<br /> 
 
 </body>
 </html>

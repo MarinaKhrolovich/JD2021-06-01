@@ -19,20 +19,21 @@ public class GoToMainPage implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<News> newses = new ArrayList<News>();
 		
-		newses.add(new News("t1"," News №1"));
-		newses.add(new News("t2"," News №2"));
-		newses.add(new News("t3"," News №3"));
-		newses.add(new News("t4"," News №4"));
-		newses.add(new News("t5"," News №5"));
-		newses.add(new News("t6"," News №6"));
-		newses.add(new News("t7"," News №7"));
-		newses.add(new News("t8"," News №8"));
-		newses.add(new News("t9"," News №9"));
-		newses.add(new News("t10"," News №10"));
+		newses.add(new News("title1"," News №1"));
+		newses.add(new News("title2"," News №2"));
+		newses.add(new News("title3"," News №3"));
+		newses.add(new News("title4"," News №4"));
+		newses.add(new News("title5"," News №5"));
+		newses.add(new News("title6"," News №6"));
+		newses.add(new News("title7"," News №7"));
+		newses.add(new News("title8"," News №8"));
+		newses.add(new News("title9"," News №9"));
+		newses.add(new News("title10"," News №10"));
 		
 		request.setAttribute("newses", newses);
 		
 		String path = MAIN_JSP;
+		request.getSession(true).setAttribute("url", path);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}
