@@ -13,8 +13,6 @@ public class GoToUserPage implements Command {
 	private static final String USERPROFILE_JSP = "/WEB-INF/jsp/userprofile.jsp";
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 		
 		String path = USERPROFILE_JSP;
 		request.getSession(true).setAttribute("url", path);

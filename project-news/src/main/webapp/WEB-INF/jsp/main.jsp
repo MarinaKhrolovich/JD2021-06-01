@@ -15,6 +15,7 @@
 <fmt:message bundle="${loc}" key="local.registrationbutton" var="reg_button" />
 <fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
 <fmt:message bundle="${loc}" key="local.title" var="title" />
+<fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
 </head>
 <body>
 <h1>${title}</h1>
@@ -32,13 +33,17 @@
 	
 	<br /> 
 		
-
-		
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="change_local">
-		<input type="hidden" name="local" value="ru">
-		<input type="submit" value="Change locale" />
-	</form>
+		<input id="en" type= "radio" name="local" value= "en" checked="checked">
+		<label for="en">ENG</label>	
+		<input id="ru" type="radio" name="local" value="ru" >
+		<label for= "ru">RU</label>
+		<br />
+		<input type="submit" value="${change_lang}" />
+	</form>	
+	
+	
 		
 	<br /> 
 		
