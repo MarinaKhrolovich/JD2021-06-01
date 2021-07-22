@@ -21,13 +21,14 @@
 	
 	<br /> 
 
-	<form action="Controller" method="post">
-		<input type="hidden" name="command" value="change_local"> 
-		<input id="ru" type="radio" name="local" value="ru">
-		<label for= "ru">RU</label>
-		<input id="en" type= "radio" name="local" value= "en">
-		<label for= "en">ENG</label>
-	</form>
+	<form action="Controller" method="get" onchange="submit()">
+		<input type="hidden" name="command" value="change_local">
+		<select name="local">
+			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+		</select>
+		<br />
+	</form>	
 		
 	<br /> 
 </body>

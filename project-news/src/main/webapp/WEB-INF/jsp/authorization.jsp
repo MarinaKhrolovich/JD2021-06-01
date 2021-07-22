@@ -46,14 +46,13 @@
 	
 	<br /> 
 
-	<form action="Controller" method="post">
+	<form action="Controller" method="get" onchange="submit()">
 		<input type="hidden" name="command" value="change_local">
-		<input id="en" type= "radio" name="local" value= "en" checked="checked">
-		<label for="en">ENG</label>	
-		<input id="ru" type="radio" name="local" value="ru" >
-		<label for= "ru">RU</label>
+		<select name="local">
+			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+		</select>
 		<br />
-		<input type="submit" value="${change_lang}" />
 	</form>	
 		
 	<br /> 

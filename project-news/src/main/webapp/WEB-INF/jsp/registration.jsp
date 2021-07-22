@@ -16,6 +16,7 @@
 <fmt:message bundle="${loc}" key="local.password" var="password" />
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
 <fmt:message bundle="${loc}" key="local.enter" var="enter" />
+<fmt:message bundle="${loc}" key="local.submit" var="submit" />
 <fmt:message bundle="${loc}" key="local.name" var="name" />
 <fmt:message bundle="${loc}" key="local.surname" var="surname" />
 <fmt:message bundle="${loc}" key="local.yearBirthday" var="yearBirthday" />
@@ -38,7 +39,7 @@
 		${surname}:<input type="text" name="surname" value="" /><br /> 
 		<br /> 
 		${sex}:
-		<input id="female" type="radio" name="sex" value="f"> 
+		<input id="female" type="radio" name="sex" value="f" checked = "checked"> 
 		<label for= "female">${female}</label>
 		<input id="male" type= "radio" name="sex" value= "m">
 		<label for= "male">${male}</label>	<br />
@@ -47,19 +48,18 @@
 		
 		</fieldset>
 		<br /> 
-		<input type="submit" value="${enter}" /><br />
+		<input type="submit" value="${submit}" /><br />
 		</form>
 	
 		<br /> 
 
-	<form action="Controller" method="post">
+	<form action="Controller" method="get" onchange="submit()">
 		<input type="hidden" name="command" value="change_local">
-		<input id="en" type= "radio" name="local" value= "en" checked="checked">
-		<label for="en">ENG</label>	
-		<input id="ru" type="radio" name="local" value="ru" >
-		<label for= "ru">RU</label>
+		<select name="local">
+			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+		</select>
 		<br />
-		<input type="submit" value="${change_lang}" />
 	</form>	
 		
 	<br /> 
