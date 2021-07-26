@@ -32,7 +32,7 @@
 		<legend>${reg_button}</legend>
 		${login}:<input type="text" name="login" value="" required/><br /> 
 		<br /> 
-		${password}:<input type="password" name="password" value="" required/><br />
+		${password}:<input type="password" name="password" value="" minlength = "5" required/><br />
 		<br />  
 		${name}:<input type="text" name="name" value="" required/><br /> 
 		<br /> 

@@ -5,8 +5,7 @@ public class News {
 	private String title;
 	private String brief;
 	
-	
-	
+		
 	public News(String title, String brief) {
 		super();
 		this.title = title;

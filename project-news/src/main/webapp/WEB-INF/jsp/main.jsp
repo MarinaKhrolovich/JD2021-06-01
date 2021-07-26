@@ -1,4 +1,4 @@
-<%@page import="by.ftp.projectnews.bean.News"%>
+<%@ page import="by.ftp.projectnews.bean.News"%>
 <%@ page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -44,20 +44,14 @@
 	</form>	
 	
 	<br /> 
-		
-	<%
-	List<News> newses = (List<News>)request.getAttribute("newses");
-	
-	if(newses!=null){
-		for(News news:newses)
-		{
-			out.println("<h1>"+news.getTitle()+"</h1>");
-			out.println("<h2>"+news.getBrief()+"</h2>");
-			out.println("----------------------------");
-			
-		}
-	}
-	%>
+	<c:if test="${newses!=null}">	
+		<c:forEach var="news" items="${newses}">
+        	<fieldset>
+				<legend>${news.getTitle()}</legend>
+        			<h2><c:out value="${news.getBrief()}" /></h2>
+         	</fieldset>
+    	</c:forEach>
+	</c:if>
 	
 </body>
 </html>
