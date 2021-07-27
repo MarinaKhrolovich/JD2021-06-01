@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>ERROR</title>
-<link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
+<title>${error}</title>
+<link href= "css/style.css" type = "text/css" rel="stylesheet"/>
+<fmt:setLocale value="${sessionScope.local}" />
+<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:message bundle="${loc}" key="local.error" var="error" />
+
 </head>
 <body>
 <blockquote>	
@@ -19,15 +26,15 @@
 		</form>	
 </blockquote>
 
-<h1>Error</h1>
+<h1>${error}</h1>
 	
 	<br /> 
 	
 	<font color="red" size="18">
 	<%
-	   String mes = (String)request.getParameter("message");
-	 if(mes != null){
-		 out.print(mes);
+	   String mes = (String)request.getAttribute("message");
+	   if(mes != null){
+		  out.print(mes);
 	 }
 	
 	%>

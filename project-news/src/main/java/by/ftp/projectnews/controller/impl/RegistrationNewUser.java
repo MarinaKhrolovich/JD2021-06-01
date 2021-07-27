@@ -70,6 +70,7 @@ public class RegistrationNewUser implements Command {
 			// log
 			// path = "error.jsp";
 			String path = ERROR_JSP;
+			request.setAttribute("message", "Error in the registration");
 			request.getSession(true).setAttribute("url", path);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);

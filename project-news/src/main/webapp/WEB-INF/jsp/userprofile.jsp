@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>YOUR PRIFILE</title>
+<title>${profile}</title>
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
+<fmt:setLocale value="${sessionScope.local}" />
+<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:message bundle="${loc}" key="local.profile" var="profile" />
+<fmt:message bundle="${loc}" key="local.message.photo" var="photo" />
 </head>
 <body>
-<h1>YOUR PRIFILE</h1>
-
-	<blockquote>	
+<blockquote>	
 		<form action="Controller" method="get" onchange="submit()">
 			<input type="hidden" name="command" value="change_local">
 			
@@ -19,11 +24,13 @@
 					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
 				</select>
 		</form>	
-	</blockquote>
-	
+</blockquote>
+
+<h1>${profile}</h1>
+
 	<br /> 
 	
-	<a>Your photo could be here</a>
+	<a>${photo}</a>
 	
 	<br /> 
 

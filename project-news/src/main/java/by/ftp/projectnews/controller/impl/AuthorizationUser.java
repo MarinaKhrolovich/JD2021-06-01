@@ -36,15 +36,14 @@ public class AuthorizationUser implements Command {
 			
 			
 			//request.setAttribute("message", "fgfgfgfg");
+			//out.println("Autorization completed successfully!");
 			
 			response.sendRedirect("Controller?command=go_to_user_page");
-			out.println("Autorization completed successfully!");
-
-			
-			
+	
 		} catch (ServiceException e) {
 			// log
 			String path = ERROR_JSP;
+			request.setAttribute("message", "Error in the autorization");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
 			

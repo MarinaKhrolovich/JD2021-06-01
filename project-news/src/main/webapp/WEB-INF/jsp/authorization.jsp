@@ -42,7 +42,7 @@
 	
 	%>
 	</font>
-	<form action="Controller" method="get">
+	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="authorization_user" /> 
 		<fieldset>
 		<legend>${auth_button}</legend>
