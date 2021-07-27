@@ -9,6 +9,7 @@
 <head>
 <meta charset="utf-8">
 <title>AUTHORIZATION</title>
+<link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
@@ -19,6 +20,19 @@
 </head>
 <body>
 
+	<blockquote>	
+		<form action="Controller" method="get" onchange="submit()">
+			<input type="hidden" name="command" value="change_local">
+			
+				<select name="local">
+					<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+				</select>
+		</form>	
+	</blockquote>
+	
+	<br /> 
+	
 	<font color="red" size="18">
 	<%
 	   String mes = (String)request.getParameter("message");
@@ -44,17 +58,7 @@
 		<input type="submit" value="${enter}" /><br />
 	</form>
 	
-	<br /> 
-
-	<form action="Controller" method="get" onchange="submit()">
-		<input type="hidden" name="command" value="change_local">
-		<select name="local">
-			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
-			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
-		</select>
-		<br />
-	</form>	
-		
+	
 	<br /> 
 </body>
 </html>

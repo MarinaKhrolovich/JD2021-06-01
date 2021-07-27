@@ -5,9 +5,23 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>ERROR</title>
+<link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 </head>
 <body>
+<blockquote>	
+		<form action="Controller" method="get" onchange="submit()">
+			<input type="hidden" name="command" value="change_local">
+			
+				<select name="local">
+					<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+				</select>
+		</form>	
+</blockquote>
+
 <h1>Error</h1>
+	
+	<br /> 
 	
 	<font color="red" size="18">
 	<%
@@ -19,16 +33,6 @@
 	%>
 	</font>
 	
-	<br /> 
-
-	<form action="Controller" method="get" onchange="submit()">
-		<input type="hidden" name="command" value="change_local">
-		<select name="local">
-			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
-			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
-		</select>
-		<br />
-	</form>	
 		
 	<br /> 
 </body>

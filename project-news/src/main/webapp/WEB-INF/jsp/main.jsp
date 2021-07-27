@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <title>News Portal</title>
- 
+<link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.registrationbutton" var="reg_button" />
@@ -19,7 +19,19 @@
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
 </head>
 <body>
+<blockquote>	
+		<form action="Controller" method="get" onchange="submit()">
+			<input type="hidden" name="command" value="change_local">
+			
+				<select name="local">
+					<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+				</select>
+		</form>	
+</blockquote>
+	
 <h1>${title}</h1>
+	
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="registration"/>
 		<input type="hidden" name="local" value="en"/>
@@ -33,23 +45,15 @@
 	</form>
 	
 	<br /> 
-		
-	<form action="Controller" method="get" onchange="submit()">
-		<input type="hidden" name="command" value="change_local">
-		<select name="local">
-			<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
-			<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
-		</select>
-		<br />
-	</form>	
-	
+
 	<br /> 
 	<c:if test="${newses!=null}">	
 		<c:forEach var="news" items="${newses}">
-        	<fieldset>
-				<legend>${news.getTitle()}</legend>
-        			<h2><c:out value="${news.getBrief()}" /></h2>
-         	</fieldset>
+        	<div class = "page" >
+        		<h2>${news.getTitle()}</h2>
+        			<p><c:out value="${news.getBrief()}" /></p>
+           	</div>
+           	<br />
     	</c:forEach>
 	</c:if>
 	
