@@ -1,0 +1,22 @@
+
+body {
+	font-family : Arial , Verdana , sans-serif;
+	color : black ;
+	padding: 10px ; 
+	widht: 75%;
+	}
+	
+h1 {
+	color : red; 
+	}
+
+.page {
+
+border : 1px solid ;
+background-color : #efefef;
+padding : inherit; }
+
+blockquote{
+	float: right;
+	widht: 10px;
+ }
