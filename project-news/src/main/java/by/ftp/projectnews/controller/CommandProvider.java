@@ -3,6 +3,7 @@ package by.ftp.projectnews.controller;
 import java.util.HashMap;
 import java.util.Map;
 
+import by.ftp.projectnews.controller.impl.AddNews;
 import by.ftp.projectnews.controller.impl.AuthorizationUser;
 import by.ftp.projectnews.controller.impl.ChangeLocal;
 import by.ftp.projectnews.controller.impl.GoToAuthorizationPage;
@@ -10,6 +11,7 @@ import by.ftp.projectnews.controller.impl.GoToMainPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
 import by.ftp.projectnews.controller.impl.GoToUserPage;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
+import by.ftp.projectnews.controller.impl.ShowNewses;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
 
 public class CommandProvider {
@@ -25,6 +27,8 @@ public class CommandProvider {
 		commands.put(CommandName.GO_TO_USER_PAGE, new GoToUserPage());
 		commands.put(CommandName.UNKNOWN_COMMAND, new UnknownCommand());
 		commands.put(CommandName.CHANGE_LOCAL, new ChangeLocal());
+		commands.put(CommandName.ADD_NEWS, new AddNews());
+		commands.put(CommandName.SHOW_NEWSES, new ShowNewses());
 	}
 	
 	public Command findCommand(String name) {
