@@ -23,6 +23,7 @@
 	<%
 		response.sendRedirect("Controller?command=go_to_main_page");
 	%>
+ 
 
 </body>
 </html>
