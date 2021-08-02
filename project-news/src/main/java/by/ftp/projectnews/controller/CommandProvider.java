@@ -32,7 +32,7 @@ public class CommandProvider {
 	}
 	
 	public Command findCommand(String name) {
-		if (name == null) {
+		if (name == null||name.isEmpty()) {
 			name = CommandName.UNKNOWN_COMMAND.toString();
 		}
 		

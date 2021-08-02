@@ -33,7 +33,6 @@
 			
 				<select name="local">
 					<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
-					<option value = "be" ${local == 'be' ? 'selected' : ''}>BY</option>
 					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
 				</select>
 		</form>	

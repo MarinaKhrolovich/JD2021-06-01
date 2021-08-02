@@ -18,17 +18,22 @@ public class UserServiceImpl implements UserService  {
 		try {
 			DAOUser.registrationSQL(user);
 		} catch (DAOException e) {
-			throw new ServiceException();
+			throw new ServiceException(e);
 		}
 	}
 	
 	@Override
 	public User authorization(String login, String password) throws ServiceException {
 
+		//check parameters!
+		if (login ==null||login.isEmpty()) {
+			throw new ServiceException("Incorrect login!");
+		}
 		try {
+		
 			return DAOUser.authorizationSQL(login, password);
 		} catch (DAOException e) {
-			throw new ServiceException();
+			throw new ServiceException(e);
 		}
 	}
 }
