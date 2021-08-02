@@ -26,7 +26,15 @@
 		</form>	
 </blockquote>
 
-<h1>${profile}</h1>
+	<font color="red" size="18">
+	<%
+	   String mes = (String)request.getParameter("message");
+	 if(mes != null){
+		 out.print(mes);
+	 }
+	
+	%>
+	<h1>${profile}</h1>
 
 	<br /> 
 	

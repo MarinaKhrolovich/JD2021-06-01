@@ -16,9 +16,11 @@ public class ChangeLocal implements Command{
 		HttpSession session = request.getSession(true);
 		session.setAttribute("local", request.getParameter("local"));
 		String path = (String)session.getAttribute("url");
-		request.getRequestDispatcher(path).forward(request, response);
+		//request.getRequestDispatcher(path).forward(request, response);
 		
-		//response.sendRedirect(path);
+		response.sendRedirect("Controller?command="+path);
+	
+		
 	}
 	
 

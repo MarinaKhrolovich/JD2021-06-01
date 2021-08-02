@@ -15,7 +15,7 @@ public class GoToUserPage implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String path = USERPROFILE_JSP;
-		request.getSession(true).setAttribute("url", path);
+		request.getSession(true).setAttribute("url", "GO_TO_USER_PAGE");
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

@@ -18,6 +18,7 @@ public class UnknownCommand implements Command{
 
 		String path = ERROR_JSP;
 		request.setAttribute("message", "Unknown command!");
+		request.getSession(true).setAttribute("url", "UNKNOWN_COMMAND");
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

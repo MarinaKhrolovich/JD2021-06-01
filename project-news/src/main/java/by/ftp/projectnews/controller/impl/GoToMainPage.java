@@ -46,7 +46,7 @@ public class GoToMainPage implements Command {
 		}
 		
 		String path = MAIN_JSP;
-		request.getSession(true).setAttribute("url", path);
+		request.getSession(true).setAttribute("url", "GO_TO_MAIN_PAGE");
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

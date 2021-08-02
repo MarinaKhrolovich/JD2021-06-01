@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Registration
@@ -30,12 +31,14 @@ public class Controller extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-		String local = request.getParameter("local");
+		HttpSession session = request.getSession(true);
+		String local =(String)session.getAttribute("local");
 		if (local == null)
 		{
 			local = "en";
 			request.getSession(true).setAttribute("local", local);
 		}
+
 		
 		String commandName = request.getParameter(COMMAND_REQUEST_PARAM);
 		Command command = provider.findCommand(commandName);

@@ -33,17 +33,15 @@ public class AuthorizationUser implements Command {
 			User user = userService.authorization(login, password);
 			HttpSession session = request.getSession(true);
 			session.setAttribute("user", user);
-			
-			
-			//request.setAttribute("message", "fgfgfgfg");
-			//out.println("Autorization completed successfully!");
-			
-			response.sendRedirect("Controller?command=go_to_user_page");
+		
+			request.getSession(true).setAttribute("url", "go_to_user_page");
+			response.sendRedirect("Controller?command=go_to_user_page&message='Autorization completed successfully!'");
 	
 		} catch (ServiceException e) {
 			// log
 			String path = ERROR_JSP;
 			request.setAttribute("message", "Error in the autorization");
+			request.getSession(true).setAttribute("url", "UNKNOWN_COMMAND");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
 			

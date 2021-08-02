@@ -62,7 +62,7 @@ public class RegistrationNewUser implements Command {
 			//out.println("Registration completed successfully!");
 			//out.println("<br />Your login: " + login);
 			//out.println("<br />Your password: " + password);
-			
+			request.getSession(true).setAttribute("url", "AUTHORIZATION");
 			response.sendRedirect("Controller?command=AUTHORIZATION&message='Registration completed successfully!'");
 			
 			
@@ -71,7 +71,7 @@ public class RegistrationNewUser implements Command {
 			// path = "error.jsp";
 			String path = ERROR_JSP;
 			request.setAttribute("message", "Error in the registration");
-			request.getSession(true).setAttribute("url", path);
+			request.getSession(true).setAttribute("url", "UNKNOWN_COMMAND");
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
 		}
