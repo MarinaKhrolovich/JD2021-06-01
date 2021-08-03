@@ -7,7 +7,7 @@ I did at the application:
  	6. Add news to the SQLbase to the table Newses if user has role "admin"
  	7. Add user to the SQLbase to the table Users
  	8. Simple validation of parameters
- 	9. Check for existence news(title) and users(login) at the SQLbase
+ 	9. Check for existence of news(title) and users(login) at the SQLbase
  	
 I want to do at the application:
 	1. Delete newses from base
