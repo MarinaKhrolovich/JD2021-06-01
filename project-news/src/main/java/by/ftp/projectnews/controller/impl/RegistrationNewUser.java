@@ -50,7 +50,6 @@ public class RegistrationNewUser implements Command {
 			user.setName(name);
 			user.setSurName(surname);
 
-			//todo сформировать список ошибок. И если ошибки, то перенаправить на error.jsp
 			if (yearBirthday!="") {  
 				user.setYearBirthday(Integer.parseInt(yearBirthday));
 			}
@@ -71,7 +70,6 @@ public class RegistrationNewUser implements Command {
 			
 		} catch (ServiceException e) {
 			// log
-			// path = "error.jsp";
 			String path = ERROR_JSP;
 			request.setAttribute("message", "Error in the registration");
 			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());

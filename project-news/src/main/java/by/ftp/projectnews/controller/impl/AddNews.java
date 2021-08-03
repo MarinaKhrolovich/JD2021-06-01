@@ -54,7 +54,7 @@ public class AddNews implements Command{
 		
 		
 
-			News news = new News("Title","Brief","Content");
+			News news = new News();
 			try {
 				newsService.add(news);
 			} catch (ServiceException e) {

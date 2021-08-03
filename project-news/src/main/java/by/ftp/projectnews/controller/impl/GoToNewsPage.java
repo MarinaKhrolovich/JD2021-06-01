@@ -19,7 +19,7 @@ public class GoToNewsPage implements Command {
 	private static final NewsService newsService = provider.getNewService();
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String PAGE_NEWS_JSP = "/WEB-INF/jsp/pageNews.jsp";
-	private static final String TITLE = "title";
+	private static final String ID_NEWS = "id_news";
 	private static final String URL = "url";
 	private static final String NEWS = "news";
 	private static final String MESSAGE = "message";
@@ -27,9 +27,9 @@ public class GoToNewsPage implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;
-		String title = request.getParameter(TITLE);
+		String id_news = request.getParameter(ID_NEWS);
 		try {
-			News newsToShow = newsService.getNews(title);
+			News newsToShow = newsService.getNews(id_news);
 			request.getSession(true).setAttribute(NEWS,newsToShow);
 			request.getSession(true).setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
 			

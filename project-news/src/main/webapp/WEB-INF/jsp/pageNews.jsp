@@ -23,7 +23,6 @@ p{
 	width: 570рх ;
 	padding : 15px ;
 	margin: 0рх auto 0рх auto;
-	text-align: center; 
 }
 </style>
 
@@ -35,14 +34,14 @@ p{
 </head>
 <body>
 
-
+<div class="page">
 	<h1>${news.getTitle()}</h1>
 
 	<br /> 
 	
-	<p>${news.getBrief()}</p>
+	<p>${news.getContent()}</p>
 	
 	<br /> 
-
+</div>
 </body>
 </html>

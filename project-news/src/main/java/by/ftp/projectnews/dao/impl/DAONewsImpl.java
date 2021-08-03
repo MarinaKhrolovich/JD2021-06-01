@@ -14,23 +14,25 @@ import by.ftp.projectnews.dao.DAONews;
 
 public class DAONewsImpl implements DAONews {
 
-	private List<News> newses = new ArrayList<News>();
+	
 	private static final String DRIVER = "org.gjt.mm.mysql.Driver";
 	private static final String PATH_TO_BASE = "jdbc:mysql://127.0.0.1/portal_news?useSSL=false";
 	private static final String LOGIN_BASE = "root";
 	private static final String PASSWORD_BASE = "Khrolovich1987";
-	//ListOfNewses newses = new ListOfNewses(); 
+ 
 	
 	@Override
 	public void addNewsSQL(News news) throws DAOException {
-		
-		newses.add(news);
+
+		//newses.add(news);
 		
 	}
 
 	@Override
 	public List<News> getListOfNewsSQL() throws DAOException {
 
+		List<News> newses = new ArrayList<News>();
+		
 		try {
 			Class.forName(DRIVER);
 		} catch (ClassNotFoundException e) {
@@ -54,7 +56,7 @@ public class DAONewsImpl implements DAONews {
 		
 			rs = ps.executeQuery(); 
 			while (rs.next()) {
-				newsFromBase= new News(rs.getString("title"),rs.getString("brief"),rs.getString("content"));
+				newsFromBase= new News(rs.getInt("id"),rs.getString("title"),rs.getString("brief"),rs.getString("content"));
 				if(!newses.contains(newsFromBase)) {
 					newses.add(newsFromBase);
 				}
@@ -71,7 +73,7 @@ public class DAONewsImpl implements DAONews {
 	}
 
 	@Override
-	public News getNewsSQL(String title) throws DAOException {
+	public News getNewsSQL(String id) throws DAOException {
 		
 		try {
 			Class.forName(DRIVER);
@@ -91,13 +93,13 @@ public class DAONewsImpl implements DAONews {
 		PreparedStatement ps = null;
 		News newsFromBase = null;
 		try {
-			String sql = "SELECT * FROM newses WHERE title =?"; 
+			String sql = "SELECT * FROM newses WHERE id =?"; 
 			ps = con.prepareStatement(sql);
-			ps.setString(1, title);
+			ps.setInt(1, Integer.parseInt(id));
 				
 			rs = ps.executeQuery(); 
 			while (rs.next()) {
-				newsFromBase= new News(rs.getString("title"),rs.getString("brief"),rs.getString("content"));
+				newsFromBase= new News(rs.getInt("id"), rs.getString("title"),rs.getString("brief"),rs.getString("content"));
 			}
 			rs.close();
 			con.close();
