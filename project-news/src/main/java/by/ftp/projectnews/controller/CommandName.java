@@ -10,6 +10,13 @@ public enum CommandName {
 	UNKNOWN_COMMAND,
 	CHANGE_LOCAL,
 	ADD_NEWS,
-	GO_TO_PAGE_NEWS
+	GO_TO_PAGE_NEWS,
+	GET_LAST_NEWSES;
+
+	@Override
+	public String toString() {
+
+		return super.toString();
+	}
 	
 }

@@ -29,6 +29,7 @@ public class CommandProvider {
 		commands.put(CommandName.CHANGE_LOCAL, new ChangeLocal());
 		commands.put(CommandName.ADD_NEWS, new AddNews());
 		commands.put(CommandName.GO_TO_PAGE_NEWS, new GoToNewsPage());
+		commands.put(CommandName.GET_LAST_NEWSES, new GoToNewsPage());
 	}
 	
 	public Command findCommand(String name) {

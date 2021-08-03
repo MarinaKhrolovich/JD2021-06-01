@@ -8,7 +8,6 @@ public class News {
 	
 		
 	public News(String title, String brief,String content) {
-		super();
 		this.title = title;
 		this.brief = brief;
 		this.content = content;

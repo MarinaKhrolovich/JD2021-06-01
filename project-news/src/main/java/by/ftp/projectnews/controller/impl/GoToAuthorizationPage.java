@@ -12,11 +12,12 @@ import jakarta.servlet.http.HttpServletResponse;
 public class GoToAuthorizationPage implements Command{
 
 	private static final String AUTHORIZATION_JSP = "/WEB-INF/jsp/authorization.jsp";
-
+	private static final String URL = "url";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = AUTHORIZATION_JSP;
-		request.getSession(true).setAttribute("url", "AUTHORIZATION");
+		request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}

@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
+import by.ftp.projectnews.controller.CommandName;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
@@ -25,6 +26,8 @@ public class RegistrationNewUser implements Command {
 	private static final String SURNAME = "surname";
 	private static final String YEAR_BIRTHDAY = "yearBirthday";
 	private static final String SEX = "sex";
+	private static final String URL = "url";
+	private static final String USER = "user";
 	
 	
 	@Override
@@ -54,7 +57,7 @@ public class RegistrationNewUser implements Command {
 			if (sex!=null) {  
 				user.setSex(sex);
 			}
-			request.setAttribute("user", user);
+			request.setAttribute(USER, user);
 			
 			userService.registration(user);
 			
@@ -62,7 +65,7 @@ public class RegistrationNewUser implements Command {
 			//out.println("Registration completed successfully!");
 			//out.println("<br />Your login: " + login);
 			//out.println("<br />Your password: " + password);
-			request.getSession(true).setAttribute("url", "AUTHORIZATION");
+			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
 			response.sendRedirect("Controller?command=AUTHORIZATION&message='Registration completed successfully!'");
 			
 			
@@ -71,7 +74,7 @@ public class RegistrationNewUser implements Command {
 			// path = "error.jsp";
 			String path = ERROR_JSP;
 			request.setAttribute("message", "Error in the registration");
-			request.getSession(true).setAttribute("url", "UNKNOWN_COMMAND");
+			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
 		}

@@ -1,7 +1,6 @@
 package by.ftp.projectnews.service.impl;
 
 import java.util.List;
-
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.dao.DAONews;

@@ -10,12 +10,15 @@ import jakarta.servlet.http.HttpSession;
 
 public class ChangeLocal implements Command{
 
+	private static final String URL = "url";
+	private static final String LOCAL = "local";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
-		session.setAttribute("local", request.getParameter("local"));
-		String path = (String)session.getAttribute("url");
+		session.setAttribute(LOCAL, request.getParameter(LOCAL));
+		String path = (String)session.getAttribute(URL);
 		//request.getRequestDispatcher(path).forward(request, response);
 		
 		response.sendRedirect("Controller?command="+path);
