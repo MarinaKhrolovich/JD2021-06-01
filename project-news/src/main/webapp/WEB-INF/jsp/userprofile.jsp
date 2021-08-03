@@ -51,16 +51,16 @@
 		    <fieldset>
 			<legend>${add_news_button}</legend>
 			<br /> 
-			${title}:<input type="text" name="title" value="" size ="45"  maxlength = "45" required/><br /> 
+			${title}:<input type="text" name="title" value="" size ="100"  maxlength = "45" required/><br /> 
 			<br /> 
-			${brief}:<input type="text" name="brief" value="" size ="200" maxlength = "200" required/><br />
+			${brief}:<input type="text" name="brief" value="" size ="100" maxlength = "200" required/><br />
 			<br />  
 			${content}:
 			<br /> 
-			<textarea name="content" cols=" 100" rows = "15" maxlength = "1000" required>
+			<textarea name="content" cols=" 80" rows = "15" maxlength = "1000" required>
 			</textarea>
 			<br /> 
-	
+			<br />
 			<input type="submit" value="${submit}" /><br />
 			<br />
 			</fieldset>

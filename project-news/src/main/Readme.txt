@@ -18,3 +18,5 @@ I want to do at the application:
 	5. Improve css
 	6. Create poolConnection
 	7. Add filter that will trace last URL
+	8. Use RegistrationInfo
+	

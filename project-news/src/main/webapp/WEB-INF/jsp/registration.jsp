@@ -41,6 +41,17 @@
 	
 	<br /> 
 	
+	<font color="red" size="5">
+	<%
+	   String mes = (String)request.getParameter("message");
+	 if(mes != null){
+		 out.print(mes);
+	 }
+	
+	%>
+	</font>
+	<br />
+	<br />
 
 		<form action="Controller" method="post">
 			<input type="hidden" name="command" value="registration_new_user" /> 

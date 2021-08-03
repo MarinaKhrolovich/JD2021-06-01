@@ -23,17 +23,19 @@ public class UserServiceImpl implements UserService  {
 	}
 	
 	@Override
-	public User authorization(String login, String password) throws ServiceException {
+	public User authorization(String login) throws ServiceException {
 
 		//check parameters!
 		if (login ==null||login.isEmpty()) {
 			throw new ServiceException("Incorrect login!");
 		}
 		try {
-		
-			return DAOUser.authorizationSQL(login, password);
+			User user= DAOUser.authorizationSQL(login);
+			return user;
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}
 	}
+
+	
 }

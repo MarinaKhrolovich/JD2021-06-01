@@ -132,10 +132,6 @@ public class DAONewsImpl implements DAONews {
 		}
 		
 	
-		/*
-		 * for (News news : newses) { if(title.equals(news.getTitle())) { return news; }
-		 * }
-		 */
 		if (newsFromBase!=null) {
 			return newsFromBase;
 		}

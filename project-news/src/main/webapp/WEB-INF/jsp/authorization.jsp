@@ -34,7 +34,7 @@
 	
 	<br /> 
 	
-	<font color="red" size="18">
+	<font color="red" size="5">
 	<%
 	   String mes = (String)request.getParameter("message");
 	 if(mes != null){
@@ -43,6 +43,7 @@
 	
 	%>
 	</font>
+	<br />
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="authorization_user" /> 
 		<fieldset>

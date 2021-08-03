@@ -2,6 +2,8 @@ package by.ftp.projectnews.dao;
 
 public class DAOException extends Exception {
 
+	private static final long serialVersionUID = -5582152432927044124L;
+	
 	public DAOException() {
 		super();
 	}

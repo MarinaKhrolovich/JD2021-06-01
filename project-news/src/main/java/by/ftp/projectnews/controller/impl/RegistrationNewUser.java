@@ -1,7 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
@@ -35,8 +34,6 @@ public class RegistrationNewUser implements Command {
 		
 		RegistrationInfo info = new RegistrationInfo();
 		try {
-			
-			PrintWriter out  = response.getWriter();
 			String login 	 = request.getParameter(LOGIN);
 			String password  = request.getParameter(PASSWORD);
 			String name 	 = request.getParameter(NAME);
@@ -59,14 +56,14 @@ public class RegistrationNewUser implements Command {
 			}
 			request.setAttribute(USER, user);
 			
-			userService.registration(user);
-			
-			//request.setAttribute("message", "hello");
-			//out.println("Registration completed successfully!");
-			//out.println("<br />Your login: " + login);
-			//out.println("<br />Your password: " + password);
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message='Registration completed successfully!'");
+			if(userService.authorization(login)==null) {
+				userService.registration(user);
+				request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
+				response.sendRedirect("Controller?command=AUTHORIZATION&message=Registration completed successfully!");
+			}else {
+				String path = (String)request.getSession(true).getAttribute(URL);
+				response.sendRedirect("Controller?command="+path+"&message=This login has already used! Try again!");
+			}
 			
 			
 		} catch (ServiceException e) {
