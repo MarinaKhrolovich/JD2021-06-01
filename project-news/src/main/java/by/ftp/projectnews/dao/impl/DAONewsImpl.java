@@ -22,5 +22,15 @@ public class DAONewsImpl implements DAONews {
 
 		return newses;
 	}
+
+	@Override
+	public News getNewsSQL(String title) throws DAOException {
+		for (News news : newses) {
+			if(title.equals(news.getTitle())) {
+				return news;
+			}
+		}
+		throw new DAOException("The news doesn't exists!");
+	}
 	
 }

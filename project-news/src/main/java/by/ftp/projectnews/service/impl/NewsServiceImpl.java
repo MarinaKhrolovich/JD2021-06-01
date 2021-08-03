@@ -19,7 +19,7 @@ public class NewsServiceImpl implements NewsService {
 		try {
 			DAONews.addNewsSQL(news);
 		} catch (DAOException e) {
-			throw new ServiceException();
+			throw new ServiceException(e);
 		}
 		
 	}
@@ -30,7 +30,21 @@ public class NewsServiceImpl implements NewsService {
 		try {
 			return DAONews.getListOfNewsSQL();
 		} catch (DAOException e) {
-			throw new ServiceException();
+			throw new ServiceException(e);
+		}
+	}
+
+	
+	@Override
+	public News getNews(String title) throws ServiceException {
+		//check parameters!
+		if (title ==null||title.isEmpty()) {
+			throw new ServiceException("Incorrect title of news!");
+		}
+		try {
+			return DAONews.getNewsSQL(title);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
 		}
 	}
 

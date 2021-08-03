@@ -4,15 +4,23 @@ public class News {
 
 	private String title;
 	private String brief;
+	private String content;
 	
 		
-	public News(String title, String brief) {
+	public News(String title, String brief,String content) {
 		super();
 		this.title = title;
 		this.brief = brief;
+		this.content = content;
 	}
 	public String getTitle() {
 		return title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public void setTitle(String title) {
 		this.title = title;

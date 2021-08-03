@@ -11,7 +11,7 @@ import by.ftp.projectnews.controller.impl.GoToMainPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
 import by.ftp.projectnews.controller.impl.GoToUserPage;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
-import by.ftp.projectnews.controller.impl.ShowNewses;
+import by.ftp.projectnews.controller.impl.ShowNews;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
 
 public class CommandProvider {
@@ -28,7 +28,7 @@ public class CommandProvider {
 		commands.put(CommandName.UNKNOWN_COMMAND, new UnknownCommand());
 		commands.put(CommandName.CHANGE_LOCAL, new ChangeLocal());
 		commands.put(CommandName.ADD_NEWS, new AddNews());
-		commands.put(CommandName.SHOW_NEWSES, new ShowNewses());
+		commands.put(CommandName.SHOW_NEWS, new ShowNews());
 	}
 	
 	public Command findCommand(String name) {

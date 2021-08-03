@@ -10,6 +10,6 @@ public enum CommandName {
 	UNKNOWN_COMMAND,
 	CHANGE_LOCAL,
 	ADD_NEWS,
-	SHOW_NEWSES
+	SHOW_NEWS
 	
 }

@@ -10,13 +10,29 @@
 <head>
 <meta charset="utf-8">
 <title>News Portal</title>
-<link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.registrationbutton" var="reg_button" />
 <fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
 <fmt:message bundle="${loc}" key="local.title" var="title" />
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
+<style type="text/css">
+h1{
+	width: 570рх ;
+	padding : 15px ;
+	margin: 0рх auto 0рх auto;
+	border-top: 2рх solid #000;
+	border-bottom: 2px solid #000;
+}
+
+h2{
+	width: 570рх ;
+	padding : 15px ;
+	margin: 0рх auto 0рх auto;
+}
+</style>
+<link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
+
 </head>
 <body>
 <blockquote>	
@@ -25,6 +41,7 @@
 			
 				<select name="local">
 					<option value = "en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+					<option value = "be" ${local == 'be' ? 'selected' : ''}>BY</option>
 					<option value = "ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
 				</select>
 		</form>	
@@ -49,10 +66,14 @@
 	<br /> 
 	<c:if test="${newses!=null}">	
 		<c:forEach var="news" items="${newses}">
-        	<div class = "page" >
-        		<h2>${news.getTitle()}</h2>
-        			<p><c:out value="${news.getBrief()}" /></p>
-           	</div>
+       		<div class="page">
+       			<a href = "Controller?command=show_news">
+        			<input type="hidden" name="title" value="${news.getTitle()}">
+        			<h2>${news.getTitle()}</h2>
+        		</a>
+        		<p><c:out value="${news.getBrief()}" /></p>
+       			
+       		</div>	
            	<br />
     	</c:forEach>
 	</c:if>
