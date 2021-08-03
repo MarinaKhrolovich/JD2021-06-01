@@ -1,10 +1,12 @@
 package by.ftp.projectnews.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +26,28 @@ public class DAONewsImpl implements DAONews {
 	@Override
 	public void addNewsSQL(News news) throws DAOException {
 
-		//newses.add(news);
+		 try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		  
+		Connection con;
+		try {
+			con = DriverManager.getConnection(PATH_TO_BASE, LOGIN_BASE, PASSWORD_BASE);
+			String sql = "INSERT INTO newses(title,brief,content,date) VALUES(?,?,?,?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			  
+			ps.setString(1, news.getTitle());
+			ps.setString(2, news.getBrief());
+			ps.setString(3, news.getContent());
+	    	ps.setDate(4, Date.valueOf(LocalDate.now())); 
+			ps.executeUpdate();
+			News newNews = this.getNewsSQL(news.getTitle());
+			news.setId(newNews.getId());
+		} catch (SQLException e) {
+				e.printStackTrace();
+		}
 		
 	}
 
@@ -73,7 +96,7 @@ public class DAONewsImpl implements DAONews {
 	}
 
 	@Override
-	public News getNewsSQL(String id) throws DAOException {
+	public News getNewsSQL(int id) throws DAOException {
 		
 		try {
 			Class.forName(DRIVER);
@@ -95,7 +118,7 @@ public class DAONewsImpl implements DAONews {
 		try {
 			String sql = "SELECT * FROM newses WHERE id =?"; 
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, Integer.parseInt(id));
+			ps.setInt(1, id);
 				
 			rs = ps.executeQuery(); 
 			while (rs.next()) {
@@ -121,4 +144,48 @@ public class DAONewsImpl implements DAONews {
 		throw new DAOException("The news doesn't exists!");
 	}
 	
+	public News getNewsSQL(String title) throws DAOException {
+		
+		try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(PATH_TO_BASE,LOGIN_BASE,PASSWORD_BASE);
+		} catch (SQLException e) {
+			throw new DAOException("Connection doesn't exists");
+		}
+
+
+		ResultSet rs;
+		PreparedStatement ps = null;
+		News newsFromBase = null;
+		try {
+			String sql = "SELECT * FROM newses WHERE title =?"; 
+			ps = con.prepareStatement(sql);
+			ps.setString(1, title);
+		
+			rs = ps.executeQuery(); 
+			while (rs.next()) {
+				newsFromBase= new News(rs.getInt("id"), rs.getString("title"),rs.getString("brief"),rs.getString("content"));
+			}
+			rs.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	
+
+		if (newsFromBase!=null) {
+			return newsFromBase;
+		}
+		
+		
+		throw new DAOException("The news doesn't exists!");
+	}
 }

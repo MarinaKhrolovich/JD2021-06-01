@@ -49,6 +49,7 @@ public class RegistrationNewUser implements Command {
 			user.setPassword(password);
 			user.setName(name);
 			user.setSurName(surname);
+			user.setRole("admin");
 
 			if (yearBirthday!="") {  
 				user.setYearBirthday(Integer.parseInt(yearBirthday));

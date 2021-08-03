@@ -1,8 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -31,7 +29,7 @@ public class AuthorizationUser implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			PrintWriter out = response.getWriter();
+
 			String login = request.getParameter(LOGIN);
 			String password = request.getParameter(PASSWORD);
 			

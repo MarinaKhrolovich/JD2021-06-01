@@ -35,7 +35,7 @@ public class Controller extends HttpServlet {
 		String local =(String)session.getAttribute("local");
 		if (local == null)
 		{
-			local = "en";
+			local = "be";
 			request.getSession(true).setAttribute("local", local);
 		}
 

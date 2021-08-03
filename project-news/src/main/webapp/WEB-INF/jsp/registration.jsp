@@ -46,6 +46,7 @@
 			<input type="hidden" name="command" value="registration_new_user" /> 
 		    <fieldset>
 			<legend>${reg_button}</legend>
+			<br /> 
 			${login}:<input type="text" name="login" value="" required/><br /> 
 			<br /> 
 			${password}:<input type="password" name="password" value="" minlength = "5" required/><br />

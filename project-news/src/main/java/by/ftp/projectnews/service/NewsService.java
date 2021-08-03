@@ -11,6 +11,8 @@ public interface NewsService {
 	List<News> getListOfNews() throws ServiceException;
 	
 	News getNews(String title) throws ServiceException;
+	
+	News getNews(int id) throws ServiceException;
 
 	void update(News news) throws ServiceException;
 }

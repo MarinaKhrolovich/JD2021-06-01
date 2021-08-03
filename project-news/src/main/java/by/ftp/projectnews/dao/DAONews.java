@@ -9,5 +9,7 @@ public interface DAONews {
 	void addNewsSQL(News news) throws DAOException;
 	List<News> getListOfNewsSQL() throws DAOException;
 
+	News getNewsSQL(int id) throws DAOException;
+	
 	News getNewsSQL(String title) throws DAOException;
 }

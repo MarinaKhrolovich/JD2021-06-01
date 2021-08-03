@@ -15,6 +15,7 @@ public class NewsServiceImpl implements NewsService {
 	
 	@Override
 	public void add(News news) throws ServiceException  {
+
 		try {
 			DAONews.addNewsSQL(news);
 		} catch (DAOException e) {
@@ -42,6 +43,19 @@ public class NewsServiceImpl implements NewsService {
 		}
 		try {
 			return DAONews.getNewsSQL(title);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	@Override
+	public News getNews(int  id) throws ServiceException {
+		//check parameters!
+		if (id == 0) {
+			throw new ServiceException("Incorrect id of news!");
+		}
+		try {
+			return DAONews.getNewsSQL(id);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}

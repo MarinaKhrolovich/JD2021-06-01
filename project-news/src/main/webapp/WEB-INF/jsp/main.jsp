@@ -27,7 +27,6 @@ h1{
 
 h2{
 	width: 570рх ;
-	padding : 15px ;
 	margin: 0рх auto 0рх auto;
 }
 </style>

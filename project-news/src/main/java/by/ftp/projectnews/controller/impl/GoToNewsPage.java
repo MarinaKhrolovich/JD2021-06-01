@@ -29,7 +29,7 @@ public class GoToNewsPage implements Command {
 		String path = PAGE_NEWS_JSP;
 		String id_news = request.getParameter(ID_NEWS);
 		try {
-			News newsToShow = newsService.getNews(id_news);
+			News newsToShow = newsService.getNews(Integer.parseInt(id_news));
 			request.getSession(true).setAttribute(NEWS,newsToShow);
 			request.getSession(true).setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
 			

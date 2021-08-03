@@ -29,7 +29,7 @@ public class AddNews implements Command{
 		
 		if(session == null) {
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message='You session is lost.You must sign in to the system!'");
+			response.sendRedirect("Controller?command=AUTHORIZATION&message=You session is lost.You must sign in to the system!");
 			
 			return;
 		}
@@ -38,7 +38,7 @@ public class AddNews implements Command{
 		
 		if(user == null) {
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message='You must sign in to the system!'");
+			response.sendRedirect("Controller?command=AUTHORIZATION&message=You must sign in to the system!");
 			
 			return;
 		}
@@ -47,19 +47,38 @@ public class AddNews implements Command{
 			session.removeAttribute(USER);
 			//log
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message='You must sign as an administrator!'");
+			response.sendRedirect("Controller?command=AUTHORIZATION&message=You must sign as an administrator'");
 			
 			return;
 		}
 		
-		
+		String title  = request.getParameter("title");
+		String brief  = request.getParameter("brief");
+		String content 	 = request.getParameter("content");
 
-			News news = new News();
-			try {
+		if ("".equals(title)||"".equals(brief)||"".equals(content)) {
+			String path = (String)session.getAttribute(URL);
+			response.sendRedirect("Controller?command="+path+"&message=All fields should be fill!");
+		}
+			
+		News news = new News();
+		news.setTitle(title);
+		news.setBrief(brief);
+		news.setContent(content);
+			
+		try {
+			if(newsService.getNews(title) ==null) {
 				newsService.add(news);
-			} catch (ServiceException e) {
-				e.printStackTrace();
+				response.sendRedirect("Controller?command=go_to_page_news&id_news="+String.valueOf(news.getId()));
 			}
+			else {
+				String path = (String)session.getAttribute(URL);
+				response.sendRedirect("Controller?command="+path+"&message=This title of news has already exists! Try again!");
+			}
+				
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
 
 		
 		
