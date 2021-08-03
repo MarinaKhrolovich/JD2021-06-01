@@ -16,3 +16,5 @@ I want to do at the application:
 	3. Full validation of parameters
 	4. Override equals,hashcode, tostring at the Beans
 	5. Improve css
+	6. Create poolConnection
+	7. Add filter that will trace last URL
