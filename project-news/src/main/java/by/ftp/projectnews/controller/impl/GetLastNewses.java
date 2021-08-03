@@ -1,8 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-
-import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
 import by.ftp.projectnews.service.NewsService;

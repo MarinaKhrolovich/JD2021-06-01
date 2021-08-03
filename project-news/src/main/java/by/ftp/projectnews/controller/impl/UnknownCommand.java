@@ -1,9 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.net.URL;
-
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
 import jakarta.servlet.RequestDispatcher;

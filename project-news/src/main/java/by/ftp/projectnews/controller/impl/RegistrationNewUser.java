@@ -1,8 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-
-import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -32,7 +30,6 @@ public class RegistrationNewUser implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RegistrationInfo info = new RegistrationInfo();
 		try {
 			String login 	 = request.getParameter(LOGIN);
 			String password  = request.getParameter(PASSWORD);
