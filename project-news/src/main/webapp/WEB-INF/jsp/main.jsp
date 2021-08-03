@@ -67,8 +67,9 @@ h2{
 	<c:if test="${newses!=null}">	
 		<c:forEach var="news" items="${newses}">
        		<div class="page">
-       			<a href = "Controller?command=show_news">
-        			<input type="hidden" name="title" value="${news.getTitle()}">
+       			<input type="hidden" name="title" value="${news.getTitle()}">
+       			<a href = "Controller?command=go_to_page_news&title=${news.getTitle()}">
+        			
         			<h2>${news.getTitle()}</h2>
         		</a>
         		<p><c:out value="${news.getBrief()}" /></p>
