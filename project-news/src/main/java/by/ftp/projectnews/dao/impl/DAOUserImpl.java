@@ -17,7 +17,7 @@ public class DAOUserImpl implements DAOUser{
 	private static final String DRIVER = "org.gjt.mm.mysql.Driver";
 	private static final String PATH_TO_BASE = "jdbc:mysql://127.0.0.1/portal_news?useSSL=false";
 	private static final String LOGIN_BASE = "root";
-	private static final String PASSWORD_BASE = "Khrolovich1987";
+	private static final String PASSWORD_BASE = "12345";
 		
 	@Override
 	public void registrationSQL(User user) throws DAOException {
