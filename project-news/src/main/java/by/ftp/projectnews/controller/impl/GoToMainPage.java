@@ -19,17 +19,16 @@ public class GoToMainPage implements Command {
 	private static final NewsService newsService = provider.getNewService();
 	private static final String URL = "url";
 	private static final String NEWSES = "newses";
-	
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	
+
 		try {
 			request.getSession(true).setAttribute(NEWSES, newsService.getListOfNews());
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
-		
+
 		String path = MAIN_JSP;
 		request.getSession(true).setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);

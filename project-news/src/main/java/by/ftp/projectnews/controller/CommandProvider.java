@@ -17,7 +17,6 @@ import by.ftp.projectnews.controller.impl.UnknownCommand;
 public class CommandProvider {
 	private Map<CommandName, Command> commands = new HashMap<>();
 
-	
 	public CommandProvider() {
 		commands.put(CommandName.AUTHORIZATION, new GoToAuthorizationPage());
 		commands.put(CommandName.REGISTRATION, new GoToRegistrationPage());
@@ -31,22 +30,22 @@ public class CommandProvider {
 		commands.put(CommandName.GO_TO_PAGE_NEWS, new GoToNewsPage());
 		commands.put(CommandName.GET_LAST_NEWSES, new GoToNewsPage());
 	}
-	
+
 	public Command findCommand(String name) {
-		if (name == null||name.isEmpty()) {
+		if (name == null || name.isEmpty()) {
 			name = CommandName.UNKNOWN_COMMAND.toString();
 		}
-		
+
 		CommandName commandName;
 		try {
-		    commandName = CommandName.valueOf(name.toUpperCase());
-		}catch(IllegalArgumentException e) {
+			commandName = CommandName.valueOf(name.toUpperCase());
+		} catch (IllegalArgumentException e) {
 			// logging
-			commandName = CommandName.UNKNOWN_COMMAND;	
+			commandName = CommandName.UNKNOWN_COMMAND;
 		}
-		
+
 		Command command = commands.get(commandName);
 		return command;
 	}
-	
+
 }

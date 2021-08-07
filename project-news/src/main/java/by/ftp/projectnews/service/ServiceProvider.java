@@ -10,9 +10,9 @@ public final class ServiceProvider {
 	private final UserService userService = new UserServiceImpl();
 	private final NewsService newService = new NewsServiceImpl();
 
-	private ServiceProvider() {}
-	
-	
+	private ServiceProvider() {
+	}
+
 	public static ServiceProvider getInstance() {
 		return instance;
 	}

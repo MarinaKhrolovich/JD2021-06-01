@@ -23,28 +23,27 @@ public class GoToNewsPage implements Command {
 	private static final String URL = "url";
 	private static final String NEWS = "news";
 	private static final String MESSAGE = "message";
-	
+	private static final String MESSAGE_ERROR = "Error in the title of news";
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;
 		String id_news = request.getParameter(ID_NEWS);
 		try {
 			News newsToShow = newsService.getNews(Integer.parseInt(id_news));
-			request.getSession(true).setAttribute(NEWS,newsToShow);
+			request.getSession(true).setAttribute(NEWS, newsToShow);
 			request.getSession(true).setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
-			
+
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
-			
+
 		} catch (ServiceException e) {
-			request.setAttribute(MESSAGE, "Error in the title of news");
+			request.setAttribute(MESSAGE, MESSAGE_ERROR);
 			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);
 		}
 
-		
 	}
-	
-	
+
 }

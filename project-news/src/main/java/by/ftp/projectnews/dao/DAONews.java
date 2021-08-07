@@ -6,10 +6,11 @@ import by.ftp.projectnews.bean.News;
 
 public interface DAONews {
 
-	void addNewsSQL(News news) throws DAOException;
-	List<News> getListOfNewsSQL() throws DAOException;
+	void addNews(News news) throws DAOException;
 
-	News getNewsSQL(int id) throws DAOException;
-	
-	News getNewsSQL(String title) throws DAOException;
+	List<News> getListOfNews() throws DAOException;
+
+	News getNews(int id) throws DAOException;
+
+	News getNews(String title) throws DAOException;
 }

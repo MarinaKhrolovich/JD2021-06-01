@@ -8,12 +8,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class UnknownCommand implements Command{
+public class UnknownCommand implements Command {
 
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String MESSAGE = "message";
-	
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,5 +23,5 @@ public class UnknownCommand implements Command{
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);
 	}
-	
+
 }

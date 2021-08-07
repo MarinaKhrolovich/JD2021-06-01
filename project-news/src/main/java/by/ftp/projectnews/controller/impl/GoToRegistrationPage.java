@@ -13,14 +13,14 @@ public class GoToRegistrationPage implements Command {
 
 	private static final String REGISTRATION_JSP = "/WEB-INF/jsp/registration.jsp";
 	private static final String URL = "url";
-	
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String path = REGISTRATION_JSP;
 		request.getSession(true).setAttribute(URL, CommandName.REGISTRATION.toString());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
-		
+
 		requestDispatcher.forward(request, response);
 	}
 

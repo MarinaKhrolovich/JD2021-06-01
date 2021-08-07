@@ -1,10 +1,12 @@
 package by.ftp.projectnews.service;
 
+import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 
 public interface UserService {
 
-	void registration(User user) throws ServiceException; 
-	User authorization(String login) throws ServiceException;
+	void registration(RegistrationInfo regInfo) throws ServiceException;
+
+	User authorization(String login, String password) throws ServiceException;
 
 }
