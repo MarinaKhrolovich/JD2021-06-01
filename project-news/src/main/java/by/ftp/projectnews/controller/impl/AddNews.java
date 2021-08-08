@@ -77,7 +77,8 @@ public class AddNews implements Command {
 				response.sendRedirect("Controller?command=go_to_page_news&id_news=" + String.valueOf(news.getId()));
 			} else {
 				String path = (String) session.getAttribute(URL);
-				response.sendRedirect("Controller?command=" + path + "&message=This title of news has already exists! Try again!");
+				response.sendRedirect(
+						"Controller?command=" + path + "&message=This title of news has already exists! Try again!");
 			}
 
 		} catch (ServiceException e) {
