@@ -1,7 +1,6 @@
 package by.ftp.projectnews.dao.impl;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,13 +9,15 @@ import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.dao.DAOUser;
+import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
+import by.ftp.projectnews.dao.connectionpool.ConnectionPool;
+import by.ftp.projectnews.dao.connectionpool.DBParameter;
+import by.ftp.projectnews.dao.connectionpool.DBResourceManager;
 
 public class DAOUserImpl implements DAOUser {
 
-	private static final String DRIVER = "org.gjt.mm.mysql.Driver";
-	private static final String PATH_TO_BASE = "jdbc:mysql://127.0.0.1/news_portal?useSSL=false";
-	private static final String LOGIN_BASE = "root";
-	private static final String PASSWORD_BASE = "Khrolovich1987";
+	private static final DBResourceManager DB = DBResourceManager.getInstance();
+	
 	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =? AND password =?";
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String LOGIN = "login";
@@ -26,15 +27,10 @@ public class DAOUserImpl implements DAOUser {
 	public void registration(RegistrationInfo regInfo) throws DAOException {
 
 		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		Connection con;
-		try {
-			con = DriverManager.getConnection(PATH_TO_BASE, LOGIN_BASE, PASSWORD_BASE);
+			Connection con =ConnectionPool.getInstance().takeConnection();
 			PreparedStatement ps = con.prepareStatement(SELECT_REGISTRATION);
+					
+			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 
 			ps.setString(1, regInfo.getLogin());
 			ps.setString(2, regInfo.getPassword());
@@ -45,8 +41,12 @@ public class DAOUserImpl implements DAOUser {
 			ps.setString(7, regInfo.getSex());
 			ps.executeUpdate();
 
+		} catch (ClassNotFoundException e) {
+			throw new DAOException(e);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DAOException(e);
+		} catch (ConnectionPoolException e) {
+			throw new DAOException(e);
 		}
 
 	}
@@ -55,27 +55,16 @@ public class DAOUserImpl implements DAOUser {
 	public User authorization(String login, String password) throws DAOException {
 
 		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		Connection con = null;
-		try {
-			con = DriverManager.getConnection(PATH_TO_BASE, LOGIN_BASE, PASSWORD_BASE);
-		} catch (SQLException e) {
-			throw new DAOException("Connection doesn't exists");
-		}
-
-		ResultSet rs;
-		PreparedStatement ps = null;
-		User userFromBase = null;
-		try {
+			Connection con = ConnectionPool.getInstance().takeConnection();
+			PreparedStatement ps = con.prepareStatement(SELECT_AUTHORIZATION);
+			
+			User userFromBase = null;
+			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 			ps = con.prepareStatement(SELECT_AUTHORIZATION);
 			ps.setString(1, login);
 			ps.setString(2, password);
 
-			rs = ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				userFromBase = new User();
 				userFromBase.setLogin(rs.getString(LOGIN));
@@ -83,12 +72,14 @@ public class DAOUserImpl implements DAOUser {
 			}
 			rs.close();
 			con.close();
-
+			return userFromBase;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new DAOException(e);
+		} catch (ConnectionPoolException e) {
+			throw new DAOException(e);
+		} catch (ClassNotFoundException e) {
+			throw new DAOException(e);
 		}
-
-		return userFromBase;
 
 	}
 
