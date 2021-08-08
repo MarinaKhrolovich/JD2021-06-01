@@ -74,7 +74,9 @@ public class AddNews implements Command {
 		try {
 			if (newsService.getNews(title) == null) {
 				newsService.add(news);
-				response.sendRedirect("Controller?command=go_to_page_news&id_news=" + String.valueOf(news.getId()));
+				News newNews = newsService.getNews(title);
+				
+				response.sendRedirect("Controller?command=go_to_page_news&id_news=" + String.valueOf(newNews.getId()));
 			} else {
 				String path = (String) session.getAttribute(URL);
 				response.sendRedirect(

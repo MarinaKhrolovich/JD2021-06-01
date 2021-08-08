@@ -40,7 +40,8 @@ public class DAOUserImpl implements DAOUser {
 			ps.setInt(6, regInfo.getYearBirthday());
 			ps.setString(7, regInfo.getSex());
 			ps.executeUpdate();
-
+			ps.close();
+			con.close();
 		} catch (ClassNotFoundException e) {
 			throw new DAOException(e);
 		} catch (SQLException e) {
@@ -71,6 +72,7 @@ public class DAOUserImpl implements DAOUser {
 				userFromBase.setRole(rs.getString(ROLE));
 			}
 			rs.close();
+			ps.close();
 			con.close();
 			return userFromBase;
 		} catch (SQLException e) {
