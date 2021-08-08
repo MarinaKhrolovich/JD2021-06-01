@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>AUTHORIZATION</title>
+
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
@@ -17,6 +17,7 @@
 <fmt:message bundle="${loc}" key="local.password" var="password" />
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
 <fmt:message bundle="${loc}" key="local.enter" var="enter" />
+<title>${auth_button}</title>
 </head>
 <body>
 

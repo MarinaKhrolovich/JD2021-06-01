@@ -7,8 +7,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>${profile}</title>
-
 <style type="text/css">
 h1{
 	width: 570рх ;
@@ -29,8 +27,9 @@ p{
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
-<fmt:message bundle="${loc}" key="local.profile" var="profile" />
+<fmt:message bundle="${loc}" key="local.news" var="news" />
 <fmt:message bundle="${loc}" key="local.message.photo" var="photo" />
+<title>${news}</title>
 </head>
 <body>
 

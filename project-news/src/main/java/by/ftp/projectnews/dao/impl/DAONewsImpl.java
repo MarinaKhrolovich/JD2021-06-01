@@ -25,6 +25,7 @@ public class DAONewsImpl implements DAONews {
 	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";
 	private static final String SELECT_GET_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =?";
 	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses ORDER BY id DESC LIMIT 5";
+	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =?";
 	private static final String ID = "id";
 	private static final String TITLE = "title";
 	private static final String BRIEF = "brief";
@@ -104,6 +105,50 @@ public class DAONewsImpl implements DAONews {
 		return newses;
 	}
 
+	@Override
+	public List<News> getListOfNews(String author) throws DAOException {
+
+		List<News> newses = new ArrayList<News>();
+
+		try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		Connection con = null;
+		try {
+			con = DriverManager.getConnection(PATH_TO_BASE, LOGIN_BASE, PASSWORD_BASE);
+		} catch (SQLException e) {
+			throw new DAOException(MESSAGE_CONNECTION, e);
+		}
+
+		ResultSet rs;
+		PreparedStatement ps = null;
+		News newsFromBase = null;
+		try {
+
+			ps = con.prepareStatement(SELECT_GET_LIST_OF_NEWS_AUTHOR);
+			ps.setString(1, author);
+			
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				newsFromBase = new News(rs.getInt(ID), rs.getString(TITLE), rs.getString(BRIEF), rs.getString(CONTENT),
+						rs.getString(AUTHOR));
+				if (!newses.contains(newsFromBase)) {
+					newses.add(newsFromBase);
+				}
+			}
+			rs.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return newses;
+	}
+	
 	@Override
 	public News getNews(int id) throws DAOException {
 

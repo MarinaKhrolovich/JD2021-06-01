@@ -9,6 +9,8 @@ public interface NewsService {
 	void add(News news) throws ServiceException;
 
 	List<News> getListOfNews() throws ServiceException;
+	
+	List<News> getListOfNews(String author) throws ServiceException;
 
 	News getNews(String title) throws ServiceException;
 

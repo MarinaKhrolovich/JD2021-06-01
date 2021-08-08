@@ -9,7 +9,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>News Portal</title>
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.registrationbutton" var="reg_button" />
@@ -31,7 +30,7 @@ h2{
 }
 </style>
 <link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
-
+<title>${title}</title>
 </head>
 <body>
 <blockquote>	

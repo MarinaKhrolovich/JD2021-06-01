@@ -7,12 +7,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>${error}</title>
+
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/>
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.error" var="error" />
-
+<title>${error}</title>
 </head>
 <body>
 <blockquote>	

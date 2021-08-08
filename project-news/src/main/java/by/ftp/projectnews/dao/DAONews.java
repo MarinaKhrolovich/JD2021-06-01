@@ -9,6 +9,8 @@ public interface DAONews {
 	void addNews(News news) throws DAOException;
 
 	List<News> getListOfNews() throws DAOException;
+	
+	List<News> getListOfNews(String author) throws DAOException;
 
 	News getNews(int id) throws DAOException;
 

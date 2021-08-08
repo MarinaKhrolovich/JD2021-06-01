@@ -35,6 +35,15 @@ public class NewsServiceImpl implements NewsService {
 			throw new ServiceException(e);
 		}
 	}
+	@Override
+	public List<News> getListOfNews(String author) throws ServiceException {
+
+		try {
+			return DAONews.getListOfNews(author);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
 
 	@Override
 	public News getNews(String title) throws ServiceException {

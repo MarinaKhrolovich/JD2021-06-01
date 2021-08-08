@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Registration</title>
+
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
@@ -24,7 +24,7 @@
 <fmt:message bundle="${loc}" key="local.sex" var="sex" />
 <fmt:message bundle="${loc}" key="local.female" var="female" />
 <fmt:message bundle="${loc}" key="local.male" var="male" />
-
+<title>${reg_button}</title>
 </head>
 <body>
 	<blockquote>	

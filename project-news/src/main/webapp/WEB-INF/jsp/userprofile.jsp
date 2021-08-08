@@ -7,7 +7,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>${profile}</title>
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
@@ -18,6 +17,22 @@
 <fmt:message bundle="${loc}" key="local.brief" var="brief" />
 <fmt:message bundle="${loc}" key="local.content" var="content"/>
 <fmt:message bundle="${loc}" key="local.button.add_news" var="add_news_button"/>
+<style type="text/css">
+h1{
+	width: 570рх ;
+	padding : 15px ;
+	margin: 0рх auto 0рх auto;
+	border-top: 2рх solid #000;
+	border-bottom: 2px solid #000;
+}
+
+h2{
+	width: 570рх ;
+	margin: 0рх auto 0рх auto;
+}
+</style>
+<link href= "css/style.css" type = "text/css" rel="stylesheet" />
+<title>${profile}</title> 
 </head>
 <body>
 <blockquote>	
@@ -67,5 +82,22 @@
 			 
 	</form>
 
+	<br /> 
+	<c:if test="${newses!=null}">	
+		<c:forEach var="news" items="${newses}">
+       		<div class="page">
+
+       			<a href = "Controller?command=go_to_page_news&id_news=${news.getId()}">
+        			
+        			<h2>${news.getTitle()}</h2>
+        		</a>
+        		<p><c:out value="${news.getBrief()}" /></p>
+       			<input type="submit" value="delete" />
+       			<input type="submit" value="update" /><br />
+       		</div>	
+           	<br />
+    	</c:forEach>
+	</c:if>
+	
 </body>
 </html>
