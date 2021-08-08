@@ -2,6 +2,8 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
+import javax.swing.DefaultRowSorter;
+
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -11,6 +13,7 @@ import by.ftp.projectnews.service.UserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class RegistrationNewUser implements Command {
 
@@ -25,11 +28,17 @@ public class RegistrationNewUser implements Command {
 	private static final String SEX = "sex";
 	private static final String URL = "url";
 	private static final String USER = "user";
+	private static final String MESSAGE = "message";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		HttpSession session = request.getSession(true);
+		String path = (String) session.getAttribute(URL);
+		String message = (String) session.getAttribute(MESSAGE);
+		
 		try {
+			
 			String login = request.getParameter(LOGIN);
 			String password = request.getParameter(PASSWORD);
 			String name = request.getParameter(NAME);
@@ -43,12 +52,13 @@ public class RegistrationNewUser implements Command {
 			regInfo.setName(name);
 			regInfo.setSurName(surname);
 			regInfo.setRole(USER);
-
-			if (yearBirthday != null) {
+			regInfo.setSex(sex);
+			
+			if ((yearBirthday!= null) && (!yearBirthday.isEmpty())) {
 				regInfo.setYearBirthday(Integer.parseInt(yearBirthday));
 			}
-			if ((sex != null) || (!sex.isEmpty())) {
-				regInfo.setSex(sex);
+			else {
+				regInfo.setYearBirthday(0);
 			}
 
 			userService.registration(regInfo);
@@ -58,9 +68,9 @@ public class RegistrationNewUser implements Command {
 
 		} catch (ServiceException e) {
 			// log
-			String path = (String) request.getSession(true).getAttribute(URL);
 			response.sendRedirect(
-					"Controller?command=" + path + "&message=Something wrong in the registration! Try again!");
+					//"Controller?command=" + path + "&message=Something wrong in the registration! Try again!");
+					"Controller?command=" + path + "&message="+e.getMessage());
 			// or go to page of errors
 		}
 

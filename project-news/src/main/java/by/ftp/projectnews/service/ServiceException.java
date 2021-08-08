@@ -20,4 +20,10 @@ public class ServiceException extends Exception {
 		super("ERROR: " + message, e);
 	}
 
+	@Override
+	public String getMessage() {
+
+		return super.getMessage();
+	}
+
 }

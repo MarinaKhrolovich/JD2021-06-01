@@ -60,7 +60,7 @@
 			<br /> 
 			${login}:<input type="text" name="login" value="" required/><br /> 
 			<br /> 
-			${password}:<input type="password" name="password" value="" minlength = "5" required/><br />
+			${password}:<input type="password" name="password" value="" minlength = "4" required/><br />
 			<br />  
 			${name}:<input type="text" name="name" value="" required/><br /> 
 			<br /> 
@@ -72,7 +72,7 @@
 			<input id="male" type= "radio" name="sex" value= "m">
 			<label for= "male">${male}</label>	<br />
 			<br /> 
-			${yearBirthday}:<input type="text" name="yearBirthday" minlength = "4" maxlength = "4" pattern ="[0-9]*" title ="You should enter only numbers" value="" /><br /> 
+			${yearBirthday}:<input type="text" name="yearBirthday" minlength = "4" maxlength = "4" pattern ="[0-9]*" title ="You should enter only numbers" value="1990" /><br /> 
 			</fieldset>
 			
 			<br /> 
