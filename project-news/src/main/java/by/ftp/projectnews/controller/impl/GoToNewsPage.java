@@ -12,6 +12,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 public class GoToNewsPage implements Command {
 
@@ -29,10 +30,11 @@ public class GoToNewsPage implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;
 		String id_news = request.getParameter(ID_NEWS);
+		HttpSession session = request.getSession(true);
 		try {
 			News newsToShow = newsService.getNews(Integer.parseInt(id_news));
-			request.getSession(true).setAttribute(NEWS, newsToShow);
-			request.getSession(true).setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
+			session.setAttribute(NEWS, newsToShow);
+			session.setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);

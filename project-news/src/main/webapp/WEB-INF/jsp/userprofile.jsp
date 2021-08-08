@@ -47,16 +47,16 @@ h2{
 		</form>	
 </blockquote>
 
-	<font color="red" size="5">
+	<font color="red" size="3">
 	<%
-	   String mes = (String)request.getParameter("message");
-	 if(mes != null){
-		 out.print(mes);
-	 }
-	
+		String mes = (String)request.getParameter("message");
+		if(mes != null){
+			out.print(mes);
+		}
+		
 	%>
 	</font>
-	
+
 	<h1>${profile}</h1>
 	
 	<br /> 
