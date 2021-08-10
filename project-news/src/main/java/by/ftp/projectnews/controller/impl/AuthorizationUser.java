@@ -25,33 +25,33 @@ public class AuthorizationUser implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
+		HttpSession session = request.getSession(true);
 		try {
 
 			String login = request.getParameter(LOGIN);
 			String password = request.getParameter(PASSWORD);
 			if (login == null || login.isEmpty()) {
-				String path = (String) request.getSession(true).getAttribute(URL);
+				String path = (String)session.getAttribute(URL);
 				response.sendRedirect("Controller?command=" + path + "&message=Invalid login! Try again!");
 			}
 			User user = userService.authorization(login, password);
 			if (user != null) {
-				HttpSession session = request.getSession(true);
 				session.setAttribute(USER, user);
 
-				request.getSession(true).setAttribute(URL, CommandName.GO_TO_USER_PAGE.toString());
+				session.setAttribute(URL, CommandName.GO_TO_USER_PAGE.toString());
 				response.sendRedirect(
 						"Controller?command=go_to_user_page&message=Autorization completed successfully!");
 			} else {
-				String path = (String) request.getSession(true).getAttribute(URL);
+				String path = (String) session.getAttribute(URL);
 				response.sendRedirect("Controller?command=" + path + "&message=This login/password is wrong! Try again!");
 			}
 
 		} catch (ServiceException e) {
 			// log
 
-			String path = (String) request.getSession(true).getAttribute(URL);
-			response.sendRedirect("Controller?command=" + path + "&message=" + e);
+			String path = (String) session.getAttribute(URL);
+			response.sendRedirect("Controller?command=" + path + "&message=" + e.getMessage());
 
 		}
 	}
