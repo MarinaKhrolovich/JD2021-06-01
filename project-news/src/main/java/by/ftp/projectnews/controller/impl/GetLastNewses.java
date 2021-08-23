@@ -13,8 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class GetLastNewses implements Command {
 
-	private static final ServiceProvider provider = ServiceProvider.getInstance();
-	private static final NewsService newsService = provider.getNewService();
+	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
+	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String MESSAGE = "message";
 	private static final String URL = "url";
@@ -24,7 +24,7 @@ public class GetLastNewses implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 
-			newsService.getListOfNews();
+			NEWS_SERVICE.getListOfNews();
 
 		} catch (ServiceException e) {
 			request.setAttribute(MESSAGE, MESSAGE_ERROR);

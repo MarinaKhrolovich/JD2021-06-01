@@ -17,8 +17,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class RegistrationNewUser implements Command {
 
-	private static final ServiceProvider provider = ServiceProvider.getInstance();
-	private static final UserService userService = provider.getUserService();
+	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
+	private static final UserService USER_SERVICE = PROVIDER.getUserService();
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String LOGIN = "login";
 	private static final String PASSWORD = "password";
@@ -36,16 +36,15 @@ public class RegistrationNewUser implements Command {
 		HttpSession session = request.getSession(true);
 		String path = (String) session.getAttribute(URL);
 		String message = (String) session.getAttribute(MESSAGE);
+		String login = request.getParameter(LOGIN);
+		String password = request.getParameter(PASSWORD);
+		String name = request.getParameter(NAME);
+		String surname = request.getParameter(SURNAME);
+		String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
+		String sex = request.getParameter(SEX);
 		
 		try {
-			
-			String login = request.getParameter(LOGIN);
-			String password = request.getParameter(PASSWORD);
-			String name = request.getParameter(NAME);
-			String surname = request.getParameter(SURNAME);
-			String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
-			String sex = request.getParameter(SEX);
-
+		
 			RegistrationInfo regInfo = new RegistrationInfo();
 			regInfo.setLogin(login);
 			regInfo.setPassword(password);
@@ -61,7 +60,7 @@ public class RegistrationNewUser implements Command {
 				regInfo.setYearBirthday(0);
 			}
 
-			userService.registration(regInfo);
+			USER_SERVICE.registration(regInfo);
 
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
 			response.sendRedirect("Controller?command=AUTHORIZATION&message=Registration completed successfully!");
@@ -69,9 +68,8 @@ public class RegistrationNewUser implements Command {
 		} catch (ServiceException e) {
 			// log
 			response.sendRedirect(
-					//"Controller?command=" + path + "&message=Something wrong in the registration! Try again!");
-					"Controller?command=" + path + "&message="+e.getMessage());
-			// or go to page of errors
+						"Controller?command=" + path + "&login="+login+"&name="+name+"&surname="+surname
+						+"&yearBirthday="+yearBirthday+"&sex="+sex+"&message=This user has already exists. Try again!");
 		}
 
 	}

@@ -36,13 +36,9 @@
 	<br /> 
 	
 	<font color="red" size="3">
-	<%
-	   String mes = (String)request.getParameter("message");
-	 if(mes != null){
-		 out.print(mes);
-	 }
-	
-	%>
+		<c:if test="${param.message!=null}">
+			<c:out value="${param.message}"/>
+		</c:if>	
 	</font>
 
 	
@@ -53,7 +49,7 @@
 		<fieldset>
 		<legend>${auth_button}</legend>
 		${login}:<br />
-		<input type="text" name="login" value="" /><br /> 
+		<input type="text" name="login" value="${param.login}" /><br /> 
 		
 		<br /> 
 		${password}:<br />

@@ -14,12 +14,10 @@ import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.dao.DAONews;
 import by.ftp.projectnews.dao.connectionpool.ConnectionPool;
 import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
-import by.ftp.projectnews.dao.connectionpool.DBParameter;
 import by.ftp.projectnews.dao.connectionpool.DBResourceManager;
 
 public class DAONewsImpl implements DAONews {
 
-	private static final DBResourceManager DB = DBResourceManager.getInstance();
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
 	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author) VALUES(?,?,?,?,?)";
 	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =?";
@@ -39,7 +37,6 @@ public class DAONewsImpl implements DAONews {
 		PreparedStatement ps = null;
 		try {
 			con = CONN_PULL.takeConnection();
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 			ps = con.prepareStatement(SELECT_ADD_NEWS);
 
 			ps.setString(1, news.getTitle());
@@ -52,8 +49,6 @@ public class DAONewsImpl implements DAONews {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
 			throw new DAOException(e);
 		} finally {
 			CONN_PULL.closeConnection(con, ps);
@@ -72,7 +67,6 @@ public class DAONewsImpl implements DAONews {
 
 		try {
 			con = CONN_PULL.takeConnection();
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 
 			ps = con.prepareStatement(SELECT_GET_LIST_OF_NEWS);
 			rs = ps.executeQuery();
@@ -87,8 +81,6 @@ public class DAONewsImpl implements DAONews {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
 			throw new DAOException(e);
 		} finally {
 			CONN_PULL.closeConnection(con, ps, rs);
@@ -106,8 +98,7 @@ public class DAONewsImpl implements DAONews {
 		News newsFromBase = null;
 		try {
 			con = CONN_PULL.takeConnection();
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
-
+			
 			ps = con.prepareStatement(SELECT_GET_LIST_OF_NEWS_AUTHOR);
 			ps.setString(1, author);
 			rs = ps.executeQuery();
@@ -122,8 +113,6 @@ public class DAONewsImpl implements DAONews {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
 			throw new DAOException(e);
 		} finally {
 			CONN_PULL.closeConnection(con, ps, rs);
@@ -141,7 +130,6 @@ public class DAONewsImpl implements DAONews {
 
 		try {
 			con = CONN_PULL.takeConnection();
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 
 			ps = con.prepareStatement(SELECT_GET_NEWS_ID);
 			ps.setInt(1, id);
@@ -152,8 +140,6 @@ public class DAONewsImpl implements DAONews {
 						rs.getString(AUTHOR));
 			}
 			return newsFromBase;
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
@@ -173,7 +159,6 @@ public class DAONewsImpl implements DAONews {
 
 		try {
 			con = CONN_PULL.takeConnection();
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 
 			ps = con.prepareStatement(SELECT_GET_NEWS_TITLE);
 			ps.setString(1, title);
@@ -183,8 +168,7 @@ public class DAONewsImpl implements DAONews {
 						rs.getString(AUTHOR));
 			}
 			return newsFromBase;
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
+
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {

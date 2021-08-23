@@ -15,8 +15,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class AuthorizationUser implements Command {
 
-	private static final ServiceProvider provider = ServiceProvider.getInstance();
-	private static final UserService userService = provider.getUserService();
+	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
+	private static final UserService USER_SERVICE = PROVIDER.getUserService();
 
 	private static final String URL = "url";
 	private static final String USER = "user";
@@ -27,15 +27,18 @@ public class AuthorizationUser implements Command {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
+		String login = request.getParameter(LOGIN);
+		String password = request.getParameter(PASSWORD);
+		
 		try {
 
-			String login = request.getParameter(LOGIN);
-			String password = request.getParameter(PASSWORD);
+			
 			if (login == null || login.isEmpty()) {
 				String path = (String)session.getAttribute(URL);
 				response.sendRedirect("Controller?command=" + path + "&message=Invalid login! Try again!");
+				return;
 			}
-			User user = userService.authorization(login, password);
+			User user = USER_SERVICE.authorization(login, password);
 			if (user != null) {
 				session.setAttribute(USER, user);
 
@@ -51,7 +54,7 @@ public class AuthorizationUser implements Command {
 			// log
 
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect("Controller?command=" + path + "&message=" + e.getMessage());
+			response.sendRedirect("Controller?command=" + path + "&login="+login+"&message=Something wrong at the authorization!");
 
 		}
 	}

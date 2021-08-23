@@ -32,13 +32,9 @@
 	<br /> 
 	
 	<font color="red" size="18">
-	<%
-	   String mes = (String)request.getAttribute("message");
-	   if(mes != null){
-		  out.print(mes);
-	 }
-	
-	%>
+		<c:if test="${message!=null}">
+			<c:out value="${message}"/>
+		</c:if>
 	</font>
 	
 		

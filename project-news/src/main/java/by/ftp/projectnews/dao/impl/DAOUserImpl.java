@@ -2,7 +2,6 @@ package by.ftp.projectnews.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.PseudoColumnUsage;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -10,19 +9,17 @@ import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.dao.DAOException;
 import by.ftp.projectnews.dao.DAOUser;
-import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 import by.ftp.projectnews.dao.connectionpool.ConnectionPool;
-import by.ftp.projectnews.dao.connectionpool.DBParameter;
-import by.ftp.projectnews.dao.connectionpool.DBResourceManager;
+import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 
 public class DAOUserImpl implements DAOUser {
 
-	private static final DBResourceManager DB = DBResourceManager.getInstance();
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
 	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =? AND password =?";
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
+	private static final String MESSAGE_USER_EXISTS = "This user has already exists";
 
 	@Override
 	public void registration(RegistrationInfo regInfo) throws DAOException {
@@ -33,8 +30,6 @@ public class DAOUserImpl implements DAOUser {
 			con = CONN_PULL.takeConnection();
 			ps = con.prepareStatement(SELECT_REGISTRATION);
 
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
-
 			ps.setString(1, regInfo.getLogin());
 			ps.setString(2, regInfo.getPassword());
 			ps.setString(3, regInfo.getRole());
@@ -44,10 +39,8 @@ public class DAOUserImpl implements DAOUser {
 			ps.setString(7, regInfo.getSex());
 			ps.executeUpdate();
 
-		} catch (ClassNotFoundException e) {
-			throw new DAOException(e);
 		} catch (SQLException e) {
-			throw new DAOException("This user has already exists", e);
+			throw new DAOException(MESSAGE_USER_EXISTS, e);
 		} catch (ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {
@@ -66,7 +59,6 @@ public class DAOUserImpl implements DAOUser {
 			ps = con.prepareStatement(SELECT_AUTHORIZATION);
 
 			User userFromBase = null;
-			Class.forName(DB.getValue(DBParameter.DB_DRIVER));
 			ps = con.prepareStatement(SELECT_AUTHORIZATION);
 			ps.setString(1, login);
 			ps.setString(2, password);
@@ -81,8 +73,6 @@ public class DAOUserImpl implements DAOUser {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
-			throw new DAOException(e);
-		} catch (ClassNotFoundException e) {
 			throw new DAOException(e);
 		} finally {
 			CONN_PULL.closeConnection(con, ps, rs);

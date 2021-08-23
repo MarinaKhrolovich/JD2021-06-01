@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class AddNews implements Command {
 
-	private static final ServiceProvider provider = ServiceProvider.getInstance();
-	private static final NewsService newsService = provider.getNewService();
+	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
+	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 	private static final String URL = "url";
 	private static final String USER = "user";
 	private static final String TITLE = "title";
@@ -72,9 +72,9 @@ public class AddNews implements Command {
 		news.setAuthor(user.getLogin());
 
 		try {
-			if (newsService.getNews(title) == null) {
-				newsService.add(news);
-				News newNews = newsService.getNews(title);
+			if (NEWS_SERVICE.getNews(title) == null) {
+				NEWS_SERVICE.add(news);
+				News newNews = NEWS_SERVICE.getNews(title);
 				
 				response.sendRedirect("Controller?command=go_to_page_news&id_news=" + String.valueOf(newNews.getId()));
 			} else {
@@ -84,7 +84,9 @@ public class AddNews implements Command {
 			}
 
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			// log
+			String path = (String) session.getAttribute(URL);
+			response.sendRedirect("Controller?command=" + path + "&message=Something wrong at the adding the news!");
 		}
 
 	}

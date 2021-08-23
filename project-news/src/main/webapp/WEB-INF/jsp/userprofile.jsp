@@ -48,13 +48,9 @@ h2{
 </blockquote>
 
 	<font color="red" size="3">
-	<%
-		String mes = (String)request.getParameter("message");
-		if(mes != null){
-			out.print(mes);
-		}
-		
-	%>
+		<c:if test="${param.message!=null}">
+			<c:out value="${param.message}"/>
+		</c:if>
 	</font>
 
 	<h1>${profile}</h1>

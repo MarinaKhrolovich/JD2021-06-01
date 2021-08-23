@@ -10,8 +10,8 @@ import by.ftp.projectnews.service.UserService;
 
 public class UserServiceImpl implements UserService {
 
-	private static final DAOProvider daoProvider = DAOProvider.getInstance();
-	private static final DAOUser DAOUser = daoProvider.getDaoUser();
+	private static final DAOProvider DAO_PROVIDER = DAOProvider.getInstance();
+	private static final DAOUser DAOUser = DAO_PROVIDER.getDaoUser();
 	private static final String MESSAGE_ERROR = "Incorrect login!";
 
 	@Override

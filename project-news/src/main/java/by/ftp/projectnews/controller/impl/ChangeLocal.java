@@ -1,7 +1,10 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.controller.Command;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -12,6 +15,7 @@ public class ChangeLocal implements Command {
 
 	private static final String URL = "url";
 	private static final String LOCAL = "local";
+	private static final String NEWSES = "newses";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

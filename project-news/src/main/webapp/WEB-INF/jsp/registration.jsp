@@ -42,14 +42,11 @@
 	<br /> 
 	
 	<font color="red" size="5">
-	<%
-	   String mes = (String)request.getParameter("message");
-	 if(mes != null){
-		 out.print(mes);
-	 }
-	
-	%>
+		<c:if test="${param.message!=null}">
+			<c:out value="${param.message}"/>
+		</c:if>
 	</font>
+	
 	<br />
 	<br />
 
@@ -58,21 +55,21 @@
 		    <fieldset>
 			<legend>${reg_button}</legend>
 			<br /> 
-			${login}:<input type="text" name="login" value="" required/><br /> 
+			${login}:<input type="text" name="login" value="${param.login}" required/><br /> 
 			<br /> 
 			${password}:<input type="password" name="password" value="" minlength = "4" required/><br />
 			<br />  
-			${name}:<input type="text" name="name" value="" required/><br /> 
+			${name}:<input type="text" name="name" value="${param.name}" required/><br /> 
 			<br /> 
-			${surname}:<input type="text" name="surname" value="" /><br /> 
+			${surname}:<input type="text" name="surname" value="${param.surname}" /><br /> 
 			<br /> 
 			${sex}:
-			<input id="female" type="radio" name="sex" value="f" checked = "checked"> 
+			<input id="female" type="radio" name="sex" value="f" ${param.sex == 'f'|| param.sex == null ? 'checked' : ''}> 
 			<label for= "female">${female}</label>
-			<input id="male" type= "radio" name="sex" value= "m">
+			<input id="male" type= "radio" name="sex" value= "m" ${param.sex == 'm' ? 'checked' : ''}>
 			<label for= "male">${male}</label>	<br />
 			<br /> 
-			${yearBirthday}:<input type="text" name="yearBirthday" minlength = "4" maxlength = "4" pattern ="[0-9]*" title ="You should enter only numbers" value="1990" /><br /> 
+			${yearBirthday}:<input type="text" name="yearBirthday" minlength = "4" maxlength = "4" pattern ="[0-9]*" title ="You should enter only numbers" value="${param.yearBirthday}" /><br /> 
 			</fieldset>
 			
 			<br /> 

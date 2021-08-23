@@ -10,8 +10,8 @@ import by.ftp.projectnews.service.ServiceException;
 
 public class NewsServiceImpl implements NewsService {
 
-	private static final DAOProvider daoProvider = DAOProvider.getInstance();
-	private static final DAONews DAONews = daoProvider.getDaoNews();
+	private static final DAOProvider DAO_PROVIDER = DAOProvider.getInstance();
+	private static final DAONews DAONews = DAO_PROVIDER.getDaoNews();
 	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
 	private static final String MESSAGE_ERROR_TITLE = "Incorrect title of news!";
 	
