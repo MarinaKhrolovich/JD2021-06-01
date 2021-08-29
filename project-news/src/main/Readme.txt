@@ -8,6 +8,7 @@ I did at the application:
  	7. Add news to the SQLbase to the table Newses if user has role "admin"
  	8. Add user to the SQLbase to the table Users
  	9. Simple validation of parameters
+ 	10.Create poolConnection
  	 	
 I want to do at the application:
 	1. Delete newses from base
@@ -15,8 +16,7 @@ I want to do at the application:
 	3. Add pages to the main page   
 	4. Full validation of parameters
 	5. Override equals,hashcode, tostring at the Beans
-	6. Improve css
-	7. Create poolConnection
-	8. Add filter that will trace last URL
+	6. Add filter that will trace last URL
+	7. Add Listner
 
 	
