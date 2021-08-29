@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:setBundle basename="resources.localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.registrationbutton" var="reg_button" />
 <fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
 <fmt:message bundle="${loc}" key="local.title" var="title" />

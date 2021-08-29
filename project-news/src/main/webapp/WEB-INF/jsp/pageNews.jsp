@@ -27,7 +27,7 @@ p{
 
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:setBundle basename="resources.localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.news" var="title_news" />
 <fmt:message bundle="${loc}" key="local.message.photo" var="photo" />
 <title>${title_news}</title>

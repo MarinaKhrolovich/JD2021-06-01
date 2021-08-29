@@ -10,7 +10,7 @@
 
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/>
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="localization.local" var="loc" />
+<fmt:setBundle basename="resources.localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.error" var="error" />
 <title>${error}</title>
 </head>
