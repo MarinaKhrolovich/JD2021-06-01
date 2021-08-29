@@ -27,6 +27,7 @@ public class GoToMainPage implements Command {
 
 		HttpSession session = request.getSession(true);
 		try {
+			
 			session.setAttribute(NEWSES, NEWS_SERVICE.getListOfNews());
 			session.setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());
 			
