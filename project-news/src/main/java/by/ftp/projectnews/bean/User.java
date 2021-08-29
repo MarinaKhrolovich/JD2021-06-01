@@ -1,6 +1,8 @@
 package by.ftp.projectnews.bean;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	private String role;
 	private String login;
 
