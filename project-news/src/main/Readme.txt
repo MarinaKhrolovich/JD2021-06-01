@@ -17,6 +17,6 @@ I want to do at the application:
 	4. Full validation of parameters
 	5. Override equals,hashcode, tostring at the Beans
 	6. Add filter that will trace last URL
-	7. Add Listner
+	7. Add Listener
 
 	
