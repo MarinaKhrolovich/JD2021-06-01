@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+  <Properties>
+    <Property name="filename">logs/log.log</Property>
+    <Property name="basePatterLayout">%d{ISO8601} [%-5p] (%F:%L) - %m%n</Property>
+  </Properties>
+  <appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="${basePatterLayout}" />
+    </Console>
+  </appenders>
+  <loggers>
+    <logger name="by.htp.mavenex.logger.App" level="info" additivity="true" >
+      <appender-ref ref="STDOUT"/>
+    </logger>
+    <root level="warn">
+      <appender-ref ref="STDOUT"/>
+    </root>
+  </loggers>
+</configuration>
