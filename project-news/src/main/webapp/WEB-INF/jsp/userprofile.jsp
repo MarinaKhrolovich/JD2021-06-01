@@ -9,7 +9,7 @@
 <meta charset="utf-8">
 <link href= "css/style.css" type = "text/css" rel="stylesheet"/> 
 <fmt:setLocale value="${sessionScope.local}" />
-<fmt:setBundle basename="resources.localization.local" var="loc" />
+<fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.profile" var="profile" />
 <fmt:message bundle="${loc}" key="local.message.photo" var="photo" />
 <fmt:message bundle="${loc}" key="local.submit" var="submit" />
