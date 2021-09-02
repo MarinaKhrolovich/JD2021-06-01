@@ -10,8 +10,7 @@ I did at the application:
  	9. Simple validation of parameters
  	10.Create poolConnection
  
- 
- I want to do at the application:
+  I want to do at the application:
 	1. Delete newses from base
 	2. Update newses at the base
 	3. Add pages to the main page   
