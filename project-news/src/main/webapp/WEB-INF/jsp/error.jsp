@@ -13,6 +13,7 @@
 <fmt:setLocale value="${sessionScope.local}" />
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.error" var="error" />
+<fmt:message bundle="${loc}" key="local.button.gomain" var="gomain" />
 <title>${error}</title>
 </head>
 <body>
@@ -36,7 +37,11 @@
 		</c:if>
 	</font>
 
-
 	<br />
+	
+		<form action="Controller" method="post">
+		<input type="hidden" name="command" value="go_to_main_page" /> <input
+			type="submit" value="${gomain}" /><br />
+	</form>
 </body>
 </html>

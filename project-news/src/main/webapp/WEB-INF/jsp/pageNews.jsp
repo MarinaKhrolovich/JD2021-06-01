@@ -16,7 +16,7 @@
 <fmt:setBundle basename="localization.local" var="loc" />
 <fmt:message bundle="${loc}" key="local.news" var="title_news" />
 <fmt:message bundle="${loc}" key="local.message.photo" var="photo" />
-<fmt:message bundle="${loc}" key="local.go_main_page" var="go_main" />
+<fmt:message bundle="${loc}" key="local.button.gomain" var="gomain" />
 <title>${title_news}</title>
 </head>
 <body>
@@ -35,7 +35,7 @@
 
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="go_to_main_page" /> <input
-			type="submit" value="${go_main}" /><br />
+			type="submit" value="${gomain}" /><br />
 	</form>
 
 </body>

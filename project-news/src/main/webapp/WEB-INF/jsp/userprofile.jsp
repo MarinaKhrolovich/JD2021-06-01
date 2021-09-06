@@ -17,7 +17,7 @@
 <fmt:message bundle="${loc}" key="local.brief" var="brief" />
 <fmt:message bundle="${loc}" key="local.content" var="content"/>
 <fmt:message bundle="${loc}" key="local.button.add_news" var="add_news_button"/>
-<fmt:message bundle="${loc}" key="local.go_main_page" var="go_main" />
+<fmt:message bundle="${loc}" key="local.button.gomain" var="gomain" />
 <style type="text/css">
 
 </style>
@@ -72,7 +72,7 @@
 
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="go_to_main_page" /> <input
-			type="submit" value="${go_main}" /><br />
+			type="submit" value="${gomain}" /><br />
 	</form>
 	
 	<br /> 

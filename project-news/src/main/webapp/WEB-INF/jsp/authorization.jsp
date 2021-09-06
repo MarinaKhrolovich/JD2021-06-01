@@ -19,7 +19,7 @@
 <fmt:message bundle="${loc}" key="local.changelanguage"
 	var="change_lang" />
 <fmt:message bundle="${loc}" key="local.enter" var="enter" />
-<fmt:message bundle="${loc}" key="local.go_main_page" var="go_main" />
+<fmt:message bundle="${loc}" key="local.button.gomain" var="gomain" />
 <title>${auth_button}</title>
 </head>
 <body>
@@ -61,7 +61,7 @@
 
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="go_to_main_page" /> <input
-			type="submit" value="${go_main}" /><br />
+			type="submit" value="${gomain}" /><br />
 	</form>
 </body>
 </html>
