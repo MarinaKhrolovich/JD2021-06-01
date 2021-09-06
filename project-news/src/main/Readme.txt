@@ -9,7 +9,8 @@ I did at the application:
  	8. Add user to the SQLbase to the table Users
  	9. Simple validation of parameters
  	10.Create poolConnection
- 
+
+
   I want to do at the application:
 	1. Delete newses from base
 	2. Update newses at the base
