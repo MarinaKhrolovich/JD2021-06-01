@@ -13,12 +13,13 @@ public class UnknownCommand implements Command {
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String MESSAGE = "message";
-
+	private static final String MESSAGE_ERROR = "Unknown command!";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String path = ERROR_JSP;
-		request.setAttribute(MESSAGE, "Unknown command!");
+		request.setAttribute(MESSAGE, MESSAGE_ERROR);
 		request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 		requestDispatcher.forward(request, response);

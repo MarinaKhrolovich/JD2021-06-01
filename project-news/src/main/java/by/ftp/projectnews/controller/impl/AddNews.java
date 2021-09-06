@@ -23,17 +23,19 @@ public class AddNews implements Command {
 	private static final String TITLE = "title";
 	private static final String BRIEF = "brief";
 	private static final String CONTENT = "content";
+	private static final String CONTROLLER_COMMAND = "Controller?command=";
+	private static final String ADMIN_ROLE = "admin";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		// this command can be used if only session was created
 		HttpSession session = request.getSession(false);
+		String commandName = CommandName.AUTHORIZATION.toString();
 
 		if (session == null) {
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
+			request.getSession(true).setAttribute(URL, commandName);
 			response.sendRedirect(
-					"Controller?command=AUTHORIZATION&message=You session is lost.You must sign in to the system!");
+					CONTROLLER_COMMAND + commandName + "&message=You session is lost.You must sign in to the system!");
 
 			return;
 		}
@@ -42,16 +44,16 @@ public class AddNews implements Command {
 
 		if (user == null) {
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message=You must sign in to the system!");
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign in to the system!");
 
 			return;
 		}
 
-		if (!"admin".equals(user.getRole())) {
+		if (!ADMIN_ROLE.equals(user.getRole())) {
 			session.removeAttribute(USER);
 			// log
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message=You must sign as an administrator'");
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign as an administrator'");
 
 			return;
 		}
@@ -62,7 +64,7 @@ public class AddNews implements Command {
 
 		if ("".equals(title) || "".equals(brief) || "".equals(content)) {
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect("Controller?command=" + path + "&message=All fields should be fill!");
+			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=All fields should be fill!");
 		}
 
 		News news = new News();
@@ -70,23 +72,27 @@ public class AddNews implements Command {
 		news.setBrief(brief);
 		news.setContent(content);
 		news.setAuthor(user.getLogin());
+		commandName = CommandName.GO_TO_PAGE_NEWS.toString();
 
 		try {
 			if (NEWS_SERVICE.getNews(title) == null) {
+
 				NEWS_SERVICE.add(news);
 				News newNews = NEWS_SERVICE.getNews(title);
-				
-				response.sendRedirect("Controller?command=go_to_page_news&id_news=" + String.valueOf(newNews.getId()));
+				request.getSession(true).setAttribute(URL, commandName);
+				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId()));
+
 			} else {
+
 				String path = (String) session.getAttribute(URL);
 				response.sendRedirect(
-						"Controller?command=" + path + "&message=This title of news has already exists! Try again!");
+						CONTROLLER_COMMAND + path + "&message=This title of news has already exists! Try again!");
 			}
 
 		} catch (ServiceException e) {
 			// log
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect("Controller?command=" + path + "&message=Something wrong at the adding the news!");
+			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=Something wrong at the adding the news!");
 		}
 
 	}

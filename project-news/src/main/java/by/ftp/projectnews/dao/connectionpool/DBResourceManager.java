@@ -4,7 +4,7 @@ import java.util.ResourceBundle;
 
 public class DBResourceManager {
 
-	private final static String DB = "db";
+	private final static String DB = "properties.db";
 	
 	private final static DBResourceManager instance = new DBResourceManager();
 	

@@ -29,6 +29,7 @@ public class RegistrationNewUser implements Command {
 	private static final String URL = "url";
 	private static final String USER = "user";
 	private static final String MESSAGE = "message";
+	private static final String CONTROLLER_COMMAND = "Controller?command=";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -61,14 +62,14 @@ public class RegistrationNewUser implements Command {
 			}
 
 			USER_SERVICE.registration(regInfo);
-
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect("Controller?command=AUTHORIZATION&message=Registration completed successfully!");
+			String commandName = CommandName.AUTHORIZATION.toString();
+			request.getSession(true).setAttribute(URL, commandName);
+			response.sendRedirect(CONTROLLER_COMMAND+commandName+"&message=Registration completed successfully!");
 
 		} catch (ServiceException e) {
 			// log
 			response.sendRedirect(
-						"Controller?command=" + path + "&login="+login+"&name="+name+"&surname="+surname
+					CONTROLLER_COMMAND + path + "&login="+login+"&name="+name+"&surname="+surname
 						+"&yearBirthday="+yearBirthday+"&sex="+sex+"&message=This user has already exists. Try again!");
 		}
 

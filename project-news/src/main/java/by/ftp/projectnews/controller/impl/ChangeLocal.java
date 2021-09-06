@@ -16,6 +16,7 @@ public class ChangeLocal implements Command {
 	private static final String URL = "url";
 	private static final String LOCAL = "local";
 	private static final String NEWSES = "newses";
+	private static final String CONTROLLER_COMMAND = "Controller?command=";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -23,9 +24,7 @@ public class ChangeLocal implements Command {
 		HttpSession session = request.getSession(true);
 		session.setAttribute(LOCAL, request.getParameter(LOCAL));
 		String path = (String) session.getAttribute(URL);
-		// request.getRequestDispatcher(path).forward(request, response);
-
-		response.sendRedirect("Controller?command=" + path);
+		response.sendRedirect(CONTROLLER_COMMAND + path);
 
 	}
 
