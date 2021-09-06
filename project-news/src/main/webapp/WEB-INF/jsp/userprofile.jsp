@@ -76,8 +76,8 @@
 	</form>
 	
 	<br /> 
-	<c:if test="${newses!=null}">	
-		<c:forEach var="news" items="${newses}">
+	<c:if test="${requestScope.newses_author!=null}">	
+		<c:forEach var="news" items="${requestScope.newses_author}">
        		<div class="page">
 
        			<a href = "Controller?command=go_to_page_news&id_news=${news.getId()}">

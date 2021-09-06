@@ -5,12 +5,13 @@ import java.io.Serializable;
 public class News implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String title;
 	private String brief;
 	private String content;
 	private String author;
 	private int id;
+	private byte activity;
 
 	public News() {
 
@@ -22,6 +23,7 @@ public class News implements Serializable {
 		this.brief = brief;
 		this.content = content;
 		this.author = author;
+		this.activity = 1;
 	}
 
 	public int getId() {
@@ -64,6 +66,14 @@ public class News implements Serializable {
 		this.author = author;
 	}
 
+	public byte getActivity() {
+		return activity;
+	}
+
+	public void setActivity(byte activity) {
+		this.activity = activity;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -73,6 +83,7 @@ public class News implements Serializable {
 		result = prime * result + id;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + activity;
 		return result;
 	}
 
@@ -107,13 +118,15 @@ public class News implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
+		if (activity != other.activity)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return getClass().getName() + " [title=" + title + ", brief=" + brief + ", content=" + content  
-				+ ", author=" + author+  ", id=" + id + "]";
+		return getClass().getName() + " [title=" + title + ", brief=" + brief + ", content=" + content + ", author="
+				+ author + ", id=" + id + ", activity=" + activity + "]";
 	}
 
 }

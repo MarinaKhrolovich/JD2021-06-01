@@ -31,7 +31,7 @@ public class GoToUserPage implements Command {
 		HttpSession session = request.getSession(true);
 		User user= (User)session.getAttribute(USER);
 		try {
-			session.setAttribute(NEWSES_OF_AUTHOR, NEWS_SERVICE.getListOfNews(user.getLogin()));
+			request.setAttribute(NEWSES_OF_AUTHOR, NEWS_SERVICE.getListOfNews(user.getLogin()));
 			session.setAttribute(URL, CommandName.GO_TO_USER_PAGE.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(USERPROFILE_JSP);
 			requestDispatcher.forward(request, response);
