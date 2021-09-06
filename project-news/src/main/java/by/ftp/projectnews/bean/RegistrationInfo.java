@@ -1,12 +1,14 @@
 package by.ftp.projectnews.bean;
 
-public class RegistrationInfo extends User {
+import java.io.Serializable;
 
-	private String role;
+public class RegistrationInfo extends User implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private String name;
 	private String surName;
 	private int yearBirthday;
-	private String login;
 	private String password;
 	private String sex;
 
@@ -17,11 +19,9 @@ public class RegistrationInfo extends User {
 	public RegistrationInfo(String role, String name, String surName, int yearBirthday, String login, String password,
 			String sex) {
 		super();
-		this.role = role;
 		this.name = name;
 		this.surName = surName;
 		this.yearBirthday = yearBirthday;
-		this.login = login;
 		this.password = password;
 		this.sex = sex;
 	}
@@ -42,14 +42,6 @@ public class RegistrationInfo extends User {
 		this.surName = surName;
 	}
 
-	public String getLogin() {
-		return login;
-	}
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
 	public int getYearBirthday() {
 		return yearBirthday;
 	}
@@ -66,20 +58,65 @@ public class RegistrationInfo extends User {
 		this.sex = sex;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-
 	public String getPassword() {
 		return password;
 	}
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((surName == null) ? 0 : surName.hashCode());
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		result = prime * result + yearBirthday;
+		result = prime * result + ((sex == null) ? 0 : sex.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RegistrationInfo other = (RegistrationInfo) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (surName == null) {
+			if (other.surName != null)
+				return false;
+		} else if (!surName.equals(other.surName))
+			return false;
+		if (password == null) {
+			if (other.password != null)
+				return false;
+		} else if (!password.equals(other.password))
+			return false;
+		if (sex == null) {
+			if (other.sex != null)
+				return false;
+		} else if (!sex.equals(other.sex))
+			return false;
+		if (yearBirthday != other.yearBirthday)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return getClass().getName() + " [name=" + name + ", surname=" + surName + ", yearBirthday=" + yearBirthday
+				+ ", password=" + password + ", sex=" + sex + "]";
 	}
 
 }

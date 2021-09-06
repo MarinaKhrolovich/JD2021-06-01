@@ -15,8 +15,9 @@ I did at the application:
 	2. Update newses at the base
 	3. Add pages to the main page   
 	4. Full validation of parameters
-	5. Override equals,hashcode, tostring at the Beans
-	6. Add filter that will trace last URL
-	7. Add Listener
+	5. Add Filter that will trace last URL
+	6. Add Listener
+	7. Add JUnit
+	8. Add Logger
 
 	
