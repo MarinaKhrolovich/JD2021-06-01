@@ -17,19 +17,9 @@
 <fmt:message bundle="${loc}" key="local.brief" var="brief" />
 <fmt:message bundle="${loc}" key="local.content" var="content"/>
 <fmt:message bundle="${loc}" key="local.button.add_news" var="add_news_button"/>
+<fmt:message bundle="${loc}" key="local.go_main_page" var="go_main" />
 <style type="text/css">
-h1{
-	width: 570рх ;
-	padding : 15px ;
-	margin: 0рх auto 0рх auto;
-	border-top: 2рх solid #000;
-	border-bottom: 2px solid #000;
-}
 
-h2{
-	width: 570рх ;
-	margin: 0рх auto 0рх auto;
-}
 </style>
 <link href= "css/style.css" type = "text/css" rel="stylesheet" />
 <title>${profile}</title> 
@@ -78,6 +68,13 @@ h2{
 			 
 	</form>
 
+	<br />
+
+	<form action="Controller" method="post">
+		<input type="hidden" name="command" value="go_to_main_page" /> <input
+			type="submit" value="${go_main}" /><br />
+	</form>
+	
 	<br /> 
 	<c:if test="${newses!=null}">	
 		<c:forEach var="news" items="${newses}">

@@ -6,9 +6,10 @@ I did at the application:
  	5. Show newses of the author in the profile
  	6. Go to news page using link
  	7. Add news to the SQLbase to the table Newses if user has role "admin"
- 	8. Add user to the SQLbase to the table Users
- 	9. Simple validation of parameters
- 	10.Create poolConnection
+ 	8. Show news after adding to the base.
+ 	9. Add user to the SQLbase to the table Users
+ 	10. Simple validation of parameters
+ 	11.Create poolConnection
 
 
   I want to do at the application:

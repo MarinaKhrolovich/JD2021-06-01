@@ -16,18 +16,6 @@
 <fmt:message bundle="${loc}" key="local.title" var="title" />
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
 <style type="text/css">
-h1{
-	width: 570рх ;
-	padding : 15px ;
-	margin: 0рх auto 0рх auto;
-	border-top: 2рх solid #000;
-	border-bottom: 2px solid #000;
-}
-
-h2{
-	width: 570рх ;
-	margin: 0рх auto 0рх auto;
-}
 </style>
 <link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
 <title>${title}</title>
