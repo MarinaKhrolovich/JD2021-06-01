@@ -13,6 +13,7 @@ import by.ftp.projectnews.controller.impl.GoToNewsPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
 import by.ftp.projectnews.controller.impl.GoToUpdateNewsPage;
 import by.ftp.projectnews.controller.impl.GoToUserPage;
+import by.ftp.projectnews.controller.impl.LogOut;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
 import by.ftp.projectnews.controller.impl.UpdateNews;
@@ -35,6 +36,7 @@ public class CommandProvider {
 		commands.put(CommandName.GO_TO_PAGE_NEWS, new GoToNewsPage());
 		commands.put(CommandName.GO_TO_UPDATE_NEWS_PAGE, new GoToUpdateNewsPage());
 		commands.put(CommandName.GET_LAST_NEWSES, new GoToNewsPage());
+		commands.put(CommandName.LOG_OUT, new LogOut());
 	}
 
 	public Command findCommand(String name) {

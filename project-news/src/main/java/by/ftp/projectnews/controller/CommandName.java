@@ -14,7 +14,8 @@ public enum CommandName {
 	UPDATE_NEWS,
 	GO_TO_PAGE_NEWS,
 	GO_TO_UPDATE_NEWS_PAGE,
-	GET_LAST_NEWSES;
+	GET_LAST_NEWSES,
+	LOG_OUT;
 
 	@Override
 	public String toString() {
