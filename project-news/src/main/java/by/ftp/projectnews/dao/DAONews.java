@@ -6,7 +6,9 @@ import by.ftp.projectnews.bean.News;
 
 public interface DAONews {
 
-	void addNews(News news) throws DAOException;
+	void add(News news) throws DAOException;
+	
+	void delete(News news) throws DAOException;
 
 	List<News> getListOfNews() throws DAOException;
 	

@@ -6,13 +6,15 @@ import java.util.Map;
 import by.ftp.projectnews.controller.impl.AddNews;
 import by.ftp.projectnews.controller.impl.AuthorizationUser;
 import by.ftp.projectnews.controller.impl.ChangeLocal;
+import by.ftp.projectnews.controller.impl.DeleteNews;
 import by.ftp.projectnews.controller.impl.GoToAuthorizationPage;
 import by.ftp.projectnews.controller.impl.GoToMainPage;
+import by.ftp.projectnews.controller.impl.GoToNewsPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
 import by.ftp.projectnews.controller.impl.GoToUserPage;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
-import by.ftp.projectnews.controller.impl.GoToNewsPage;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
+import by.ftp.projectnews.controller.impl.UpdateNews;
 
 public class CommandProvider {
 	private Map<CommandName, Command> commands = new HashMap<>();
@@ -27,6 +29,8 @@ public class CommandProvider {
 		commands.put(CommandName.UNKNOWN_COMMAND, new UnknownCommand());
 		commands.put(CommandName.CHANGE_LOCAL, new ChangeLocal());
 		commands.put(CommandName.ADD_NEWS, new AddNews());
+		commands.put(CommandName.DELETE_NEWS, new DeleteNews());
+		commands.put(CommandName.UPDATE_NEWS, new UpdateNews());
 		commands.put(CommandName.GO_TO_PAGE_NEWS, new GoToNewsPage());
 		commands.put(CommandName.GET_LAST_NEWSES, new GoToNewsPage());
 	}

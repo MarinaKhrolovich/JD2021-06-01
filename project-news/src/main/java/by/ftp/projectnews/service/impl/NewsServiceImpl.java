@@ -19,7 +19,18 @@ public class NewsServiceImpl implements NewsService {
 	public void add(News news) throws ServiceException {
 
 		try {
-			DAONews.addNews(news);
+			DAONews.add(news);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+
+	}
+	
+	@Override
+	public void delete(News news) throws ServiceException {
+
+		try {
+			DAONews.delete(news);
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 		}

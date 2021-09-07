@@ -3,23 +3,30 @@ I did at the application:
 	2. User registration
 	3. User authorization 
  	4. Show last 5 newses at the main page
- 	5. Show newses of the author in the profile
+ 	5. Show last 5 newses of the author in the profile
  	6. Go to news page using link
  	7. Add news to the SQLbase to the table Newses if user has role "admin"
  	8. Show news after adding to the base.
  	9. Add user to the SQLbase to the table Users
- 	10. Simple validation of parameters
+ 	10.Simple validation of parameters
  	11.Create poolConnection
-
-
+ 	12.Delete news from base(set activity = 0)
+ 	
   I want to do at the application:
-	1. Delete newses from base
-	2. Update newses at the base
-	3. Add pages to the main page   
-	4. Full validation of parameters
-	5. Add Filter that will trace last URL
-	6. Add Listener
-	7. Add JUnit
-	8. Add Logger
+	
+	1. Update newses at the base
+	2. Add pages to the main page and user page   
+	3. Full validation of parameters
+	4. Add Filter
+	5. Add Listener
+	6. Add JUnit
+	7. Add Logger
+	8. Add Admin page
+	9. Delete users by Admin
+	10.Delete newses of user by Admin
+	11.Confirm password by the registration
+	12.Use email by the registration
+	
+	 
 
 	

@@ -7,6 +7,8 @@ import by.ftp.projectnews.bean.News;
 public interface NewsService {
 
 	void add(News news) throws ServiceException;
+	
+	void delete(News news) throws ServiceException;
 
 	List<News> getListOfNews() throws ServiceException;
 	
