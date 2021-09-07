@@ -28,7 +28,7 @@ I did at the application:
 	10.Delete newses of user by Admin
 	11.Confirm password by the registration
 	12.Use email by the registration
-	13. Add favorite news
+	13.Add favorite news
 	 
 
 	
