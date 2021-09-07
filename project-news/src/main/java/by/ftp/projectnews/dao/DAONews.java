@@ -9,6 +9,8 @@ public interface DAONews {
 	void add(News news) throws DAOException;
 	
 	void delete(News news) throws DAOException;
+	
+	void update(News news) throws DAOException;
 
 	List<News> getListOfNews() throws DAOException;
 	

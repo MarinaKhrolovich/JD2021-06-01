@@ -81,7 +81,7 @@ public class AddNews implements Command {
 				NEWS_SERVICE.add(news);
 				News newNews = NEWS_SERVICE.getNews(title);
 				request.getSession(true).setAttribute(URL, commandName);
-				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId()));
+				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId())+"&message=The news added successfully!!");
 
 			} else {
 

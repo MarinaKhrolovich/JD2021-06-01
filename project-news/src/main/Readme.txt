@@ -11,10 +11,12 @@ I did at the application:
  	10.Simple validation of parameters
  	11.Create poolConnection
  	12.Delete news from base(set activity = 0)
+ 	13.Update news at the base
+ 	14. Add link to user profile if user logged in
  	
   I want to do at the application:
-	
-	1. Update newses at the base
+
+	1. Add log out
 	2. Add pages to the main page and user page   
 	3. Full validation of parameters
 	4. Add Filter
@@ -26,7 +28,7 @@ I did at the application:
 	10.Delete newses of user by Admin
 	11.Confirm password by the registration
 	12.Use email by the registration
-	
+	13. Add favorite news
 	 
 
 	

@@ -36,6 +36,17 @@ public class NewsServiceImpl implements NewsService {
 		}
 
 	}
+	
+	@Override
+	public void update(News news) throws ServiceException {
+
+		try {
+			DAONews.update(news);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+
+	}
 
 	@Override
 	public List<News> getListOfNews() throws ServiceException {
@@ -82,9 +93,4 @@ public class NewsServiceImpl implements NewsService {
 		}
 	}
 
-	@Override
-	public void update(News news) throws ServiceException {
-		// TODO Auto-generated method stub
-
-	}
 }

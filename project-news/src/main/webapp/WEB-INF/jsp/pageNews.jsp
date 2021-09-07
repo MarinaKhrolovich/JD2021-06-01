@@ -21,12 +21,17 @@
 </head>
 <body>
 
+	<font color="red" size="3"> <c:if test="${param.message!=null}">
+			<c:out value="${param.message}" />
+		</c:if>
+	</font>
+	
 	<div class="page">
-		<h1>${news.getTitle()}</h1>
+		<h1>${requestScope.news.getTitle()}</h1>
 
 		<br />
 
-		<p>${news.getContent()}</p>
+		<p>${requestScope.news.getContent()}</p>
 
 		<br />
 	</div>

@@ -11,6 +11,7 @@ import by.ftp.projectnews.controller.impl.GoToAuthorizationPage;
 import by.ftp.projectnews.controller.impl.GoToMainPage;
 import by.ftp.projectnews.controller.impl.GoToNewsPage;
 import by.ftp.projectnews.controller.impl.GoToRegistrationPage;
+import by.ftp.projectnews.controller.impl.GoToUpdateNewsPage;
 import by.ftp.projectnews.controller.impl.GoToUserPage;
 import by.ftp.projectnews.controller.impl.RegistrationNewUser;
 import by.ftp.projectnews.controller.impl.UnknownCommand;
@@ -32,6 +33,7 @@ public class CommandProvider {
 		commands.put(CommandName.DELETE_NEWS, new DeleteNews());
 		commands.put(CommandName.UPDATE_NEWS, new UpdateNews());
 		commands.put(CommandName.GO_TO_PAGE_NEWS, new GoToNewsPage());
+		commands.put(CommandName.GO_TO_UPDATE_NEWS_PAGE, new GoToUpdateNewsPage());
 		commands.put(CommandName.GET_LAST_NEWSES, new GoToNewsPage());
 	}
 

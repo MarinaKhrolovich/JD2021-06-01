@@ -21,6 +21,7 @@ public class DAONewsImpl implements DAONews {
 	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author,activity) VALUES(?,?,?,?,?,?)";
 	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =? AND activity = 1";
 	private static final String DELETE_NEWS = "UPDATE newses SET activity = 0 WHERE id =? AND activity = 1";
+	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =? AND activity = 1";
 	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =? AND activity = 1";
 	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses WHERE activity = 1 ORDER BY id DESC LIMIT 5";
 	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? AND activity = 1 LIMIT 5";
@@ -78,6 +79,31 @@ public class DAONewsImpl implements DAONews {
 
 	}
 
+	@Override
+	public void update(News news) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = CONN_PULL.takeConnection();
+			ps = con.prepareStatement(UPDATE_NEWS);
+
+			ps.setString(1, news.getTitle());
+			ps.setString(2, news.getBrief());
+			ps.setString(3, news.getContent());
+			ps.setInt(4, news.getId());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ConnectionPoolException e) {
+			throw new DAOException(e);
+		} finally {
+			CONN_PULL.closeConnection(con, ps);
+		}
+
+	}
+	
 	@Override
 	public List<News> getListOfNews() throws DAOException {
 

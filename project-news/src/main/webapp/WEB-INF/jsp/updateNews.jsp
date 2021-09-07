@@ -16,16 +16,12 @@
 <fmt:message bundle="${loc}" key="local.title.news" var="title" />
 <fmt:message bundle="${loc}" key="local.brief" var="brief" />
 <fmt:message bundle="${loc}" key="local.content" var="content" />
-<fmt:message bundle="${loc}" key="local.add_news" var="add_news" />
-<fmt:message bundle="${loc}" key="local.button.delete_news"
-	var="delete_news_button" />
-<fmt:message bundle="${loc}" key="local.button.update_news"
-	var="update_news_button" />
+<fmt:message bundle="${loc}" key="local.update_news" var="update_news" />
 <fmt:message bundle="${loc}" key="local.button.gomain" var="gomain" />
 <style type="text/css">
 </style>
 <link href="css/style.css" type="text/css" rel="stylesheet" />
-<title>${profile}</title>
+<title>${update_news}</title>
 </head>
 <body>
 	<blockquote>
@@ -39,25 +35,27 @@
 		</form>
 	</blockquote>
 
-	<font color="red" size="3"> <c:if test="${param.message!=null}">
-			<c:out value="${param.message}" />
-		</c:if>
-	</font>
 
-	<h1>${profile}</h1>
+	<h1>${update_news}</h1>
 
 	<br />
 
-	<form action="Controller" method="post">
-		<input type="hidden" name="command" value="add_news" />
+	<form action="Controller?id_news=${requestScope.news.getId()}"
+		method="post">
+		<input type="hidden" name="command" value="update_news" />
 		<fieldset>
 			<legend>${add_news}</legend>
-			<br /> ${title}:<input type="text" name="title" value="" size="100"
-				maxlength="45" required /><br /> <br /> ${brief}:<input
-				type="text" name="brief" value="" size="100" maxlength="200"
-				required /><br /> <br /> ${content}: <br />
+			<br /> 
+				${title}:<input type="text" name="title"
+				value="${requestScope.news.getTitle()}" size="100" maxlength="45"
+				required /><br /> <br /> 
+				${brief}:<input type="text" name="brief"
+				value="${requestScope.news.getBrief()}" size="100" maxlength="200"
+				required /> <br /> <br /> 
+				${content}: <br />
 			<textarea name="content" cols=" 80" rows="15" maxlength="1000"
 				required>
+				${requestScope.news.getContent()}
 			</textarea>
 			<br /> <br /> <input type="submit" value="${submit}" /><br /> <br />
 		</fieldset>
@@ -72,30 +70,6 @@
 	</form>
 
 	<br />
-	<c:if test="${requestScope.newses_author!=null}">
-		<c:forEach var="news" items="${requestScope.newses_author}">
-			<div class="page">
-
-				<a href="Controller?command=go_to_page_news&id_news=${news.getId()}">
-
-					<h2>${news.getTitle()}</h2>
-				</a>
-				<p>
-					<c:out value="${news.getBrief()}" />
-				</p>
-				<form action="Controller?id_news=${news.getId()}" method="post">
-					<input type="hidden" name="command" value="delete_news" /> <input
-						type="submit" value="${delete_news_button}" />
-				</form>
-				<br />
-				<form action="Controller?id_news=${news.getId()}" method="post">
-					<input type="hidden" name="command" value="go_to_update_news_page" /> <input
-						type="submit" value="${update_news_button}" />
-				</form>
-			</div>
-			<br />
-		</c:forEach>
-	</c:if>
 
 </body>
 </html>

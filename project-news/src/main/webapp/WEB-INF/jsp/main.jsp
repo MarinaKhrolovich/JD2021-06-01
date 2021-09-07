@@ -15,6 +15,7 @@
 <fmt:message bundle="${loc}" key="local.authorizationbutton" var="auth_button" />
 <fmt:message bundle="${loc}" key="local.title" var="title" />
 <fmt:message bundle="${loc}" key="local.changelanguage" var="change_lang" />
+<fmt:message bundle="${loc}" key="local.go_profile" var="go_profile" />
 <style type="text/css">
 </style>
 <link href= "css/style.css" type = "text/css" rel="stylesheet" /> 
@@ -34,7 +35,7 @@
 </blockquote>
 	
 <h1>${title}</h1>
-	
+	<c:if test="${user==null}">
 	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="registration"/>
 		<input type="hidden" name="local" value="en"/>
@@ -46,10 +47,13 @@
 	    <input type="hidden" name="local" value="ru"/>
 		<input type="submit" value="${auth_button}" />
 	</form>
-	
-	<br /> 
+	</c:if>
+	<br />
+	<c:if test="${user!=null}">
+		<a href="Controller?command=go_to_user_page">${go_profile}</a>
+	</c:if>
 
-	<br /> 
+	<br /><br /> 
 	<c:if test="${requestScope.newses!=null}">	
 		<c:forEach var="news" items="${requestScope.newses}">
        		<div class="page">

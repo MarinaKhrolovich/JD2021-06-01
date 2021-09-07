@@ -10,6 +10,8 @@ public interface NewsService {
 	
 	void delete(News news) throws ServiceException;
 
+	void update(News news) throws ServiceException;
+	
 	List<News> getListOfNews() throws ServiceException;
 	
 	List<News> getListOfNews(String author) throws ServiceException;
@@ -18,5 +20,4 @@ public interface NewsService {
 
 	News getNews(int id) throws ServiceException;
 
-	void update(News news) throws ServiceException;
 }
