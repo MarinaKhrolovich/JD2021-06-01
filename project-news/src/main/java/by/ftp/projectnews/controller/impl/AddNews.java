@@ -53,7 +53,7 @@ public class AddNews implements Command {
 			session.removeAttribute(USER);
 			// log
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign as an administrator'");
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign as an administrator!");
 
 			return;
 		}
@@ -81,13 +81,13 @@ public class AddNews implements Command {
 				NEWS_SERVICE.add(news);
 				News newNews = NEWS_SERVICE.getNews(title);
 				request.getSession(true).setAttribute(URL, commandName);
-				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId())+"&message=The news added successfully!!");
+				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId())+"&message=The news added successfully!");
 
 			} else {
 
 				String path = (String) session.getAttribute(URL);
 				response.sendRedirect(
-						CONTROLLER_COMMAND + path + "&message=This title of news has already exists! Try again!");
+						CONTROLLER_COMMAND + path + "&message=The title of news has already exists! Try again!");
 			}
 
 		} catch (ServiceException e) {
