@@ -24,6 +24,7 @@ public class DeleteNews implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String ADMIN_ROLE = "admin";
 	private static final String ID_NEWS = "id_news";
+	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,25 +56,25 @@ public class DeleteNews implements Command {
 
 			return;
 		}
-		
-		
-		
-		
+
 		String id_news = request.getParameter(ID_NEWS);
-	
+		if (id_news == null || id_news.isEmpty()) {
+			commandName = (String) session.getAttribute(URL);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=" + MESSAGE_ERROR_ID);
+			return;
+		}
 		try {
+
 			News newsToDelete = NEWS_SERVICE.getNews(Integer.parseInt(id_news));
 			NEWS_SERVICE.delete(newsToDelete);
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect(
-					CONTROLLER_COMMAND + path + "&message=The news deleted successfully! ");
+			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=The news deleted successfully! ");
 
 		} catch (ServiceException e) {
 			// log
 			String path = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=Something wrong at the deleting the news!");
 		}
-
 
 	}
 

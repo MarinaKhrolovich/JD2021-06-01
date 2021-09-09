@@ -25,6 +25,8 @@ public class GoToUpdateNewsPage implements Command {
 	private static final String URL = "url";
 	private static final String ID_NEWS = "id_news";
 	private static final String NEWS = "news";
+	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
+	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +34,11 @@ public class GoToUpdateNewsPage implements Command {
 		HttpSession session = request.getSession(true);
 		String id_news = request.getParameter(ID_NEWS);
 		session.setAttribute(URL, CommandName.GO_TO_UPDATE_NEWS_PAGE.toString());
+		if (id_news == null || id_news.isEmpty()) {
+			String commandName = (String) session.getAttribute(URL);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=" + MESSAGE_ERROR_ID);
+			return;
+		}
 		try {
 			News newsToUpdate = NEWS_SERVICE.getNews(Integer.parseInt(id_news));
 			request.setAttribute(NEWS, newsToUpdate);

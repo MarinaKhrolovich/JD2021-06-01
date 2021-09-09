@@ -62,17 +62,21 @@ public class AddNews implements Command {
 		String brief = request.getParameter(BRIEF);
 		String content = request.getParameter(CONTENT);
 
-		if ("".equals(title) || "".equals(brief) || "".equals(content)) {
+		if (title == null || title.isEmpty() ||
+				brief == null || brief.isEmpty() ||
+				content == null	|| content.isEmpty()) 
+		{
 			String path = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=All fields should be fill!");
 		}
+
 
 		News news = new News();
 		news.setTitle(title);
 		news.setBrief(brief);
 		news.setContent(content);
 		news.setAuthor(user.getLogin());
-		news.setActivity((byte)1);
+		news.setActivity((byte) 1);
 		commandName = CommandName.GO_TO_PAGE_NEWS.toString();
 
 		try {
@@ -81,7 +85,8 @@ public class AddNews implements Command {
 				NEWS_SERVICE.add(news);
 				News newNews = NEWS_SERVICE.getNews(title);
 				request.getSession(true).setAttribute(URL, commandName);
-				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId())+"&message=The news added successfully!");
+				response.sendRedirect(CONTROLLER_COMMAND + commandName + "&id_news=" + String.valueOf(newNews.getId())
+						+ "&message=The news added successfully!");
 
 			} else {
 

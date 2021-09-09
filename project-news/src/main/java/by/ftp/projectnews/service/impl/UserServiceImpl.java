@@ -12,7 +12,6 @@ public class UserServiceImpl implements UserService {
 
 	private static final DAOProvider DAO_PROVIDER = DAOProvider.getInstance();
 	private static final DAOUser DAOUser = DAO_PROVIDER.getDaoUser();
-	private static final String MESSAGE_ERROR = "Incorrect login!";
 
 	@Override
 	public void registration(RegistrationInfo regInfo) throws ServiceException {
@@ -28,9 +27,7 @@ public class UserServiceImpl implements UserService {
 	public User authorization(String login, String password) throws ServiceException {
 
 		// check parameters!
-		if (login == null || login.isEmpty()) {
-			throw new ServiceException(MESSAGE_ERROR);
-		}
+
 		try {
 			User user = DAOUser.authorization(login, password);
 			return user;

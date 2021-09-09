@@ -19,7 +19,6 @@ public class DAOUserImpl implements DAOUser {
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
-	private static final String MESSAGE_USER_EXISTS = "This user has already exists";
 
 	@Override
 	public void registration(RegistrationInfo regInfo) throws DAOException {
@@ -40,7 +39,7 @@ public class DAOUserImpl implements DAOUser {
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
-			throw new DAOException(MESSAGE_USER_EXISTS, e);
+			throw new DAOException(e);
 		} catch (ConnectionPoolException e) {
 			throw new DAOException(e);
 		} finally {

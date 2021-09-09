@@ -12,8 +12,6 @@ public class NewsServiceImpl implements NewsService {
 
 	private static final DAOProvider DAO_PROVIDER = DAOProvider.getInstance();
 	private static final DAONews DAONews = DAO_PROVIDER.getDaoNews();
-	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
-	private static final String MESSAGE_ERROR_TITLE = "Incorrect title of news!";
 	
 	@Override
 	public void add(News news) throws ServiceException {
@@ -70,9 +68,6 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public News getNews(String title) throws ServiceException {
 		// check parameters!
-		if (title == null || title.isEmpty()) {
-			throw new ServiceException(MESSAGE_ERROR_TITLE);
-		}
 		try {
 			return DAONews.getNews(title);
 		} catch (DAOException e) {
@@ -83,9 +78,6 @@ public class NewsServiceImpl implements NewsService {
 	@Override
 	public News getNews(int id) throws ServiceException {
 		// check parameters!
-		if (id == 0) {
-			throw new ServiceException(MESSAGE_ERROR_ID);
-		}
 		try {
 			return DAONews.getNews(id);
 		} catch (DAOException e) {
