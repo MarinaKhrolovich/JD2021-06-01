@@ -1,6 +1,6 @@
 package by.ftp.projectnews.controller.message;
 
-public interface Message {
+public interface MessageLocal {
 
 	public static final String USER_REG_SUCCESS = "local.message.user.regSuccess";
 	public static final String USER_REG_EXISTS = "local.message.user.regExists";
@@ -11,17 +11,18 @@ public interface Message {
 
 	public static final String SESSION_LOST = "local.message.sessionLost";
 	public static final String MUST_SIGN_IN = "local.message.mustSignIn";
-	public static final String MUST_SIGN_IN_AS_ADMIN = "local.message.mustSignAsAdminv";
+	public static final String MUST_SIGN_IN_AS_ADMIN = "local.message.mustSignAsAdmin";
 	public static final String FILL_FIELDS = "local.message.fillFields";
 	public static final String UNKNOWN_COMMAND = "local.message.unknownCommand";
 
 	public static final String NEWS_ADD_SUCCESS = "local.message.news.addSuccess";
 	public static final String NEWS_ADD_TITLE_EXISTS = "local.message.news.addTitleExists";
-	public static final String NEWS_ADD_ERROR = "local.message.news.addNewsError";
-	public static final String NEWS_DELETE_SUCCESS = "local.message.news.addNewsError ";
+	public static final String NEWS_ADD_WRONG = "local.message.news.addWrong";
+	public static final String NEWS_DELETE_SUCCESS = "local.message.news.deleteSuccess";
 	public static final String NEWS_DELETE_WRONG = "local.message.news.deleteWrong";
-	public static final String NEWS_GET_WRONG = "local.message.news.deleteWrong";
+	public static final String NEWS_GET_WRONG = "local.message.news.getWrong";
 	public static final String NEWS_UPDATE_SUCCESS = "local.message.news.updateSuccess";
 	public static final String NEWS_UPDATE_WRONG = "local.message.news.updateWrong";
 	public static final String NEWS_INCORRECT_ID = "local.message.news.incorrectId";
+	public static final String NEWS_INCORRECT_TITLE = "local.message.news.incorrectTitle";
 }

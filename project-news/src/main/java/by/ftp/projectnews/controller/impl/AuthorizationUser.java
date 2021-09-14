@@ -5,6 +5,8 @@ import java.io.IOException;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
+import by.ftp.projectnews.controller.message.MessageLocal;
+import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
@@ -23,39 +25,46 @@ public class AuthorizationUser implements Command {
 	private static final String LOGIN = "login";
 	private static final String PASSWORD = "password";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
+	private static final String PARAM_MESSAGE = "&message=";
+	private static final String EMPTY_STRING = "";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		String msg = EMPTY_STRING;
+		MessageResourceManager localManager = MessageResourceManager.getInstance();
+
 		HttpSession session = request.getSession(true);
 		String login = request.getParameter(LOGIN);
 		String password = request.getParameter(PASSWORD);
-		
+
 		try {
 
-			
 			if (login == null || login.isEmpty()) {
-				String path = (String)session.getAttribute(URL);
-				response.sendRedirect(CONTROLLER_COMMAND + path + "&message=Invalid login! Try again!");
+				msg = localManager.getValue(MessageLocal.USER_AUTHO_INVALID_LOGIN);
+				String path = (String) session.getAttribute(URL);
+				response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 				return;
 			}
 			User user = USER_SERVICE.authorization(login, password);
 			if (user != null) {
+				msg = localManager.getValue(MessageLocal.USER_AUTHO_SUCCESS);
 				session.setAttribute(USER, user);
 				String commandName = CommandName.GO_TO_USER_PAGE.toString();
 				session.setAttribute(URL, commandName);
-				response.sendRedirect(
-						CONTROLLER_COMMAND+commandName+"&message=Autorization completed successfully!");
+				response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 			} else {
+				msg = localManager.getValue(MessageLocal.USER_AUTO_LOGIN_WRONG);
 				String path = (String) session.getAttribute(URL);
-				response.sendRedirect(CONTROLLER_COMMAND + path + "&message=This login/password is wrong! Try again!");
+				response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 			}
 
 		} catch (ServiceException e) {
 			// log
+			msg = localManager.getValue(MessageLocal.USER_AUTO_WRONG);
 
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect(CONTROLLER_COMMAND + path + "&login="+login+"&message=Something wrong at the authorization!");
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 
 		}
 	}

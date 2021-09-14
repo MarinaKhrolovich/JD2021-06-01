@@ -3,9 +3,10 @@ package by.ftp.projectnews.controller.impl;
 import java.io.IOException;
 
 import by.ftp.projectnews.bean.News;
-import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
+import by.ftp.projectnews.controller.message.MessageLocal;
+import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
@@ -19,24 +20,27 @@ public class GoToUpdateNewsPage implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
-	
+
 	private static final String UPDATE_NEWS_PAGE_JSP = "/WEB-INF/jsp/updateNews.jsp";
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String ID_NEWS = "id_news";
 	private static final String NEWS = "news";
-	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
-	
+	private static final String PARAM_MESSAGE = "&message=";
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+		MessageResourceManager localManager = MessageResourceManager.getInstance();
+
 		HttpSession session = request.getSession(true);
 		String id_news = request.getParameter(ID_NEWS);
 		session.setAttribute(URL, CommandName.GO_TO_UPDATE_NEWS_PAGE.toString());
 		if (id_news == null || id_news.isEmpty()) {
 			String commandName = (String) session.getAttribute(URL);
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=" + MESSAGE_ERROR_ID);
+			String msg = localManager.getValue(MessageLocal.NEWS_INCORRECT_ID);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 			return;
 		}
 		try {
@@ -44,13 +48,13 @@ public class GoToUpdateNewsPage implements Command {
 			request.setAttribute(NEWS, newsToUpdate);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(UPDATE_NEWS_PAGE_JSP);
 			requestDispatcher.forward(request, response);
-			
+
 		} catch (ServiceException e) {
-			//log
+			// log
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);
 		}
-		
+
 	}
 
 }

@@ -6,6 +6,8 @@ import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
+import by.ftp.projectnews.controller.message.MessageLocal;
+import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
@@ -23,19 +25,27 @@ public class UpdateNews implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String ADMIN_ROLE = "admin";
 	private static final String ID_NEWS = "id_news";
+	private static final String PARAM_ID_NEWS = "&id_news=";
 	private static final String TITLE = "title";
 	private static final String BRIEF = "brief";
 	private static final String CONTENT = "content";
+	private static final String PARAM_MESSAGE = "&message=";
+	private static final String EMPTY_STRING = "";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String msg = EMPTY_STRING;
+		MessageResourceManager localManager = MessageResourceManager.getInstance();
+		
 		HttpSession session = request.getSession(false);
 		String commandName = CommandName.AUTHORIZATION.toString();
 
 		if (session == null) {
+			msg = localManager.getValue(MessageLocal.SESSION_LOST+MessageLocal.MUST_SIGN_IN);
 			request.getSession(true).setAttribute(URL, commandName);
 			response.sendRedirect(
-					CONTROLLER_COMMAND + commandName + "&message=You session is lost.You must sign in to the system!");
+					CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
 
 			return;
 		}
@@ -43,17 +53,19 @@ public class UpdateNews implements Command {
 		User user = (User) session.getAttribute(USER);
 
 		if (user == null) {
+			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN);
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign in to the system!");
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
 
 			return;
 		}
 
 		if (!ADMIN_ROLE.equals(user.getRole())) {
+			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
 			session.removeAttribute(USER);
 			// log
 			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=You must sign as an administrator'");
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
 
 			return;
 		}
@@ -64,9 +76,10 @@ public class UpdateNews implements Command {
 		String brief = request.getParameter(BRIEF);
 		String content = request.getParameter(CONTENT);
 
-		if ("".equals(title) || "".equals(brief) || "".equals(content)) {
+		if (EMPTY_STRING.equals(title) || EMPTY_STRING.equals(brief) || EMPTY_STRING.equals(content)) {
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=All fields should be fill!");
+			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE+msg);
 		}
 
 		News newsToUpdate = new News();
@@ -78,13 +91,15 @@ public class UpdateNews implements Command {
 		try {
 			NEWS_SERVICE.update(newsToUpdate);
 			String path = CommandName.GO_TO_PAGE_NEWS.toString();
+			msg = localManager.getValue(MessageLocal.NEWS_UPDATE_SUCCESS);
 			response.sendRedirect(
-					CONTROLLER_COMMAND + path + "&id_news=" + id_news + "&message=The news updated successfully!");
+					CONTROLLER_COMMAND + path + PARAM_ID_NEWS + id_news + PARAM_MESSAGE+msg);
 
 		} catch (ServiceException e) {
 			// log
 			String path = (String) session.getAttribute(URL);
-			response.sendRedirect(CONTROLLER_COMMAND + path + "&message=Something wrong at the updating the news!");
+			msg = localManager.getValue(MessageLocal.NEWS_UPDATE_WRONG);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE+msg);
 		}
 
 	}

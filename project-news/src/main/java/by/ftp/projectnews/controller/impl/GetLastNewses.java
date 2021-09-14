@@ -19,7 +19,7 @@ public class GetLastNewses implements Command {
 	private static final String MESSAGE = "message";
 	private static final String URL = "url";
 	private static final String MESSAGE_ERROR = "Coudn't get the list of newses";
-
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
@@ -27,6 +27,7 @@ public class GetLastNewses implements Command {
 			NEWS_SERVICE.getListOfNews();
 
 		} catch (ServiceException e) {
+			
 			request.setAttribute(MESSAGE, MESSAGE_ERROR);
 			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);

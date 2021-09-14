@@ -1,10 +1,15 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
+import by.ftp.projectnews.controller.message.MessageLocal;
+import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
@@ -25,19 +30,24 @@ public class GoToNewsPage implements Command {
 	private static final String URL = "url";
 	private static final String NEWS = "news";
 	private static final String MESSAGE = "message";
-	private static final String MESSAGE_ERROR = "Error in the title of news";
-	private static final String MESSAGE_ERROR_ID = "Incorrect id of news!";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
+	private static final String PARAM_MESSAGE = "&message=";
+	private static final String EMPTY_STRING = "";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;
+		String msg = EMPTY_STRING;
 		String id_news = request.getParameter(ID_NEWS);
 		HttpSession session = request.getSession(true);
 
+		MessageResourceManager localManager = MessageResourceManager.getInstance();
+
 		if (id_news == null || id_news.isEmpty()) {
+			msg = localManager.getValue(MessageLocal.NEWS_INCORRECT_ID);
+
 			String commandName = (String) session.getAttribute(URL);
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + "&message=" + MESSAGE_ERROR_ID);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 			return;
 		}
 
@@ -50,7 +60,8 @@ public class GoToNewsPage implements Command {
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-			request.setAttribute(MESSAGE, MESSAGE_ERROR);
+			msg = URLDecoder.decode(localManager.getValue(MessageLocal.NEWS_INCORRECT_TITLE), StandardCharsets.UTF_8);
+			request.setAttribute(MESSAGE, msg);
 			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);

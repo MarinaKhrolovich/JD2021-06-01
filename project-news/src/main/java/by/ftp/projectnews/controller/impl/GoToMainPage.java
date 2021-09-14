@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
+import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
@@ -21,11 +22,21 @@ public class GoToMainPage implements Command {
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 	private static final String URL = "url";
 	private static final String NEWSES = "newses";
+	private static final String LOCAL = "local";
+	private static final String LOCAL_BE = "be";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		MessageResourceManager localManager = MessageResourceManager.getInstance();
 		HttpSession session = request.getSession(true);
+
+		String local = (String) session.getAttribute(LOCAL);
+		if (local == null) {
+			session.setAttribute(LOCAL, LOCAL_BE);
+			localManager.setLocale(LOCAL_BE);
+		}
+
 		try {
 			request.setAttribute(NEWSES, NEWS_SERVICE.getListOfNews());
 			session.setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());

@@ -38,8 +38,8 @@
 	</font>
 
 	<br />
-	
-		<form action="Controller" method="post">
+	<br />
+	<form action="Controller" method="post">
 		<input type="hidden" name="command" value="go_to_main_page" /> <input
 			type="submit" value="${gomain}" /><br />
 	</form>

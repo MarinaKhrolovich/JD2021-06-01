@@ -21,6 +21,9 @@
 </head>
 <body>
 
+
+	<br />
+	
 	<font color="red" size="3"> <c:if test="${param.message!=null}">
 			<c:out value="${param.message}" />
 		</c:if>

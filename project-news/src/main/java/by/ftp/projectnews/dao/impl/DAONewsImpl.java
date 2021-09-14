@@ -44,7 +44,7 @@ public class DAONewsImpl implements DAONews {
 			ps.setString(3, news.getContent());
 			ps.setDate(4, Date.valueOf(LocalDate.now()));
 			ps.setString(5, news.getAuthor());
-			ps.setInt(6, news.getActivity());
+			ps.setByte(6, news.getActivity());
 			ps.executeUpdate();
 
 		} catch (SQLException e) {

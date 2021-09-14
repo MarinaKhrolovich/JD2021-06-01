@@ -17,9 +17,8 @@ public class GoToRegistrationPage implements Command {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String path = REGISTRATION_JSP;
 		request.getSession(true).setAttribute(URL, CommandName.REGISTRATION.toString());
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(REGISTRATION_JSP);
 
 		requestDispatcher.forward(request, response);
 	}
