@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.dao.DAOException;
@@ -15,7 +17,7 @@ import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 public class DAOUserImpl implements DAOUser {
 
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
-	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =? AND password =?";
+	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =?";// AND password =?";
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
@@ -30,7 +32,11 @@ public class DAOUserImpl implements DAOUser {
 			ps = con.prepareStatement(SELECT_REGISTRATION);
 
 			ps.setString(1, regInfo.getLogin());
-			ps.setString(2, regInfo.getPassword());
+
+			String salt = BCrypt.gensalt();
+			String hashpw = BCrypt.hashpw(regInfo.getPassword(), salt);
+
+			ps.setString(2, hashpw);
 			ps.setString(3, regInfo.getRole());
 			ps.setString(4, regInfo.getName());
 			ps.setString(5, regInfo.getSurName());
@@ -60,13 +66,15 @@ public class DAOUserImpl implements DAOUser {
 			User userFromBase = null;
 			ps = con.prepareStatement(SELECT_AUTHORIZATION);
 			ps.setString(1, login);
-			ps.setString(2, password);
+			//ps.setString(2, password);
 
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				userFromBase = new User();
-				userFromBase.setLogin(rs.getString(LOGIN));
-				userFromBase.setRole(rs.getString(ROLE));
+				if (BCrypt.checkpw(password, rs.getString("password"))) {
+					userFromBase = new User();
+					userFromBase.setLogin(rs.getString(LOGIN));
+					userFromBase.setRole(rs.getString(ROLE));
+				}
 			}
 			return userFromBase;
 		} catch (SQLException e) {

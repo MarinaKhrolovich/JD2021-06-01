@@ -2,6 +2,8 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
 import by.ftp.projectnews.controller.message.MessageResourceManager;

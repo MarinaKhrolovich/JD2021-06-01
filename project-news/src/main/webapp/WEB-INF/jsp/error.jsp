@@ -39,9 +39,7 @@
 
 	<br />
 	<br />
-	<form action="Controller" method="post">
-		<input type="hidden" name="command" value="go_to_main_page" /> <input
-			type="submit" value="${gomain}" /><br />
-	</form>
+	<a href="Controller?command=go_to_main_page">${gomain}</a>
+	
 </body>
 </html>

@@ -55,10 +55,10 @@
 		<input type="hidden" name="command" value="registration_new_user" />
 		<fieldset>
 			<legend>${reg_button}</legend>
-			<br /> ${login}:<input type="text" name="login"
-				value="${param.login}" required /><br /> <br /> ${password}:<input
+			<br /> ${login}*:<input type="text" name="login"
+				value="${param.login}" required /><br /> <br /> ${password}*:<input
 				type="password" name="password" value="" minlength="4" required /><br />
-			<br /> ${name}:<input type="text" name="name" value="${param.name}"
+			<br /> ${name}*:<input type="text" name="name" value="${param.name}"
 				required /><br /> <br /> ${surname}:<input type="text"
 				name="surname" value="${param.surname}" /><br /> <br /> ${sex}: <input
 				id="female" type="radio" name="sex" value="f"
@@ -77,11 +77,7 @@
 
 	<br />
 
-	<form action="Controller" method="post">
-		<input type="hidden" name="command" value="go_to_main_page" /> <input
-			type="submit" value="${gomain}" />
-
-	</form>
+	<a href="Controller?command=go_to_main_page">${gomain}</a>
 
 	<br />
 

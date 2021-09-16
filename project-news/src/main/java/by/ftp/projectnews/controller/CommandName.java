@@ -15,7 +15,6 @@ public enum CommandName {
 	GO_TO_PAGE_NEWS,
 	GO_TO_ADD_PAGE_NEWS,
 	GO_TO_UPDATE_NEWS_PAGE,
-	GET_LAST_NEWSES,
 	LOG_OUT;
 
 	@Override
