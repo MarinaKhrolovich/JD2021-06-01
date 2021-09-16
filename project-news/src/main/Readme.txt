@@ -15,6 +15,7 @@ I did at the application:
  	14. Add link to user profile if user logged in
  	15. Add log out
  	16. Add Filter
+ 	17. Hashed passwords by Bcrypt+check hashing password by the authorization
  	
   I want to do at the application:
 	1 .Add favorite news
