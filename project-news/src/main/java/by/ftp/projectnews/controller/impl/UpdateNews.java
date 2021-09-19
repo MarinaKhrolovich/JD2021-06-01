@@ -34,19 +34,17 @@ public class UpdateNews implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		String msg = EMPTY_STRING;
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
-		
+
 		HttpSession session = request.getSession(false);
-		String commandName = CommandName.AUTHORIZATION.toString();
+		String redirectAutho = CommandName.AUTHORIZATION.toString();
 
 		if (session == null) {
-			msg = localManager.getValue(MessageLocal.SESSION_LOST+MessageLocal.MUST_SIGN_IN);
-			request.getSession(true).setAttribute(URL, commandName);
-			response.sendRedirect(
-					CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
-
+			msg = localManager.getValue(MessageLocal.SESSION_LOST);
+			String puth = CommandName.GO_TO_MAIN_PAGE.toString();
+			response.sendRedirect(CONTROLLER_COMMAND + puth + PARAM_MESSAGE + msg);
 			return;
 		}
 
@@ -54,8 +52,7 @@ public class UpdateNews implements Command {
 
 		if (user == null) {
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN);
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}
@@ -64,8 +61,7 @@ public class UpdateNews implements Command {
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
 			session.removeAttribute(USER);
 			// log
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}
@@ -79,7 +75,8 @@ public class UpdateNews implements Command {
 		if (EMPTY_STRING.equals(title) || EMPTY_STRING.equals(brief) || EMPTY_STRING.equals(content)) {
 			String path = (String) session.getAttribute(URL);
 			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
-			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+			return;
 		}
 
 		News newsToUpdate = new News();
@@ -89,17 +86,28 @@ public class UpdateNews implements Command {
 		newsToUpdate.setContent(content);
 
 		try {
+			News newsFromBase = NEWS_SERVICE.getNews(title);
+			if (newsFromBase != null) {
+				if (Integer.parseInt(id_news) != newsFromBase.getId()) {
+
+					msg = localManager.getValue(MessageLocal.NEWS_ADD_TITLE_EXISTS);
+
+					String path = (String) session.getAttribute(URL);
+					response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+					return;
+				}
+			}
+
 			NEWS_SERVICE.update(newsToUpdate);
 			String path = CommandName.GO_TO_PAGE_NEWS.toString();
 			msg = localManager.getValue(MessageLocal.NEWS_UPDATE_SUCCESS);
-			response.sendRedirect(
-					CONTROLLER_COMMAND + path + PARAM_ID_NEWS + id_news + PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_ID_NEWS + id_news + PARAM_MESSAGE + msg);
 
 		} catch (ServiceException e) {
 			// log
 			String path = (String) session.getAttribute(URL);
 			msg = localManager.getValue(MessageLocal.NEWS_UPDATE_WRONG);
-			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 		}
 
 	}

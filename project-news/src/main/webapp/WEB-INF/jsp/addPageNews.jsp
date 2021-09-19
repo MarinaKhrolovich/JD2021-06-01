@@ -50,10 +50,10 @@
 		<input type="hidden" name="command" value="add_news" />
 		<fieldset>
 			<legend>${add_news}</legend>
-			<br /> ${title}:
-			<input type="text" name="title" value="" size="100"
-				maxlength="200" required /><br /> <br /> ${brief}:
-			<input type="text" name="brief" value="" size="100" maxlength="200"
+
+			<br /> ${title}: <input type="text" name="title" value="" size="100"
+				maxlength="200" required /><br /> <br /> ${brief}: <input
+				type="text" name="brief" value="" size="100" maxlength="200"
 				required /><br /> <br /> ${content}: <br />
 			<textarea name="content" cols="100" rows="15" maxlength="1000"
 				required>
@@ -68,7 +68,7 @@
 	<a href="Controller?command=go_to_main_page">${gomain}</a>
 
 	<br />
-	
+
 
 </body>
 </html>

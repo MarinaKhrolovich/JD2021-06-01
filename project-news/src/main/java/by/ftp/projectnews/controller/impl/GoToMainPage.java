@@ -2,8 +2,6 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
 import by.ftp.projectnews.controller.message.MessageResourceManager;
@@ -32,6 +30,7 @@ public class GoToMainPage implements Command {
 
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
 		HttpSession session = request.getSession(true);
+		session.setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());
 
 		String local = (String) session.getAttribute(LOCAL);
 		if (local == null) {
@@ -41,14 +40,10 @@ public class GoToMainPage implements Command {
 
 		try {
 			request.setAttribute(NEWSES, NEWS_SERVICE.getListOfNews());
-			session.setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());
-			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(MAIN_JSP);
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-
-			session.setAttribute(URL, CommandName.GO_TO_MAIN_PAGE.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);
 		}

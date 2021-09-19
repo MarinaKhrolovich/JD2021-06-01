@@ -1,8 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.bean.User;
@@ -37,14 +35,12 @@ public class DeleteNews implements Command {
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
 
 		HttpSession session = request.getSession(false);
-		String commandName = CommandName.AUTHORIZATION.toString();
+		String redirectAutho = CommandName.AUTHORIZATION.toString();
 
 		if (session == null) {
-			msg = localManager.getValue(MessageLocal.SESSION_LOST + MessageLocal.MUST_SIGN_IN);
-
-			request.getSession(true).setAttribute(URL, commandName);
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
-
+			msg = localManager.getValue(MessageLocal.SESSION_LOST);
+			String puth = CommandName.GO_TO_MAIN_PAGE.toString();
+			response.sendRedirect(CONTROLLER_COMMAND + puth + PARAM_MESSAGE + msg);
 			return;
 		}
 
@@ -53,8 +49,7 @@ public class DeleteNews implements Command {
 		if (user == null) {
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN);
 
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}
@@ -64,8 +59,7 @@ public class DeleteNews implements Command {
 
 			session.removeAttribute(USER);
 			// log
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}
@@ -75,7 +69,7 @@ public class DeleteNews implements Command {
 
 			msg = localManager.getValue(MessageLocal.NEWS_INCORRECT_ID);
 
-			commandName = (String) session.getAttribute(URL);
+			String commandName = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 			return;
 		}

@@ -16,9 +16,8 @@ public class GoToAuthorizationPage implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = AUTHORIZATION_JSP;
 		request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(AUTHORIZATION_JSP);
 		requestDispatcher.forward(request, response);
 	}
 }

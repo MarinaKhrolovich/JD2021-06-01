@@ -21,8 +21,8 @@ public class DAONewsImpl implements DAONews {
 	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author,activity) VALUES(?,?,?,?,?,?)";
 	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =? AND activity = 1";
 	private static final String DELETE_NEWS = "UPDATE newses SET activity = 0 WHERE id =? AND activity = 1";
-	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =? AND activity = 1";
-	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =? AND activity = 1";
+	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";// AND activity = 1";
+	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";// AND activity = 1";
 	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses WHERE activity = 1 ORDER BY id DESC LIMIT 5";
 	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? AND activity = 1 LIMIT 5";
 	private static final String ID = "id";

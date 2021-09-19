@@ -1,6 +1,8 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.controller.Command;
@@ -36,7 +38,7 @@ public class RegistrationNewUser implements Command {
 
 		String msg = EMPTY_STRING;
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
-		
+
 		HttpSession session = request.getSession(true);
 		String path = (String) session.getAttribute(URL);
 		String login = request.getParameter(LOGIN);
@@ -45,9 +47,9 @@ public class RegistrationNewUser implements Command {
 		String surname = request.getParameter(SURNAME);
 		String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
 		String sex = request.getParameter(SEX);
-		
+
 		try {
-		
+
 			RegistrationInfo regInfo = new RegistrationInfo();
 			regInfo.setLogin(login);
 			regInfo.setPassword(password);
@@ -55,27 +57,27 @@ public class RegistrationNewUser implements Command {
 			regInfo.setSurName(surname);
 			regInfo.setRole(USER);
 			regInfo.setSex(sex);
-			
-			if ((yearBirthday!= null) && (!yearBirthday.isEmpty())) {
+
+			if ((yearBirthday != null) && (!yearBirthday.isEmpty())) {
 				regInfo.setYearBirthday(Integer.parseInt(yearBirthday));
-			}
-			else {
+			} else {
 				regInfo.setYearBirthday(0);
 			}
 
 			USER_SERVICE.registration(regInfo);
 			String commandName = CommandName.AUTHORIZATION.toString();
 			msg = localManager.getValue(MessageLocal.USER_REG_SUCCESS);
-			request.getSession(true).setAttribute(URL, commandName);
-			response.sendRedirect(CONTROLLER_COMMAND+commandName+PARAM_MESSAGE+msg);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 
 		} catch (ServiceException e) {
 			// log
 			msg = localManager.getValue(MessageLocal.USER_REG_EXISTS);
 
-			response.sendRedirect(
-					CONTROLLER_COMMAND + path + "&login="+login+"&name="+name+"&surname="+surname
-						+"&yearBirthday="+yearBirthday+"&sex="+sex+PARAM_MESSAGE+msg);
+			String codeLogin = URLEncoder.encode(login, StandardCharsets.UTF_8);
+			String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+			String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+			response.sendRedirect(CONTROLLER_COMMAND + path + "&login=" + codeLogin + "&name=" + codeName + "&surname="
+					+ codeSurname + "&yearBirthday=" + yearBirthday + "&sex=" + sex + PARAM_MESSAGE + msg);
 		}
 
 	}

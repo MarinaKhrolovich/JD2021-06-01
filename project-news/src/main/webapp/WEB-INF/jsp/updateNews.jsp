@@ -35,7 +35,11 @@
 		</form>
 	</blockquote>
 
-
+	<font color="red" size="3"> <c:if test="${param.message!=null}">
+			<c:out value="${param.message}" />
+		</c:if>
+	</font>
+	
 	<h1>${update_news}</h1>
 
 	<br />

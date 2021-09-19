@@ -18,16 +18,16 @@ public class UnknownCommand implements Command {
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String MESSAGE = "message";
-	
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String path = ERROR_JSP;
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
-		String msg = URLDecoder.decode(localManager.getValue(MessageLocal.UNKNOWN_COMMAND), StandardCharsets.UTF_8); 
+		String msg = URLDecoder.decode(localManager.getValue(MessageLocal.UNKNOWN_COMMAND), StandardCharsets.UTF_8);
+
 		request.setAttribute(MESSAGE, msg);
 		request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 		requestDispatcher.forward(request, response);
 	}
 

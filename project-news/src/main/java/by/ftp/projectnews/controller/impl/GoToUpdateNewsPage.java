@@ -25,6 +25,7 @@ public class GoToUpdateNewsPage implements Command {
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String ID_NEWS = "id_news";
+	private static final String PARAM_ID_NEWS = "&id_news=";
 	private static final String NEWS = "news";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
@@ -36,7 +37,7 @@ public class GoToUpdateNewsPage implements Command {
 
 		HttpSession session = request.getSession(true);
 		String id_news = request.getParameter(ID_NEWS);
-		session.setAttribute(URL, CommandName.GO_TO_UPDATE_NEWS_PAGE.toString());
+
 		if (id_news == null || id_news.isEmpty()) {
 			String commandName = (String) session.getAttribute(URL);
 			String msg = localManager.getValue(MessageLocal.NEWS_INCORRECT_ID);
@@ -46,6 +47,7 @@ public class GoToUpdateNewsPage implements Command {
 		try {
 			News newsToUpdate = NEWS_SERVICE.getNews(Integer.parseInt(id_news));
 			request.setAttribute(NEWS, newsToUpdate);
+			session.setAttribute(URL, CommandName.GO_TO_UPDATE_NEWS_PAGE.toString() + PARAM_ID_NEWS + id_news);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(UPDATE_NEWS_PAGE_JSP);
 			requestDispatcher.forward(request, response);
 

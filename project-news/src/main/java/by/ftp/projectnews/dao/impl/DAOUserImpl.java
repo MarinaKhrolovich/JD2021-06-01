@@ -21,6 +21,7 @@ public class DAOUserImpl implements DAOUser {
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
+	private static final String PASSWORD = "password";
 
 	@Override
 	public void registration(RegistrationInfo regInfo) throws DAOException {
@@ -66,11 +67,10 @@ public class DAOUserImpl implements DAOUser {
 			User userFromBase = null;
 			ps = con.prepareStatement(SELECT_AUTHORIZATION);
 			ps.setString(1, login);
-			//ps.setString(2, password);
 
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				if (BCrypt.checkpw(password, rs.getString("password"))) {
+				if (BCrypt.checkpw(password, rs.getString(PASSWORD))) {
 					userFromBase = new User();
 					userFromBase.setLogin(rs.getString(LOGIN));
 					userFromBase.setRole(rs.getString(ROLE));

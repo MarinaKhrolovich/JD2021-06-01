@@ -1,8 +1,6 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
@@ -31,14 +29,12 @@ public class GoToAddPageNews implements Command {
 		MessageResourceManager localManager = MessageResourceManager.getInstance();
 
 		HttpSession session = request.getSession(false);
-		String commandName = CommandName.AUTHORIZATION.toString();
+		String redirectAutho = CommandName.AUTHORIZATION.toString();
 
 		if (session == null) {
-			msg = localManager.getValue(MessageLocal.SESSION_LOST + MessageLocal.MUST_SIGN_IN);
-
-			request.getSession(true).setAttribute(URL, commandName);
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
-
+			msg = localManager.getValue(MessageLocal.SESSION_LOST);
+			String puth = CommandName.GO_TO_MAIN_PAGE.toString();
+			response.sendRedirect(CONTROLLER_COMMAND + puth + PARAM_MESSAGE + msg);
 			return;
 		}
 
@@ -47,8 +43,7 @@ public class GoToAddPageNews implements Command {
 		if (user == null) {
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN);
 
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}
@@ -58,8 +53,7 @@ public class GoToAddPageNews implements Command {
 			// log
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
 
-			request.getSession(true).setAttribute(URL, CommandName.AUTHORIZATION.toString());
-			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
+			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
 		}

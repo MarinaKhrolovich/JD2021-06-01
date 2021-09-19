@@ -50,6 +50,7 @@ public class AddNews implements Command {
 
 			String path = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+			return;
 		}
 
 		News news = new News();
@@ -67,16 +68,16 @@ public class AddNews implements Command {
 
 				NEWS_SERVICE.add(news);
 				News newNews = NEWS_SERVICE.getNews(title);
-				request.getSession(true).setAttribute(URL, commandName);
 				response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_ID_NEWS + String.valueOf(newNews.getId())
 						+ PARAM_MESSAGE + msg);
 
 			} else {
 
 				msg = localManager.getValue(MessageLocal.NEWS_ADD_TITLE_EXISTS);
-	
+
 				String path = (String) session.getAttribute(URL);
 				response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+
 			}
 
 		} catch (ServiceException e) {

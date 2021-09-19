@@ -2,7 +2,6 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.News;
@@ -62,7 +61,6 @@ public class GoToNewsPage implements Command {
 		} catch (ServiceException e) {
 			msg = URLDecoder.decode(localManager.getValue(MessageLocal.NEWS_INCORRECT_TITLE), StandardCharsets.UTF_8);
 			request.setAttribute(MESSAGE, msg);
-			request.getSession(true).setAttribute(URL, CommandName.UNKNOWN_COMMAND.toString());
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);
 		}

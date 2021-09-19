@@ -51,7 +51,6 @@ public class AuthorizationUser implements Command {
 				msg = localManager.getValue(MessageLocal.USER_AUTHO_SUCCESS);
 				session.setAttribute(USER, user);
 				String commandName = CommandName.GO_TO_USER_PAGE.toString();
-				session.setAttribute(URL, commandName);
 				response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 			} else {
 				msg = localManager.getValue(MessageLocal.USER_AUTO_LOGIN_WRONG);
