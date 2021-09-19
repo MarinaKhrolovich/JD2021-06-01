@@ -17,8 +17,7 @@ I did at the application:
  	16. Add Filter
  	17. Hashed passwords by Bcrypt+check hashing password by the authorization
 	
- 
-  I want to do at the application:
+   I want to do at the application:
 	1 .Add favorite news
 	2. Add pages to the main page and user page   
 	3. Full validation of parameters
@@ -27,7 +26,7 @@ I did at the application:
 	6. Add Logger
 	7. Add Admin page
 	8. Delete users by Admin
-	9.Delete newses of user by Admin
+	9. Delete newses of user by Admin
 	10.Confirm password by the registration
 	11.Use email by the registration
 
