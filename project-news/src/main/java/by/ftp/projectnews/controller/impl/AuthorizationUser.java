@@ -40,7 +40,7 @@ public class AuthorizationUser implements Command {
 
 		try {
 
-			if (login == null || login.isEmpty()) {
+			if (checkNullEmpty(login) || checkNullEmpty(password)) {
 				msg = localManager.getValue(MessageLocal.USER_AUTHO_INVALID_LOGIN);
 				String path = (String) session.getAttribute(URL);
 				response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
@@ -66,5 +66,11 @@ public class AuthorizationUser implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 
 		}
+	}
+
+	public boolean checkNullEmpty(String field) {
+
+		return field == null || field.isEmpty();
+
 	}
 }

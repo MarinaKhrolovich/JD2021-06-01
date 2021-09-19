@@ -12,6 +12,7 @@ public interface MessageLocal {
 	public static final String SESSION_LOST = "local.message.sessionLost";
 	public static final String MUST_SIGN_IN = "local.message.mustSignIn";
 	public static final String MUST_SIGN_IN_AS_ADMIN = "local.message.mustSignAsAdmin";
+	public static final String FILL_ALL_FIELDS = "local.message.fillAllFields";
 	public static final String FILL_FIELDS = "local.message.fillFields";
 	public static final String UNKNOWN_COMMAND = "local.message.unknownCommand";
 

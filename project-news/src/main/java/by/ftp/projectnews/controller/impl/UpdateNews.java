@@ -74,7 +74,7 @@ public class UpdateNews implements Command {
 
 		if (EMPTY_STRING.equals(title) || EMPTY_STRING.equals(brief) || EMPTY_STRING.equals(content)) {
 			String path = (String) session.getAttribute(URL);
-			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
+			msg = localManager.getValue(MessageLocal.FILL_ALL_FIELDS);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 			return;
 		}

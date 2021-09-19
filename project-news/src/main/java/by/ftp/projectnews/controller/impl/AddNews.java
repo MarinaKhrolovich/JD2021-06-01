@@ -46,7 +46,7 @@ public class AddNews implements Command {
 
 		if (title == null || title.isEmpty() || brief == null || brief.isEmpty() || content == null
 				|| content.isEmpty()) {
-			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
+			msg = localManager.getValue(MessageLocal.FILL_ALL_FIELDS);
 
 			String path = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);

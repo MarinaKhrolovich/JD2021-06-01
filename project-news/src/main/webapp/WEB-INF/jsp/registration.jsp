@@ -55,10 +55,10 @@
 		<fieldset>
 			<legend>${reg_button}</legend>
 			<br /> ${login}*:<input type="text" name="login"
-				value="${param.login}" required /><br /> <br /> ${password}*:<input
-				type="password" name="password" value="" minlength="4" required /><br />
+				value="${param.login}" /><br /> <br /> ${password}*:<input
+				type="password" name="password" value="" minlength="4" /><br />
 			<br /> ${name}*:<input type="text" name="name" value="${param.name}"
-				required /><br /> <br /> ${surname}:<input type="text"
+				/><br /> <br /> ${surname}:<input type="text"
 				name="surname" value="${param.surname}" /><br /> <br /> ${sex}: <input
 				id="female" type="radio" name="sex" value="f"
 				${param.sex == 'f'|| param.sex == null ? 'checked' : ''}> <label

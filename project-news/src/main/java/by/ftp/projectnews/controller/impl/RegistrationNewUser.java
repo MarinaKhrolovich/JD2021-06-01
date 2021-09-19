@@ -48,9 +48,21 @@ public class RegistrationNewUser implements Command {
 		String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
 		String sex = request.getParameter(SEX);
 
+		String codeLogin = URLEncoder.encode(null, StandardCharsets.UTF_8);
+		String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+		String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+		
+		if (checkNullEmpty(login) || checkNullEmpty(password)|| checkNullEmpty(name)) {
+			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
+			response.sendRedirect(CONTROLLER_COMMAND + path + "&login=" + codeLogin + "&name=" + codeName + "&surname="
+					+ codeSurname + "&yearBirthday=" + yearBirthday + "&sex=" + sex + PARAM_MESSAGE + msg);
+			return;
+		}
+		
 		try {
 
 			RegistrationInfo regInfo = new RegistrationInfo();
+			
 			regInfo.setLogin(login);
 			regInfo.setPassword(password);
 			regInfo.setName(name);
@@ -72,13 +84,16 @@ public class RegistrationNewUser implements Command {
 		} catch (ServiceException e) {
 			// log
 			msg = localManager.getValue(MessageLocal.USER_REG_EXISTS);
-
-			String codeLogin = URLEncoder.encode(login, StandardCharsets.UTF_8);
-			String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
-			String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+			
 			response.sendRedirect(CONTROLLER_COMMAND + path + "&login=" + codeLogin + "&name=" + codeName + "&surname="
 					+ codeSurname + "&yearBirthday=" + yearBirthday + "&sex=" + sex + PARAM_MESSAGE + msg);
 		}
 
+	}
+	
+	public boolean checkNullEmpty(String field) {
+		
+		return field == null || field.isEmpty();
+		
 	}
 }
