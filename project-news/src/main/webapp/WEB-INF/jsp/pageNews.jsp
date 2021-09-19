@@ -21,7 +21,18 @@
 </head>
 <body>
 
-
+	<blockquote>
+		<form action="Controller" method="get" onchange="submit()">
+			<input type="hidden" name="command" value="change_local"> <select
+				name="local">
+				<option value="en" ${local == 'en' ? 'selected' : ''}>ENG</option>
+				<option value="be" ${local == 'be' ? 'selected' : ''}>BY</option>
+				<option value="ru" ${local == 'ru' ? 'selected' : ''}>RU</option>
+			</select>
+		</form>
+	</blockquote>
+	
+	<br />
 	<br />
 	
 	<font color="red" size="3"> <c:if test="${param.message!=null}">

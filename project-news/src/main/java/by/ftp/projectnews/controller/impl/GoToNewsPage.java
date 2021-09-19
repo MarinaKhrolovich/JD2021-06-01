@@ -32,6 +32,7 @@ public class GoToNewsPage implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
+	private static final String PARAM_ID_NEWS = "&id_news=";
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -53,7 +54,7 @@ public class GoToNewsPage implements Command {
 		try {
 			News newsToShow = NEWS_SERVICE.getNews(Integer.parseInt(id_news));
 			request.setAttribute(NEWS, newsToShow);
-			session.setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString());
+			session.setAttribute(URL, CommandName.GO_TO_PAGE_NEWS.toString() + PARAM_ID_NEWS + id_news);
 
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(path);
 			requestDispatcher.forward(request, response);
