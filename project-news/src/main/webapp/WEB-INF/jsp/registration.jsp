@@ -54,18 +54,25 @@
 		<input type="hidden" name="command" value="registration_new_user" />
 		<fieldset>
 			<legend>${reg_button}</legend>
-			<br /> ${login}*:<input type="text" name="login"
-				value="${param.login}" /><br /> <br /> ${password}*:<input
-				type="password" name="password" value="" minlength="4" /><br />
-			<br /> ${name}*:<input type="text" name="name" value="${param.name}"
-				/><br /> <br /> ${surname}:<input type="text"
-				name="surname" value="${param.surname}" /><br /> <br /> ${sex}: <input
-				id="female" type="radio" name="sex" value="f"
-				${param.sex == 'f'|| param.sex == null ? 'checked' : ''}> <label
-				for="female">${female}</label> <input id="male" type="radio"
-				name="sex" value="m" ${param.sex == 'm' ? 'checked' : ''}> <label
-				for="male">${male}</label> <br /> <br /> ${yearBirthday}:<input
-				type="text" name="yearBirthday" minlength="4" maxlength="4"
+			<br /> 
+			${login}*:<input type="text" name="login" value="${param.login}" /><br /> 
+			<br /> 
+			${password}*:<input	type="password" name="password" value="" /><br />
+			<br /> 
+			${name}*:<input type="text" name="name" value="${param.name}"/><br />
+			<br />
+			${surname}:<input type="text"
+				name="surname" value="${param.surname}" /><br />
+			<br /> 
+			${sex}:<input id="female" type="radio" name="sex" value="f" 
+						${param.sex == 'f'|| param.sex == null ? 'checked' : ''}> 
+				   <label for="female">${female}</label>
+				 
+				   <input id="male" type="radio"
+						name="sex" value="m" ${param.sex == 'm' ? 'checked' : ''}> 
+				   <label for="male">${male}</label><br />
+			<br />
+			${yearBirthday}:<input type="text" name="yearBirthday" maxlength="4"
 				pattern="[0-9]*" title="You should enter only numbers"
 				value="${param.yearBirthday}" /><br />
 		</fieldset>

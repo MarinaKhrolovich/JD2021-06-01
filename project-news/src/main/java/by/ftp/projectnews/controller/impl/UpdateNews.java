@@ -72,7 +72,7 @@ public class UpdateNews implements Command {
 		String brief = request.getParameter(BRIEF);
 		String content = request.getParameter(CONTENT);
 
-		if (EMPTY_STRING.equals(title) || EMPTY_STRING.equals(brief) || EMPTY_STRING.equals(content)) {
+		if (checkNullEmpty(title) || checkNullEmpty(brief) || checkNullEmpty(content)){
 			String path = (String) session.getAttribute(URL);
 			msg = localManager.getValue(MessageLocal.FILL_ALL_FIELDS);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
@@ -110,6 +110,12 @@ public class UpdateNews implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 		}
 
+	}
+	
+	public boolean checkNullEmpty(String field) {
+		
+		return field == null || field.isEmpty();
+		
 	}
 
 }

@@ -49,9 +49,9 @@
 		<input type="hidden" name="command" value="authorization_user" />
 		<fieldset>
 			<legend>${auth_button}</legend>
-			${login}:<br /> <input type="text" name="login"
-				value="${param.login}" /><br /> <br /> ${password}:<br /> <input
-				type="password" name="password" value="" /><br />
+			${login}:<br /> <input type="text" name="login"	value="${param.login}" /><br />
+			<br />
+			${password}:<br /> <input type="password" name="password" value="" /><br />
 
 		</fieldset>
 		<br /> <input type="submit" value="${enter}" /><br />

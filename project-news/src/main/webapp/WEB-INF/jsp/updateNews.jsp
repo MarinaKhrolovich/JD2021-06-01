@@ -51,16 +51,15 @@
 			<legend>${add_news}</legend>
 			<br /> 
 				${title}:<input type="text" name="title"
-				value="${requestScope.news.getTitle()}" size="100" maxlength="45"
-				required /><br /> <br /> 
+				value="${requestScope.news.getTitle()}" size="100" maxlength="45"/>
+				<br />
+				<br /> 
 				${brief}:<input type="text" name="brief"
-				value="${requestScope.news.getBrief()}" size="100" maxlength="200"
-				required /> <br /> <br /> 
+				value="${requestScope.news.getBrief()}" size="100" maxlength="200"/>
+				<br /> <br /> 
 				${content}: <br />
-			<textarea name="content" cols=" 80" rows="15" maxlength="1000"
-				required>
-				${requestScope.news.getContent()}
-			</textarea>
+				<textarea name="content" cols=" 80" rows="15" 
+					maxlength="1000">${requestScope.news.getContent()}</textarea>
 			<br /> <br /> <input type="submit" value="${submit}" /><br /> <br />
 		</fieldset>
 

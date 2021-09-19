@@ -44,8 +44,7 @@ public class AddNews implements Command {
 		String brief = request.getParameter(BRIEF);
 		String content = request.getParameter(CONTENT);
 
-		if (title == null || title.isEmpty() || brief == null || brief.isEmpty() || content == null
-				|| content.isEmpty()) {
+		if (checkNullEmpty(title) || checkNullEmpty(brief) || checkNullEmpty(content)) {
 			msg = localManager.getValue(MessageLocal.FILL_ALL_FIELDS);
 
 			String path = (String) session.getAttribute(URL);
@@ -88,5 +87,11 @@ public class AddNews implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 		}
 
+	}
+	
+	public boolean checkNullEmpty(String field) {
+		
+		return field == null || field.isEmpty();
+		
 	}
 }
