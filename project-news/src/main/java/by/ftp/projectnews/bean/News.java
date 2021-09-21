@@ -1,6 +1,7 @@
 package by.ftp.projectnews.bean;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class News implements Serializable {
 
@@ -12,18 +13,20 @@ public class News implements Serializable {
 	private String author;
 	private int id;
 	private byte activity;
-
+	private Date date;
+	;
 	public News() {
 
 	}
 
-	public News(int id, String title, String brief, String content, String author) {
+	public News(int id, String title, String brief, String content, String author, Date date) {
 		this.id = id;
 		this.title = title;
 		this.brief = brief;
 		this.content = content;
 		this.author = author;
 		this.activity = 1;
+		this.date = date;
 	}
 
 	public int getId() {
@@ -74,6 +77,14 @@ public class News implements Serializable {
 		this.activity = activity;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -84,6 +95,7 @@ public class News implements Serializable {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
 		result = prime * result + activity;
+		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		return result;
 	}
 
@@ -119,6 +131,11 @@ public class News implements Serializable {
 		if (id != other.id)
 			return false;
 		if (activity != other.activity)
+			return false;
+		if (date == null) {
+			if (other.date != null)
+				return false;
+		} else if (!date.equals(other.date))
 			return false;
 		return true;
 	}

@@ -1,6 +1,8 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -64,6 +66,7 @@ public class AddNews implements Command {
 		news.setContent(content);
 		news.setAuthor(user.getLogin());
 		news.setActivity((byte) 1);
+		news.setDate(Date.valueOf(LocalDate.now()));
 		commandName = CommandName.GO_TO_PAGE_NEWS.toString();
 
 		try {

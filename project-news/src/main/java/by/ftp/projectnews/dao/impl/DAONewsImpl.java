@@ -21,7 +21,9 @@ public class DAONewsImpl implements DAONews {
 	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author,activity) VALUES(?,?,?,?,?,?)";
 	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =? AND activity = 1";
 	private static final String DELETE_NEWS = "UPDATE newses SET activity = 0 WHERE id =? AND activity = 1";
-	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";// AND activity = 1";
+	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";// AND
+																												// activity
+																												// = 1";
 	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";// AND activity = 1";
 	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses WHERE activity = 1 ORDER BY id DESC LIMIT 5";
 	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? AND activity = 1 LIMIT 5";
@@ -30,6 +32,7 @@ public class DAONewsImpl implements DAONews {
 	private static final String BRIEF = "brief";
 	private static final String CONTENT = "content";
 	private static final String AUTHOR = "author";
+	private static final String DATE = "date";
 
 	@Override
 	public void add(News news) throws DAOException {
@@ -42,7 +45,7 @@ public class DAONewsImpl implements DAONews {
 			ps.setString(1, news.getTitle());
 			ps.setString(2, news.getBrief());
 			ps.setString(3, news.getContent());
-			ps.setDate(4, Date.valueOf(LocalDate.now()));
+			ps.setDate(4, news.getDate());
 			ps.setString(5, news.getAuthor());
 			ps.setByte(6, news.getActivity());
 			ps.executeUpdate();
@@ -56,7 +59,7 @@ public class DAONewsImpl implements DAONews {
 		}
 
 	}
-	
+
 	@Override
 	public void delete(News news) throws DAOException {
 		Connection con = null;
@@ -103,7 +106,7 @@ public class DAONewsImpl implements DAONews {
 		}
 
 	}
-	
+
 	@Override
 	public List<News> getListOfNews() throws DAOException {
 
@@ -120,7 +123,7 @@ public class DAONewsImpl implements DAONews {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				newsFromBase = new News(rs.getInt(ID), rs.getString(TITLE), rs.getString(BRIEF), rs.getString(CONTENT),
-						rs.getString(AUTHOR));
+						rs.getString(AUTHOR), rs.getDate(DATE));
 				if (!newses.contains(newsFromBase)) {
 					newses.add(newsFromBase);
 				}
@@ -146,13 +149,13 @@ public class DAONewsImpl implements DAONews {
 		News newsFromBase = null;
 		try {
 			con = CONN_PULL.takeConnection();
-			
+
 			ps = con.prepareStatement(SELECT_GET_LIST_OF_NEWS_AUTHOR);
 			ps.setString(1, author);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				newsFromBase = new News(rs.getInt(ID), rs.getString(TITLE), rs.getString(BRIEF), rs.getString(CONTENT),
-						rs.getString(AUTHOR));
+						rs.getString(AUTHOR), rs.getDate(DATE));
 				if (!newses.contains(newsFromBase)) {
 					newses.add(newsFromBase);
 				}
@@ -185,7 +188,7 @@ public class DAONewsImpl implements DAONews {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				newsFromBase = new News(rs.getInt(ID), rs.getString(TITLE), rs.getString(BRIEF), rs.getString(CONTENT),
-						rs.getString(AUTHOR));
+						rs.getString(AUTHOR), rs.getDate(DATE));
 			}
 			return newsFromBase;
 		} catch (SQLException e) {
@@ -213,7 +216,7 @@ public class DAONewsImpl implements DAONews {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				newsFromBase = new News(rs.getInt(ID), rs.getString(TITLE), rs.getString(BRIEF), rs.getString(CONTENT),
-						rs.getString(AUTHOR));
+						rs.getString(AUTHOR), rs.getDate(DATE));
 			}
 			return newsFromBase;
 
