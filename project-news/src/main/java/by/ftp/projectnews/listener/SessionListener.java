@@ -1,9 +1,14 @@
 package by.ftp.projectnews.listener;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import jakarta.servlet.http.HttpSessionAttributeListener;
 import jakarta.servlet.http.HttpSessionBindingEvent;
 
 public class SessionListener implements HttpSessionAttributeListener {
+
+	private final static Logger LOG = LogManager.getLogger(SessionListener.class);
 
 	public SessionListener() {
 
@@ -11,21 +16,17 @@ public class SessionListener implements HttpSessionAttributeListener {
 
 	@Override
 	public void attributeAdded(HttpSessionBindingEvent event) {
-		System.out.println(
-				"added: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
+		LOG.info("added: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
 	}
 
 	@Override
 	public void attributeRemoved(HttpSessionBindingEvent event) {
-		System.out.println(
-				"removed: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
-
+		LOG.info("removed: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
 	}
 
 	@Override
 	public void attributeReplaced(HttpSessionBindingEvent event) {
-		System.out.println(
-				"replaced: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
+		LOG.info("replaced: " + event.getClass().getSimpleName() + " : " + event.getName() + " : " + event.getValue());
 	}
 
 }

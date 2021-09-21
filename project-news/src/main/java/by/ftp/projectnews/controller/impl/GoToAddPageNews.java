@@ -1,6 +1,11 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
@@ -22,6 +27,8 @@ public class GoToAddPageNews implements Command {
 	private static final String ADMIN_ROLE = "admin";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
+	private static final String LOG_MESSAGE = "tried to add news as user, must sign in as admin";
+	private final static Logger LOG = LogManager.getLogger(GoToAddPageNews.class);
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -50,9 +57,9 @@ public class GoToAddPageNews implements Command {
 
 		if (!ADMIN_ROLE.equals(user.getRole())) {
 			session.removeAttribute(USER);
-			// log
-			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
 
+			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
+			LOG.warn(user.getLogin() + ": "+LOG_MESSAGE);
 			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;

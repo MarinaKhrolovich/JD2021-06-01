@@ -1,21 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration>
-  <Properties>
-    <Property name="filename">logs/log.log</Property>
-    <Property name="basePatterLayout">%d{ISO8601} [%-5p] (%F:%L) - %m%n</Property>
-  </Properties>
-  <appenders>
-    <Console name="STDOUT" target="SYSTEM_OUT">
-      <PatternLayout pattern="${basePatterLayout}" />
-    </Console>
-  </appenders>
-  <loggers>
-    <logger name="by.htp.mavenex.logger.App" level="info" additivity="true" >
-      <appender-ref ref="STDOUT"/>
-    </logger>
-    <root level="warn">
-      <appender-ref ref="STDOUT"/>
-    </root>
-  </loggers>
+	<Properties>
+
+		<Property name="filename">C:\Users\marina\git\JD2021-06-01\project-news\src\main\resources\logs\log.log</Property>
+		<Property name="basePatterLayout">%d{yyyy-MM-dd HH:mm:ss} [%-5p] (%F:%L) - %m%n</Property>
+
+	</Properties>
+
+	<appenders>
+
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<PatternLayout pattern="${basePatterLayout}" />
+		</Console>
+
+		<RollingFile name="fileLog" fileName="${filename}" filePattern="logs/%d{dd-MM-yyyy}.log.gz">
+			<PatternLayout pattern="${basePatterLayout}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="5 MB" />
+			</Policies>
+		</RollingFile>
+
+
+	</appenders>
+
+	<loggers>
+
+		<logger name="by.ftp.projectnews.controller" level="warn"
+			additivity="true">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="fileLog" />
+		</logger>
+		<root level="info">
+			<appender-ref ref="fileLog" />
+		</root>
+	</loggers>
 </configuration>

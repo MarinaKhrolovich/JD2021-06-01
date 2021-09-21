@@ -2,6 +2,9 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
@@ -27,7 +30,9 @@ public class DeleteNews implements Command {
 	private static final String ID_NEWS = "id_news";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-
+	private final static Logger LOG = LogManager.getLogger(DeleteNews.class);
+	private static final String LOG_MESSAGE = "tried to add news as user, must sign in as admin";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -55,10 +60,11 @@ public class DeleteNews implements Command {
 		}
 
 		if (!ADMIN_ROLE.equals(user.getRole())) {
+	
 			msg = localManager.getValue(MessageLocal.MUST_SIGN_IN_AS_ADMIN);
 
+			LOG.warn(user.getLogin() + ": "+LOG_MESSAGE);
 			session.removeAttribute(USER);
-			// log
 			response.sendRedirect(CONTROLLER_COMMAND + redirectAutho + PARAM_MESSAGE + msg);
 
 			return;
@@ -83,7 +89,8 @@ public class DeleteNews implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 
 		} catch (ServiceException e) {
-			// log
+			
+			LOG.error(e);
 			msg = localManager.getValue(MessageLocal.NEWS_DELETE_WRONG);
 
 			String path = (String) session.getAttribute(URL);

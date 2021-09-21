@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -33,7 +36,8 @@ public class GoToNewsPage implements Command {
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
 	private static final String PARAM_ID_NEWS = "&id_news=";
-
+	private final static Logger LOG = LogManager.getLogger(GoToNewsPage.class);
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;
@@ -60,6 +64,7 @@ public class GoToNewsPage implements Command {
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
+			LOG.error(e);
 			msg = URLDecoder.decode(localManager.getValue(MessageLocal.NEWS_INCORRECT_TITLE), StandardCharsets.UTF_8);
 			request.setAttribute(MESSAGE, msg);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);

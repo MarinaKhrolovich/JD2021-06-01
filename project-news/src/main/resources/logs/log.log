@@ -1,0 +1,184 @@
+2021-09-21 13:21:24 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID C55BD39C8B85C6DE8D3070FF19CDA26D was initialized.
+2021-09-21 13:21:24 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID C55BD39C8B85C6DE8D3070FF19CDA26D was destroyed.
+2021-09-21 13:21:24 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:21:25 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:21:25 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:21:26 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:23:15 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:15 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:23:20 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : user : by.ftp.projectnews.bean.User [role=user, login=Artyom]
+2021-09-21 13:23:20 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:23:20 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : url : AUTHORIZATION
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:20 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:23:22 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:24) - removed: HttpSessionBindingEvent : user : by.ftp.projectnews.bean.User [role=user, login=Artyom]
+2021-09-21 13:23:22 [WARN ] (GoToAddPageNews.java:62) - Artyom: tried to add news as user, must sign in as admin
+2021-09-21 13:23:22 [WARN ] (GoToAddPageNews.java:62) - Artyom: tried to add news as user, must sign in as admin
+2021-09-21 13:23:22 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:23:22 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was initialized.
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : url : GO_TO_USER_PAGE
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:23:22 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 31BEE8193784E8C252AC767632448A31 was destroyed.
+2021-09-21 13:41:27 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID DB5086D824AC857C1772A6C0A900E5C9 was initialized.
+2021-09-21 13:41:27 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID DB5086D824AC857C1772A6C0A900E5C9 was destroyed.
+2021-09-21 13:41:27 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID F8DE9C290A0D8D50FE62B5D37C189894 was initialized.
+2021-09-21 13:41:28 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:41:28 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:41:29 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID F8DE9C290A0D8D50FE62B5D37C189894 was destroyed.
+2021-09-21 13:43:24 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID F8DE9C290A0D8D50FE62B5D37C189894 was initialized.
+2021-09-21 13:43:25 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID F8DE9C290A0D8D50FE62B5D37C189894 was destroyed.
+2021-09-21 13:43:25 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID B0DCEB27773747B0307CCA9CEF3C1E10 was initialized.
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:43:26 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID B0DCEB27773747B0307CCA9CEF3C1E10 was destroyed.
+2021-09-21 13:45:25 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID B0DCEB27773747B0307CCA9CEF3C1E10 was initialized.
+2021-09-21 13:45:25 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID B0DCEB27773747B0307CCA9CEF3C1E10 was destroyed.
+2021-09-21 13:45:25 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID B0DCEB27773747B0307CCA9CEF3C1E10 was initialized.
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:25 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID B0DCEB27773747B0307CCA9CEF3C1E10 was destroyed.
+2021-09-21 13:45:30 [INFO ] (SessionListener.java:24) - removed: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:45:30 [INFO ] (SessionListener.java:24) - removed: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:45:30 [INFO ] (SessionListener.java:24) - removed: HttpSessionBindingEvent : local : be
+2021-09-21 13:51:17 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID B0DCEB27773747B0307CCA9CEF3C1E10 was initialized.
+2021-09-21 13:51:18 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID B0DCEB27773747B0307CCA9CEF3C1E10 was destroyed.
+2021-09-21 13:51:18 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID A9DE5AD5BA20C591FC47B7F9A1431009 was initialized.
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:19 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID A9DE5AD5BA20C591FC47B7F9A1431009 was destroyed.
+2021-09-21 13:51:30 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID A9DE5AD5BA20C591FC47B7F9A1431009 was initialized.
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 13:51:30 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID A9DE5AD5BA20C591FC47B7F9A1431009 was destroyed.
+2021-09-21 14:06:45 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID 6B88F0819AB67DDCD30852BAA955ADB4 was initialized.
+2021-09-21 14:06:45 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID 6B88F0819AB67DDCD30852BAA955ADB4 was destroyed.
+2021-09-21 14:06:45 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 2871CAC1C0D0595FD31A152E506DC233 was initialized.
+2021-09-21 14:06:46 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 14:06:46 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:06:47 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 2871CAC1C0D0595FD31A152E506DC233 was destroyed.
+2021-09-21 14:07:48 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID 2871CAC1C0D0595FD31A152E506DC233 was initialized.
+2021-09-21 14:07:48 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID 2871CAC1C0D0595FD31A152E506DC233 was destroyed.
+2021-09-21 14:07:48 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 5166BB39681BE0C454017DD23F18F9A0 was initialized.
+2021-09-21 14:07:50 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 14:07:50 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 14:07:50 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:50 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:07:51 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 5166BB39681BE0C454017DD23F18F9A0 was destroyed.
+2021-09-21 14:13:11 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID E8D657A1DA086DCC7794D0E9060C80FF was initialized.
+2021-09-21 14:13:12 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID E8D657A1DA086DCC7794D0E9060C80FF was destroyed.
+2021-09-21 14:13:12 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID 61CF0DF5110375572576BB2C1328813A was initialized.
+2021-09-21 14:13:13 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 14:13:13 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:13:14 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID 61CF0DF5110375572576BB2C1328813A was destroyed.
+2021-09-21 14:18:04 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/ with ID BD9EA8B3CF830F70AB684E59B667A6FF was initialized.
+2021-09-21 14:18:05 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/ with ID BD9EA8B3CF830F70AB684E59B667A6FF was destroyed.
+2021-09-21 14:18:05 [INFO ] (RequestListener.java:23) - Request from /project-news-v1/Controller with ID EB90F5EA832CCFB277908BF076FDE2E4 was initialized.
+2021-09-21 14:18:06 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : url : GO_TO_MAIN_PAGE
+2021-09-21 14:18:06 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : local : be
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:19) - added: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (SessionListener.java:29) - replaced: HttpSessionBindingEvent : jakarta.servlet.jsp.jstl.fmt.request.charset : utf-8
+2021-09-21 14:18:07 [INFO ] (RequestListener.java:31) - Request for /project-news-v1/Controller with ID EB90F5EA832CCFB277908BF076FDE2E4 was destroyed.

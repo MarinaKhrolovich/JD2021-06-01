@@ -16,19 +16,19 @@ I did at the application:
  	15. Add log out
  	16. Add Filter
  	17. Hashed passwords by Bcrypt+check hashing password by the authorization
+ 	18. Add SessionListener and RequestListener
+ 	19. Add Logging ("info","warn","error")
 	
    I want to do at the application:
 	1 .Add favorite news
 	2. Add pages to the main page and user page   
 	3. Full validation of parameters
-	4. Add Listener
-	5. Add JUnit
-	6. Add Logger
-	7. Add Admin page
-	8. Delete users by Admin
-	9. Delete newses of user by Admin
-	10.Confirm password by the registration
-	11.Use email by the registration
+	4. Add JUnit
+	5. Add Admin page
+	6. Delete users by Admin
+	7. Delete newses of user by Admin
+	8.Confirm password by the registration
+	9.Use email by the registration
 
 	
 	 

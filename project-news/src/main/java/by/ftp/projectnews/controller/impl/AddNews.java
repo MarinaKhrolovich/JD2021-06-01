@@ -2,6 +2,9 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.ftp.projectnews.bean.News;
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
@@ -29,7 +32,8 @@ public class AddNews implements Command {
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String PARAM_ID_NEWS = "&id_news=";
 	private static final String EMPTY_STRING = "";
-
+	private final static Logger LOG = LogManager.getLogger(AddNews.class);
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -80,7 +84,8 @@ public class AddNews implements Command {
 			}
 
 		} catch (ServiceException e) {
-			// log
+			
+			LOG.error(e);
 			msg = localManager.getValue(MessageLocal.NEWS_ADD_WRONG);
 
 			String path = (String) session.getAttribute(URL);

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.ftp.projectnews.bean.RegistrationInfo;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -32,7 +35,8 @@ public class RegistrationNewUser implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-
+	private final static Logger LOG = LogManager.getLogger(RegistrationNewUser.class);
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -47,12 +51,14 @@ public class RegistrationNewUser implements Command {
 		String surname = request.getParameter(SURNAME);
 		String yearBirthday = request.getParameter(YEAR_BIRTHDAY);
 		String sex = request.getParameter(SEX);
-
-		String codeLogin = URLEncoder.encode(null, StandardCharsets.UTF_8);
-		String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
-		String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+		
+		
 		
 		if (checkNullEmpty(login) || checkNullEmpty(password)|| checkNullEmpty(name)) {
+			String codeLogin = URLEncoder.encode(login, StandardCharsets.UTF_8);
+			String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+			String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+			
 			msg = localManager.getValue(MessageLocal.FILL_FIELDS);
 			response.sendRedirect(CONTROLLER_COMMAND + path + "&login=" + codeLogin + "&name=" + codeName + "&surname="
 					+ codeSurname + "&yearBirthday=" + yearBirthday + "&sex=" + sex + PARAM_MESSAGE + msg);
@@ -82,7 +88,12 @@ public class RegistrationNewUser implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 
 		} catch (ServiceException e) {
-			// log
+			
+			LOG.error(e);
+			String codeLogin = URLEncoder.encode(login, StandardCharsets.UTF_8);
+			String codeName = URLEncoder.encode(name, StandardCharsets.UTF_8);
+			String codeSurname = URLEncoder.encode(surname, StandardCharsets.UTF_8);
+			
 			msg = localManager.getValue(MessageLocal.USER_REG_EXISTS);
 			
 			response.sendRedirect(CONTROLLER_COMMAND + path + "&login=" + codeLogin + "&name=" + codeName + "&surname="

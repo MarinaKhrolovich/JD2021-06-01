@@ -1,10 +1,16 @@
 package by.ftp.projectnews.listener;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import by.ftp.projectnews.controller.impl.AddNews;
 import jakarta.servlet.ServletRequestEvent;
 import jakarta.servlet.ServletRequestListener;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class RequestListener implements ServletRequestListener {
+
+	private final static Logger LOG = LogManager.getLogger(RequestListener.class);
 
 	public RequestListener() {
 
@@ -13,7 +19,8 @@ public class RequestListener implements ServletRequestListener {
 	@Override
 	public void requestInitialized(ServletRequestEvent sre) {
 		HttpServletRequest req = (HttpServletRequest) sre.getServletRequest();
-		System.out.println("Request from " + req.getRequestURI() + " with ID " + req.getRequestedSessionId()
+
+		LOG.info("Request from " + req.getRequestURI() + " with ID " + req.getRequestedSessionId()
 				+ " was initialized.");
 	}
 
@@ -21,8 +28,7 @@ public class RequestListener implements ServletRequestListener {
 	public void requestDestroyed(ServletRequestEvent sre) {
 
 		HttpServletRequest req = (HttpServletRequest) sre.getServletRequest();
-		System.out.println(
-				"Request for " + req.getRequestURI() + " with ID " + req.getRequestedSessionId() + " was destroyed.");
+		LOG.info("Request for " + req.getRequestURI() + " with ID " + req.getRequestedSessionId() + " was destroyed.");
 	}
 
 }

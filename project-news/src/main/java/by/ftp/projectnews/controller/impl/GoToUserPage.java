@@ -2,6 +2,9 @@ package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;
 import by.ftp.projectnews.controller.CommandName;
@@ -24,7 +27,8 @@ public class GoToUserPage implements Command {
 	private static final String URL = "url";
 	private static final String NEWSES_OF_AUTHOR = "newses_author";
 	private static final String USER = "user";
-
+	private final static Logger LOG = LogManager.getLogger(GoToUserPage.class);
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -37,7 +41,7 @@ public class GoToUserPage implements Command {
 			requestDispatcher.forward(request, response);
 
 		} catch (ServiceException e) {
-			// log
+			LOG.error(e);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher(ERROR_JSP);
 			requestDispatcher.forward(request, response);
 		}

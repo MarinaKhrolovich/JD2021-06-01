@@ -19,7 +19,9 @@ public class MessageResourceManager {
 	}
 
 	public String getValue(String key) {
-		return URLEncoder.encode(resourceBundle.getString(key),StandardCharsets.UTF_8);
+		
+			return URLEncoder.encode(resourceBundle.getString(key),StandardCharsets.UTF_8);
+
 	}
 	
 	public void setLocale(String locale) {
