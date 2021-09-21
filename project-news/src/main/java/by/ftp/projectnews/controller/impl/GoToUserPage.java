@@ -22,13 +22,14 @@ public class GoToUserPage implements Command {
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 
+	private final static Logger LOG = LogManager.getLogger(GoToUserPage.class);
+	
 	private static final String USERPROFILE_JSP = "/WEB-INF/jsp/userprofile.jsp";
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
 	private static final String NEWSES_OF_AUTHOR = "newses_author";
 	private static final String USER = "user";
-	private final static Logger LOG = LogManager.getLogger(GoToUserPage.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

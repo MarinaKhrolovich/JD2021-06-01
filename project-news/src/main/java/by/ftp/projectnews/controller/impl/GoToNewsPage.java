@@ -26,6 +26,8 @@ public class GoToNewsPage implements Command {
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 
+	private final static Logger LOG = LogManager.getLogger(GoToNewsPage.class);
+	
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String PAGE_NEWS_JSP = "/WEB-INF/jsp/pageNews.jsp";
 	private static final String ID_NEWS = "id_news";
@@ -36,8 +38,7 @@ public class GoToNewsPage implements Command {
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
 	private static final String PARAM_ID_NEWS = "&id_news=";
-	private final static Logger LOG = LogManager.getLogger(GoToNewsPage.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = PAGE_NEWS_JSP;

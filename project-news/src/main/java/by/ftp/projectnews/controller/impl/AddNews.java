@@ -23,6 +23,9 @@ public class AddNews implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
+	
+	private final static Logger LOG = LogManager.getLogger(AddNews.class);
+	
 	private static final String URL = "url";
 	private static final String USER = "user";
 	private static final String TITLE = "title";
@@ -32,8 +35,7 @@ public class AddNews implements Command {
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String PARAM_ID_NEWS = "&id_news=";
 	private static final String EMPTY_STRING = "";
-	private final static Logger LOG = LogManager.getLogger(AddNews.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

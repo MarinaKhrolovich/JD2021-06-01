@@ -20,6 +20,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class GoToAddPageNews implements Command {
 
+	private final static Logger LOG = LogManager.getLogger(GoToAddPageNews.class);
+	
 	private static final String ADD_PAGE_NEWS_JSP = "/WEB-INF/jsp/addPageNews.jsp";
 	private static final String URL = "url";
 	private static final String USER = "user";
@@ -27,9 +29,8 @@ public class GoToAddPageNews implements Command {
 	private static final String ADMIN_ROLE = "admin";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-	private static final String LOG_MESSAGE = "tried to add news as user, must sign in as admin";
-	private final static Logger LOG = LogManager.getLogger(GoToAddPageNews.class);
-
+	private static final String LOG_MESSAGE = "tried to add news as role 'user', must sign in as 'admin'";
+	
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg = EMPTY_STRING;

@@ -19,6 +19,8 @@ import jakarta.servlet.http.HttpSession;
 
 public class GoToMainPage implements Command {
 
+	private final static Logger LOG = LogManager.getLogger(GoToMainPage.class);
+	
 	private static final String MAIN_JSP = "/WEB-INF/jsp/main.jsp";
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
@@ -27,8 +29,7 @@ public class GoToMainPage implements Command {
 	private static final String NEWSES = "newses";
 	private static final String LOCAL = "local";
 	private static final String LOCAL_BE = "be";
-	private final static Logger LOG = LogManager.getLogger(GoToMainPage.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

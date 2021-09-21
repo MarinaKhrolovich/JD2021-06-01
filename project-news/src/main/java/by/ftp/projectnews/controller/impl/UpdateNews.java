@@ -23,6 +23,9 @@ public class UpdateNews implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
+	
+	private final static Logger LOG = LogManager.getLogger(UpdateNews.class);
+	
 	private static final String USER = "user";
 	private static final String URL = "url";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
@@ -34,8 +37,7 @@ public class UpdateNews implements Command {
 	private static final String CONTENT = "content";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-	private final static Logger LOG = LogManager.getLogger(UpdateNews.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

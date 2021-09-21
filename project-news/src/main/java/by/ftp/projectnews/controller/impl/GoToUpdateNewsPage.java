@@ -24,6 +24,8 @@ public class GoToUpdateNewsPage implements Command {
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
 
+	private final static Logger LOG = LogManager.getLogger(GoToUpdateNewsPage.class);
+	
 	private static final String UPDATE_NEWS_PAGE_JSP = "/WEB-INF/jsp/updateNews.jsp";
 	private static final String ERROR_JSP = "/WEB-INF/jsp/error.jsp";
 	private static final String URL = "url";
@@ -32,8 +34,7 @@ public class GoToUpdateNewsPage implements Command {
 	private static final String NEWS = "news";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
-	private final static Logger LOG = LogManager.getLogger(GoToUpdateNewsPage.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

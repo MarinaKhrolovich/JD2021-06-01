@@ -23,6 +23,8 @@ public class AuthorizationUser implements Command {
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final UserService USER_SERVICE = PROVIDER.getUserService();
 
+	private final static Logger LOG = LogManager.getLogger(AuthorizationUser.class);
+	
 	private static final String URL = "url";
 	private static final String USER = "user";
 	private static final String LOGIN = "login";
@@ -30,8 +32,7 @@ public class AuthorizationUser implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-	private final static Logger LOG = LogManager.getLogger(AuthorizationUser.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

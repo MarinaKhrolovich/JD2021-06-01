@@ -24,6 +24,9 @@ public class RegistrationNewUser implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final UserService USER_SERVICE = PROVIDER.getUserService();
+	
+	private final static Logger LOG = LogManager.getLogger(RegistrationNewUser.class);
+	
 	private static final String LOGIN = "login";
 	private static final String PASSWORD = "password";
 	private static final String NAME = "name";
@@ -35,8 +38,7 @@ public class RegistrationNewUser implements Command {
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-	private final static Logger LOG = LogManager.getLogger(RegistrationNewUser.class);
-	
+		
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
