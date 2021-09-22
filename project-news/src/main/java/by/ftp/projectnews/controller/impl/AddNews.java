@@ -65,7 +65,6 @@ public class AddNews implements Command {
 		news.setBrief(brief);
 		news.setContent(content);
 		news.setAuthor(user.getLogin());
-		news.setActivity((byte) 1);
 		news.setDate(Date.valueOf(LocalDate.now()));
 		commandName = CommandName.GO_TO_PAGE_NEWS.toString();
 

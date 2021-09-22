@@ -12,9 +12,8 @@ public class News implements Serializable {
 	private String content;
 	private String author;
 	private int id;
-	private byte activity;
 	private Date date;
-	;
+
 	public News() {
 
 	}
@@ -25,7 +24,6 @@ public class News implements Serializable {
 		this.brief = brief;
 		this.content = content;
 		this.author = author;
-		this.activity = 1;
 		this.date = date;
 	}
 
@@ -69,14 +67,6 @@ public class News implements Serializable {
 		this.author = author;
 	}
 
-	public byte getActivity() {
-		return activity;
-	}
-
-	public void setActivity(byte activity) {
-		this.activity = activity;
-	}
-
 	public Date getDate() {
 		return date;
 	}
@@ -94,7 +84,6 @@ public class News implements Serializable {
 		result = prime * result + id;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
-		result = prime * result + activity;
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		return result;
 	}
@@ -130,8 +119,6 @@ public class News implements Serializable {
 			return false;
 		if (id != other.id)
 			return false;
-		if (activity != other.activity)
-			return false;
 		if (date == null) {
 			if (other.date != null)
 				return false;
@@ -143,7 +130,7 @@ public class News implements Serializable {
 	@Override
 	public String toString() {
 		return getClass().getName() + " [title=" + title + ", brief=" + brief + ", content=" + content + ", author="
-				+ author + ", id=" + id + ", activity=" + activity + "]";
+				+ author + ", id=" + id + ", activity=" + "]";
 	}
 
 }

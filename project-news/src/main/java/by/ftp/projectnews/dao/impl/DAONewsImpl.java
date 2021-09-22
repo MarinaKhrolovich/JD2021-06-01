@@ -16,15 +16,15 @@ import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 public class DAONewsImpl implements DAONews {
 
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
-	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author,activity) VALUES(?,?,?,?,?,?)";
-	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =? AND activity = 1";
-	private static final String DELETE_NEWS = "UPDATE newses SET activity = 0 WHERE id =? AND activity = 1";
-	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";// AND
-																												// activity
-																												// = 1";
-	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";// AND activity = 1";
-	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses WHERE activity = 1 ORDER BY id DESC LIMIT 5";
-	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? AND activity = 1 LIMIT 5";
+	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author) VALUES(?,?,?,?,?)";
+	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =?";
+	private static final String DELETE_NEWS = "DELETE FROM newses WHERE id =?";
+	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";
+																												
+																												
+	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";
+	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses ORDER BY id DESC";
+	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? ORDER BY id DESC";
 	private static final String ID = "id";
 	private static final String TITLE = "title";
 	private static final String BRIEF = "brief";
@@ -45,7 +45,6 @@ public class DAONewsImpl implements DAONews {
 			ps.setString(3, news.getContent());
 			ps.setDate(4, news.getDate());
 			ps.setString(5, news.getAuthor());
-			ps.setByte(6, news.getActivity());
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
