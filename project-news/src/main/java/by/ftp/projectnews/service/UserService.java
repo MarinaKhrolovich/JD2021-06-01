@@ -8,5 +8,7 @@ public interface UserService {
 	void registration(RegistrationInfo regInfo) throws ServiceException;
 
 	User authorization(String login, String password) throws ServiceException;
+	
+	User getUser(String login) throws ServiceException;
 
 }

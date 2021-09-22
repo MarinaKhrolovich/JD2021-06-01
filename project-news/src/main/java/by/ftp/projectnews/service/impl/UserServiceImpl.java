@@ -36,4 +36,17 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
+	public User getUser(String login) throws ServiceException {
+		
+		try {
+			User user = DAOUser.getUser(login);
+			return user;
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	
+
 }

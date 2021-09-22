@@ -19,6 +19,7 @@ public class DAOUserImpl implements DAOUser {
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
 	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =?";// AND password =?";
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
+	private static final String SELECT_GET_USER_ID = "SELECT * FROM users WHERE login =?";
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
 	private static final String PASSWORD = "password";
@@ -86,5 +87,39 @@ public class DAOUserImpl implements DAOUser {
 		}
 
 	}
+
+	@Override
+	public User getUser(String login) throws DAOException {
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		User userFromBase = null;
+
+		try {
+			con = CONN_PULL.takeConnection();
+
+			ps = con.prepareStatement(SELECT_GET_USER_ID);
+			ps.setString(1, login);
+
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				userFromBase = new User();
+				userFromBase.setLogin(rs.getString(LOGIN));
+				userFromBase.setRole(rs.getString(ROLE));
+			}
+			return userFromBase;
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ConnectionPoolException e) {
+			throw new DAOException(e);
+		} finally {
+			CONN_PULL.closeConnection(con, ps, rs);
+		}
+
+	}
+	
+	
+	
 
 }
