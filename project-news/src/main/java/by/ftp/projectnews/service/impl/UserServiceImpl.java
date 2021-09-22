@@ -36,9 +36,10 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+
 	@Override
 	public User getUser(String login) throws ServiceException {
-		
+
 		try {
 			User user = DAOUser.getUser(login);
 			return user;
@@ -47,6 +48,14 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 	
-	
+	@Override
+	public void delete(User user) throws ServiceException {
+		try {
+			DAOUser.delete(user);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+
+	}
 
 }

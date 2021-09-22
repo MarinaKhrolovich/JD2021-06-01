@@ -10,5 +10,7 @@ public interface UserService {
 	User authorization(String login, String password) throws ServiceException;
 	
 	User getUser(String login) throws ServiceException;
+	
+	void delete(User user) throws ServiceException;
 
 }

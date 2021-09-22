@@ -16,15 +16,15 @@ import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 public class DAONewsImpl implements DAONews {
 
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
+
 	private static final String SELECT_ADD_NEWS = "INSERT INTO newses(title,brief,content,date,author) VALUES(?,?,?,?,?)";
 	private static final String SELECT_GET_NEWS_ID = "SELECT * FROM newses WHERE id =?";
 	private static final String DELETE_NEWS = "DELETE FROM newses WHERE id =?";
 	private static final String UPDATE_NEWS = "UPDATE newses SET title = ?,brief = ?, content = ? WHERE id =?";
-																												
-																												
 	private static final String SELECT_GET_NEWS_TITLE = "SELECT * FROM newses WHERE title =?";
 	private static final String SELECT_GET_LIST_OF_NEWS = "SELECT * FROM newses ORDER BY id DESC";
 	private static final String SELECT_GET_LIST_OF_NEWS_AUTHOR = "SELECT * FROM newses WHERE author =? ORDER BY id DESC";
+
 	private static final String ID = "id";
 	private static final String TITLE = "title";
 	private static final String BRIEF = "brief";

@@ -21,7 +21,7 @@ public class DAONewsImplTest {
 	private static News news;
 	
 	@BeforeClass
-	public static void initT() {
+	public static void initNewsTest() {
 		news = new News();
 		news.setTitle("news2");
 		news.setBrief("news2");
@@ -31,7 +31,7 @@ public class DAONewsImplTest {
 	}
 	
 	@AfterClass
-	public static void destroyT() {
+	public static void destroyNewsTest() {
 		try {
 			DAONews.delete(news);
 		} catch (DAOException e) {

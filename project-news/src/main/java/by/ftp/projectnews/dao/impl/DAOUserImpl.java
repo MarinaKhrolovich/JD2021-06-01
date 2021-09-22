@@ -17,13 +17,17 @@ import by.ftp.projectnews.dao.connectionpool.ConnectionPoolException;
 public class DAOUserImpl implements DAOUser {
 
 	private static final ConnectionPool CONN_PULL = ConnectionPool.getInstance();
+	
 	private static final String SELECT_AUTHORIZATION = "SELECT * FROM users WHERE login =?";// AND password =?";
 	private static final String SELECT_REGISTRATION = "INSERT INTO users(login,password,role,name,surname,yearBirthday,sex) VALUES(?,?,?,?,?,?,?)";
 	private static final String SELECT_GET_USER_ID = "SELECT * FROM users WHERE login =?";
+	private static final String DELETE_USER = "DELETE FROM users WHERE login =?";
+	
 	private static final String LOGIN = "login";
 	private static final String ROLE = "role";
 	private static final String PASSWORD = "password";
-
+	
+	
 	@Override
 	public void registration(RegistrationInfo regInfo) throws DAOException {
 
@@ -119,7 +123,26 @@ public class DAOUserImpl implements DAOUser {
 
 	}
 	
-	
-	
+	@Override
+	public void delete(User user) throws DAOException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		try {
+			con = CONN_PULL.takeConnection();
+			ps = con.prepareStatement(DELETE_USER);
 
+			ps.setString(1, user.getLogin());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} catch (ConnectionPoolException e) {
+			throw new DAOException(e);
+		} finally {
+			CONN_PULL.closeConnection(con, ps);
+		}
+		
+	}
+	
 }
