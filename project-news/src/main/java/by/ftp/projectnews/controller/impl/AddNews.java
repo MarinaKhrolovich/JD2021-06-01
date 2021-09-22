@@ -25,9 +25,9 @@ public class AddNews implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
-	
+
 	private final static Logger LOG = LogManager.getLogger(AddNews.class);
-	
+
 	private static final String URL = "url";
 	private static final String USER = "user";
 	private static final String TITLE = "title";
@@ -37,7 +37,7 @@ public class AddNews implements Command {
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String PARAM_ID_NEWS = "&id_news=";
 	private static final String EMPTY_STRING = "";
-		
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -70,38 +70,28 @@ public class AddNews implements Command {
 		commandName = CommandName.GO_TO_PAGE_NEWS.toString();
 
 		try {
-			if (NEWS_SERVICE.getNews(title) == null) {
 
-				msg = localManager.getValue(MessageLocal.NEWS_ADD_SUCCESS);
+			msg = localManager.getValue(MessageLocal.NEWS_ADD_SUCCESS);
 
-				NEWS_SERVICE.add(news);
-				News newNews = NEWS_SERVICE.getNews(title);
-				response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_ID_NEWS + String.valueOf(newNews.getId())
-						+ PARAM_MESSAGE + msg);
-
-			} else {
-
-				msg = localManager.getValue(MessageLocal.NEWS_ADD_TITLE_EXISTS);
-
-				String path = (String) session.getAttribute(URL);
-				response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
-
-			}
+			NEWS_SERVICE.add(news);
+			News newNews = NEWS_SERVICE.getNews(title);
+			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_ID_NEWS + String.valueOf(newNews.getId())
+					+ PARAM_MESSAGE + msg);
 
 		} catch (ServiceException e) {
-			
+
 			LOG.error(e);
-			msg = localManager.getValue(MessageLocal.NEWS_ADD_WRONG);
+			msg = localManager.getValue(MessageLocal.NEWS_ADD_TITLE_EXISTS);
 
 			String path = (String) session.getAttribute(URL);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 		}
 
 	}
-	
+
 	public boolean checkNullEmpty(String field) {
-		
+
 		return field == null || field.isEmpty();
-		
+
 	}
 }

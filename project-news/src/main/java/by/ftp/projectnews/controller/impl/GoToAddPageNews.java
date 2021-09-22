@@ -1,11 +1,9 @@
 package by.ftp.projectnews.controller.impl;
 
 import java.io.IOException;
-import java.net.URLDecoder;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import java.nio.charset.StandardCharsets;
 
 import by.ftp.projectnews.bean.User;
 import by.ftp.projectnews.controller.Command;

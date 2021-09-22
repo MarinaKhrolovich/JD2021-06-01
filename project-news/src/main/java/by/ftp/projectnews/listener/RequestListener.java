@@ -3,7 +3,6 @@ package by.ftp.projectnews.listener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import by.ftp.projectnews.controller.impl.AddNews;
 import jakarta.servlet.ServletRequestEvent;
 import jakarta.servlet.ServletRequestListener;
 import jakarta.servlet.http.HttpServletRequest;
