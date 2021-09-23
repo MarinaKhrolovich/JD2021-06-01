@@ -18,17 +18,17 @@ I did at the application:
  	17. Hashed passwords by Bcrypt+check hashing password by the authorization
  	18. Add SessionListener and RequestListener
  	19. Add Logging ("info","warn","error")
+ 	20. Add JUnit
 	
    I want to do at the application:
 	1 .Add favorite news
 	2. Add pages to the main page and user page   
 	3. Full validation of parameters
-	4. Add JUnit
-	5. Add Admin page
-	6. Delete users by Admin
-	7. Delete newses of user by Admin
-	8.Confirm password by the registration
-	9.Use email by the registration
+	4. Add Admin page
+	5. Delete users by Admin
+	6. Delete newses of user by Admin
+	7.Confirm password by the registration
+	8.Use email by the registration
 
 	
 	 

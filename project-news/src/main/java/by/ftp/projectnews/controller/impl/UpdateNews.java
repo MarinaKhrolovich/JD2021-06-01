@@ -14,6 +14,7 @@ import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
+import by.ftp.projectnews.service.validator.ValidatorException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,9 +24,9 @@ public class UpdateNews implements Command {
 
 	private static final ServiceProvider PROVIDER = ServiceProvider.getInstance();
 	private static final NewsService NEWS_SERVICE = PROVIDER.getNewService();
-	
+
 	private final static Logger LOG = LogManager.getLogger(UpdateNews.class);
-	
+
 	private static final String USER = "user";
 	private static final String URL = "url";
 	private static final String CONTROLLER_COMMAND = "Controller?command=";
@@ -37,7 +38,7 @@ public class UpdateNews implements Command {
 	private static final String CONTENT = "content";
 	private static final String PARAM_MESSAGE = "&message=";
 	private static final String EMPTY_STRING = "";
-		
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -78,7 +79,7 @@ public class UpdateNews implements Command {
 		String brief = request.getParameter(BRIEF);
 		String content = request.getParameter(CONTENT);
 
-		if (checkNullEmpty(title) || checkNullEmpty(brief) || checkNullEmpty(content)){
+		if (checkNullEmpty(title) || checkNullEmpty(brief) || checkNullEmpty(content)) {
 			String path = (String) session.getAttribute(URL);
 			msg = localManager.getValue(MessageLocal.FILL_ALL_FIELDS);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
@@ -109,6 +110,11 @@ public class UpdateNews implements Command {
 			msg = localManager.getValue(MessageLocal.NEWS_UPDATE_SUCCESS);
 			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_ID_NEWS + id_news + PARAM_MESSAGE + msg);
 
+		} catch (ValidatorException e) {
+			LOG.error(e);
+			String path = (String) session.getAttribute(URL);
+			msg = localManager.getValue(MessageLocal.VALIDATE_ERROR);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
 		} catch (ServiceException e) {
 			LOG.error(e);
 			String path = (String) session.getAttribute(URL);
@@ -117,11 +123,11 @@ public class UpdateNews implements Command {
 		}
 
 	}
-	
+
 	public boolean checkNullEmpty(String field) {
-		
+
 		return field == null || field.isEmpty();
-		
+
 	}
 
 }

@@ -29,7 +29,7 @@ public class DAOUserImplTest {
 		regInfo.setRole("user");
 		regInfo.setSex("m");
 		regInfo.setSurName("");
-		regInfo.setYearBirthday(1990);
+		regInfo.setYearBirthday("1990");
 		
 		user = new User();
 		user.setLogin("Artyom1");
@@ -54,7 +54,7 @@ public class DAOUserImplTest {
 		regInfo.setRole("user");
 		regInfo.setSex("m");
 		regInfo.setSurName("");
-		regInfo.setYearBirthday(1990);
+		regInfo.setYearBirthday("1990");
 		DAOUser.registration(regInfo);
 	}
 	

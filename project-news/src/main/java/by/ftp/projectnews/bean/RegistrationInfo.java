@@ -8,7 +8,7 @@ public class RegistrationInfo extends User implements Serializable {
 
 	private String name;
 	private String surName;
-	private int yearBirthday;
+	private String yearBirthday;
 	private String password;
 	private String sex;
 
@@ -16,7 +16,7 @@ public class RegistrationInfo extends User implements Serializable {
 		super();
 	}
 
-	public RegistrationInfo(String role, String name, String surName, int yearBirthday, String login, String password,
+	public RegistrationInfo(String role, String name, String surName, String yearBirthday, String login, String password,
 			String sex) {
 		super();
 		this.name = name;
@@ -42,11 +42,11 @@ public class RegistrationInfo extends User implements Serializable {
 		this.surName = surName;
 	}
 
-	public int getYearBirthday() {
+	public String getYearBirthday() {
 		return yearBirthday;
 	}
 
-	public void setYearBirthday(int yearBirthday) {
+	public void setYearBirthday(String yearBirthday) {
 		this.yearBirthday = yearBirthday;
 	}
 
@@ -74,7 +74,7 @@ public class RegistrationInfo extends User implements Serializable {
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((surName == null) ? 0 : surName.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + yearBirthday;
+		result = prime * result + ((yearBirthday == null) ? 0 : yearBirthday.hashCode());
 		result = prime * result + ((sex == null) ? 0 : sex.hashCode());
 		return result;
 	}
@@ -108,7 +108,10 @@ public class RegistrationInfo extends User implements Serializable {
 				return false;
 		} else if (!sex.equals(other.sex))
 			return false;
-		if (yearBirthday != other.yearBirthday)
+		if (yearBirthday == null) {
+			if (other.yearBirthday != null)
+				return false;
+		} else if (!yearBirthday.equals(other.sex))
 			return false;
 		return true;
 	}

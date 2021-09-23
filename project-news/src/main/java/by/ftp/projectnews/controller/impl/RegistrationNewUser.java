@@ -15,6 +15,7 @@ import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
 import by.ftp.projectnews.service.UserService;
+import by.ftp.projectnews.service.validator.ValidatorException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -77,19 +78,20 @@ public class RegistrationNewUser implements Command {
 			regInfo.setSurName(surname);
 			regInfo.setRole(USER);
 			regInfo.setSex(sex);
-
-			if ((yearBirthday != null) && (!yearBirthday.isEmpty())) {
-				regInfo.setYearBirthday(Integer.parseInt(yearBirthday));
-			} else {
-				regInfo.setYearBirthday(0);
-			}
+			regInfo.setYearBirthday(yearBirthday);
 
 			USER_SERVICE.registration(regInfo);
 			String commandName = CommandName.AUTHORIZATION.toString();
 			msg = localManager.getValue(MessageLocal.USER_REG_SUCCESS);
 			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_MESSAGE + msg);
 
-		} catch (ServiceException e) {
+		}catch (ValidatorException e) {
+			LOG.error(e);
+			path = (String) session.getAttribute(URL);
+			msg = localManager.getValue(MessageLocal.VALIDATE_ERROR);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+		}
+		catch (ServiceException e) {
 			
 			LOG.error(e);
 			String codeLogin = URLEncoder.encode(login, StandardCharsets.UTF_8);

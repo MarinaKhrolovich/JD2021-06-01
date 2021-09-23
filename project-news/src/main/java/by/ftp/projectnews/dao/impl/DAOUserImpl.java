@@ -46,7 +46,7 @@ public class DAOUserImpl implements DAOUser {
 			ps.setString(3, regInfo.getRole());
 			ps.setString(4, regInfo.getName());
 			ps.setString(5, regInfo.getSurName());
-			ps.setInt(6, regInfo.getYearBirthday());
+			ps.setString(6, regInfo.getYearBirthday());
 			ps.setString(7, regInfo.getSex());
 			ps.executeUpdate();
 

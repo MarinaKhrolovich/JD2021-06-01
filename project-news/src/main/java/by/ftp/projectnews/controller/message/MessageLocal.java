@@ -26,4 +26,6 @@ public interface MessageLocal {
 	public static final String NEWS_UPDATE_WRONG = "local.message.news.updateWrong";
 	public static final String NEWS_INCORRECT_ID = "local.message.news.incorrectId";
 	public static final String NEWS_INCORRECT_TITLE = "local.message.news.incorrectTitle";
+	
+	public static final String VALIDATE_ERROR = "local.message.validate.error";
 }

@@ -16,6 +16,7 @@ import by.ftp.projectnews.controller.message.MessageResourceManager;
 import by.ftp.projectnews.service.NewsService;
 import by.ftp.projectnews.service.ServiceException;
 import by.ftp.projectnews.service.ServiceProvider;
+import by.ftp.projectnews.service.validator.ValidatorException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -77,7 +78,13 @@ public class AddNews implements Command {
 			response.sendRedirect(CONTROLLER_COMMAND + commandName + PARAM_ID_NEWS + String.valueOf(newNews.getId())
 					+ PARAM_MESSAGE + msg);
 
-		} catch (ServiceException e) {
+		}catch (ValidatorException e) { 
+			LOG.error(e);
+			String path = (String) session.getAttribute(URL);
+			msg = localManager.getValue(MessageLocal.VALIDATE_ERROR);
+			response.sendRedirect(CONTROLLER_COMMAND + path + PARAM_MESSAGE + msg);
+		}
+		catch (ServiceException e) {
 
 			LOG.error(e);
 			msg = localManager.getValue(MessageLocal.NEWS_ADD_TITLE_EXISTS);
