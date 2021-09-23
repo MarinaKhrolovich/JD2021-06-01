@@ -55,14 +55,14 @@
 		<fieldset>
 			<legend>${reg_button}</legend>
 			<br /> 
-			${login}*:<input type="text" name="login" value="${param.login}" /><br /> 
+			${login}*:<input type="text" name="login" value="${param.login}" maxlength = "200"/><br /> 
 			<br /> 
-			${password}*:<input	type="password" name="password" value="" /><br />
+			${password}*:<input	type="password" name="password" value="" maxlength = "15" /><br />
 			<br /> 
-			${name}*:<input type="text" name="name" value="${param.name}"/><br />
+			${name}*:<input type="text" name="name" value="${param.name}" maxlength = "45"/><br />
 			<br />
 			${surname}:<input type="text"
-				name="surname" value="${param.surname}" /><br />
+				name="surname" value="${param.surname}" maxlength = "45"/><br />
 			<br /> 
 			${sex}:<input id="female" type="radio" name="sex" value="f" 
 						${param.sex == 'f'|| param.sex == null ? 'checked' : ''}> 
